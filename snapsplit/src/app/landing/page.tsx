@@ -4,11 +4,11 @@ import UpcomingTrip from '@/features/landing/_components/UpcomingTrip';
 
 const LandingPage = () => {
   return (
-    <div>
+    <main>
       <LandingHeader />
       <CreateTrip />
       <UpcomingTrip />
-    </div>
+    </main>
   );
 };
 
