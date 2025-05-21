@@ -1,17 +1,7 @@
-import LandingHeader from '@/features/landing/_components/LandingHeader';
-import CreateTrip from '@/features/landing/_components/CreateTrip';
-import UpcomingTripList from '@/features/landing/_components/UpcomingTripList';
-import PastTripSection from '@/features/landing/_components/PastTripSection';
+import LandingSection from '@/features/landing/_components/landingSection';
 
 const LandingPage = () => {
-  return (
-    <main>
-      <LandingHeader />
-      <CreateTrip />
-      <UpcomingTripList />
-      <PastTripSection />
-    </main>
-  );
+  return <LandingSection />;
 };
 
 export default LandingPage;

@@ -24,7 +24,8 @@
       "@features/*": ["./src/features/*"],
       "@hooks/*": ["./src/shared/hooks/*"],
       "@styles/*": ["./src/shared/styles/*"],
-      "@landing/*": ["./src/features/landing/*"]
+      "@landing/*": ["./src/features/landing/*"],
+      "@home/*": ["./src/features/home/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
