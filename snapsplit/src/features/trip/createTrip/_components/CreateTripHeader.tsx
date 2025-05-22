@@ -1,9 +1,13 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import LeftArrow from '@public/svg/leftArrow.svg';
 
 const CreateTripHeader = () => {
   return (
-    <header className="bg-amber-400 px-5 py-3">
-      <Link href="/home">뒤로</Link>
+    <header className="px-5 py-3">
+      <Link href="/home">
+        <Image src={LeftArrow} alt="back" />
+      </Link>
     </header>
   );
 };
