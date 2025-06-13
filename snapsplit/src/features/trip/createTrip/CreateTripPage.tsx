@@ -39,7 +39,12 @@ export default function CreateTripPage() {
         <StepProgressBar step={step} />
 
         {step === 1 && (
-          <CountrySearchSection countries={countries} selected={selectedCountries} onToggle={toggleCountry} />
+          <CountrySearchSection
+            countries={countries}
+            selected={selectedCountries}
+            onToggle={toggleCountry}
+            onNext={goNext}
+          />
         )}
         {step === 2 && <SelectDateSection />}
         {step === 3 && <AddMemberSection />}

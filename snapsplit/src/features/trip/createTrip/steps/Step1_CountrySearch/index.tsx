@@ -7,11 +7,13 @@ type Props = {
   countries: { countryId: number; countryName: string }[];
   selected: string[];
   onToggle: (countryName: string) => void;
+  onNext: () => void;
 };
 
-const CountrySearchSection = ({ countries, selected, onToggle }: Props) => {
+const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Props) => {
   return (
     <div className="flex flex-col justify-between h-screen px-5">
+      {/* 높이 수정해야됨 */}
       <div>
         <div className="pb-6">
           <p className="text-head-1">어디로 떠나시나요?</p>
@@ -22,16 +24,17 @@ const CountrySearchSection = ({ countries, selected, onToggle }: Props) => {
         <CountryList countries={countries} selected={selected} onToggle={onToggle} />
       </div>
 
-      {/* 다음 단계 버튼*/}
+      {/* 다음 단계 버튼 */}
       {selected.length > 0 && (
         <motion.button
+          onClick={onNext}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
           className="flex w-full p-3 bg-neutral-500 rounded-xl shadow-[0px_-2px_10px_0px_rgba(108,108,108,0.12)] justify-center items-center text-label-1 text-neutral-50"
         >
-          {`${selected[0]} 외 ${selected.length - 1}개 선택 완료`}
+          {selected.length >= 2 ? `${selected[0]} 외 ${selected.length - 1}개 선택 완료` : `${selected[0]} 선택 완료`}
         </motion.button>
       )}
     </div>

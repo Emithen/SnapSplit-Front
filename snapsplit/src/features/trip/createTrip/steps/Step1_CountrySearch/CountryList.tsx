@@ -30,6 +30,7 @@ const Country = ({
 const CountryList = ({ countries, selected, onToggle }: Props) => {
   return (
     <div className="space-y-5 max-h-[370px] overflow-y-auto">
+      {/* 고정 높이 추후 조정하기 */}
       {countries.map(({ countryName, countryId }) => (
         <Country
           key={countryId}
