@@ -3,3 +3,7 @@ type CountryProps = {
     countryName: string;
     isSelected: boolean;
 }
+
+type SearchBarProps = {
+  placeholder?: string;
+};
