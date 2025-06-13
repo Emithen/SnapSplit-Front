@@ -1,0 +1,11 @@
+
+{
+  "status": 200,
+  "success": true,
+  "message": "국가 리스트 조회 성공",
+  "data": [
+    { "countryId": 1, "countryName": "프랑스" },
+    { "countryId": 2, "countryName": "이탈리아" },
+    { "countryId": 3, "countryName": "영국" }
+  ]
+}

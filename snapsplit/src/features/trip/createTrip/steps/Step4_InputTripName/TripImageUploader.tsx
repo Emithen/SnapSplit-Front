@@ -9,7 +9,7 @@ const TripImageUploader = () => {
           <Image src={plus} alt="plus" />
         </div>
       </div>
-      <button className="pt-2 text-body-2 text-grey-450 ml-3">사진 업로드</button>
+      <button className="pt-2 text-body-2 text-grey-450 ml-3">사진 변경</button>
     </div>
   );
 };
