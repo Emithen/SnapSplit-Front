@@ -1,6 +1,6 @@
-import CountryList from './CountrySearch/CountryList';
-import CountrySearchBar from './CountrySearch/SearchBar';
-import SelectedCountry from './CountrySearch/SelectedCountry';
+import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
+import CountrySearchBar from '@trip/createTrip/steps/Step1_CountrySearch/CountrySearchBar';
+import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
 
 const CountrySearchSection = () => {
   return (

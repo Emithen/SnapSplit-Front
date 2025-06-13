@@ -1,4 +1,4 @@
-const SearchBar = () => {
+const CountrySearchBar = () => {
   return (
     <div className="pb-5">
       <input
@@ -9,4 +9,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default CountrySearchBar;

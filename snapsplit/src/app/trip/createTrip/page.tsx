@@ -1,15 +1,5 @@
-import StepProgressBar from '@trip/createTrip/_components/StepProgressBar';
-import CreateTripHeader from '@trip/createTrip/_components/CreateTripHeader';
-import CountrySearchSection from '@trip/createTrip/_components/CountrySearchSection';
+import CreateTripPage from '@trip/createTrip/CreateTripPage';
 
-const CreateTrip = () => {
-  return (
-    <div>
-      <CreateTripHeader />
-      <StepProgressBar />
-      <CountrySearchSection />
-    </div>
-  );
-};
-
-export default CreateTrip;
+export default function CreateTrip() {
+  return <CreateTripPage />;
+}

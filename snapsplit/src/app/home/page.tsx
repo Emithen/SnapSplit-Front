@@ -3,7 +3,7 @@ import CreateTrip from '@home/_components/CreateTrip';
 import UpcomingTripList from '@home/_components/UpcomingTripList';
 import PastTripSection from '@home/_components/PastTripSection';
 
-const Home = () => {
+export default function Home() {
   return (
     <main>
       <LandingHeader />
@@ -12,6 +12,4 @@ const Home = () => {
       <PastTripSection />
     </main>
   );
-};
-
-export default Home;
+}

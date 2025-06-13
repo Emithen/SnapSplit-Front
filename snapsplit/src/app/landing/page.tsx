@@ -1,7 +1,5 @@
 import LandingSection from '@/features/landing/_components/landingSection';
 
-const LandingPage = () => {
+export default function LandingPage() {
   return <LandingSection />;
-};
-
-export default LandingPage;
+}
