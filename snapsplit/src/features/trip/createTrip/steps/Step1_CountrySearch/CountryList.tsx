@@ -29,7 +29,7 @@ const Country = ({
 
 const CountryList = ({ countries, selected, onToggle }: Props) => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-5 max-h-[370px] overflow-y-auto">
       {countries.map(({ countryName, countryId }) => (
         <Country
           key={countryId}

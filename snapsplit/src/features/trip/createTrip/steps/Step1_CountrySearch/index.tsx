@@ -1,6 +1,7 @@
 import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
 import SearchBar from '@trip/createTrip/_components/SearchBar';
 import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
+import { motion } from 'framer-motion';
 
 type Props = {
   countries: { countryId: number; countryName: string }[];
@@ -10,14 +11,29 @@ type Props = {
 
 const CountrySearchSection = ({ countries, selected, onToggle }: Props) => {
   return (
-    <div className="px-5">
-      <div className="pb-6">
-        <p className="text-head-1">어디로 떠나시나요?</p>
-        <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
+    <div className="flex flex-col justify-between h-screen px-5">
+      <div>
+        <div className="pb-6">
+          <p className="text-head-1">어디로 떠나시나요?</p>
+          <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
+        </div>
+        <SearchBar placeholder="여행지를 검색해보세요" />
+        <SelectedCountry selected={selected} onRemove={onToggle} />
+        <CountryList countries={countries} selected={selected} onToggle={onToggle} />
       </div>
-      <SearchBar placeholder="여행지를 검색해보세요" />
-      <SelectedCountry selected={selected} onRemove={onToggle} />
-      <CountryList countries={countries} selected={selected} onToggle={onToggle} />
+
+      {/* 다음 단계 버튼*/}
+      {selected.length > 0 && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+          className="flex w-full p-3 bg-neutral-500 rounded-xl shadow-[0px_-2px_10px_0px_rgba(108,108,108,0.12)] justify-center items-center text-label-1 text-neutral-50"
+        >
+          {`${selected[0]} 외 ${selected.length - 1}개 선택 완료`}
+        </motion.button>
+      )}
     </div>
   );
 };
