@@ -1,16 +1,6 @@
 import devider from '@public/svg/devider.svg';
 import Image from 'next/image';
-
-export type TripInfoProps = {
-  tripName: string;
-  countries: {
-    countryId: number;
-    countryName: string;
-  }[];
-  memberCount: number;
-  startDate: string;
-  endDate: string;
-};
+import { TripInfoProps } from '../type';
 
 const TripInfo = ({ tripName, countries, memberCount, startDate, endDate }: TripInfoProps) => {
   return (

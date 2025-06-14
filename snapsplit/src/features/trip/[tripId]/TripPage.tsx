@@ -17,6 +17,17 @@ export default async function TripPage({ params }: { params: { tripId: number } 
     { countryId: 3, countryName: '취리히' },
   ];
 
+  const totalShared = [
+    {
+      totalSharedCurrency: 'KRW',
+      totalSharedAmount: 300000,
+    },
+    {
+      totalSharedCurrency: 'USD',
+      totalSharedAmount: 120.5,
+    },
+  ];
+
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-grey-350">
@@ -28,7 +39,7 @@ export default async function TripPage({ params }: { params: { tripId: number } 
           startDate={'2025.4.7'}
           endDate={'4.12'}
         />
-        <SharedBudgetBar />
+        <SharedBudgetBar totalShared={totalShared} />
         <TripDateFilterBar />
         <ExpenseFilter />
       </div>
