@@ -21,23 +21,18 @@ const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Props) 
   );
 
   return (
-    <div className="flex flex-col justify-between max-h-screen px-5">
-      {/* 높이 수정해야됨 */}
-      <div>
-        <div className="pb-6">
-          <p className="text-head-1">어디로 떠나시나요?</p>
-          <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
-        </div>
-        <SearchBar
-          placeholder="여행지를 검색해보세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <SelectedCountry selected={selected} onRemove={onToggle} />
-        <CountryList countries={filteredCountries} selected={selected} onToggle={onToggle} />{' '}
+    <div className="flex flex-col justify-between px-5">
+      <div className="pb-6">
+        <p className="text-head-1">어디로 떠나시나요?</p>
+        <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
       </div>
-
-      {/* 다음 단계 버튼 */}
+      <SearchBar
+        placeholder="여행지를 검색해보세요"
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value)}
+      />
+      <SelectedCountry selected={selected} onRemove={onToggle} />
+      <CountryList countries={filteredCountries} selected={selected} onToggle={onToggle} />
       {selected.length > 0 && (
         <motion.button
           onClick={onNext}

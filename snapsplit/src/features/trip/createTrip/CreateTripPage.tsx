@@ -28,36 +28,27 @@ export default function CreateTripPage() {
     );
   };
 
-  /* 스탭 이동 테스트 */
+  // 스탭 이동
   const goNext = () => setStep((prev) => Math.min(prev + 1, 4));
   const goPrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
   return (
     <div>
-      <div>
-        <CreateTripHeader />
-        <StepProgressBar step={step} />
+      {/* 공통 헤더 & 진행 바 */}
+      <CreateTripHeader step={step} onPrev={goPrev} />
+      <StepProgressBar step={step} />
 
-        {step === 1 && (
-          <CountrySearchSection
-            countries={countries}
-            selected={selectedCountries}
-            onToggle={toggleCountry}
-            onNext={goNext}
-          />
-        )}
-        {step === 2 && <SelectDateSection />}
-        {step === 3 && <AddMemberSection />}
-        {step === 4 && <InputTripName />}
-
-        {/* 스탭 이동 테스트 */}
-        <button onClick={goPrev} disabled={step === 1}>
-          이전
-        </button>
-        <button onClick={goNext} disabled={step === 4}>
-          다음
-        </button>
-      </div>
+      {step === 1 && (
+        <CountrySearchSection
+          countries={countries}
+          selected={selectedCountries}
+          onToggle={toggleCountry}
+          onNext={goNext}
+        />
+      )}
+      {step === 2 && <SelectDateSection onNext={goNext} />}
+      {step === 3 && <AddMemberSection onNext={goNext} />}
+      {step === 4 && <InputTripName onNext={goNext} />}
     </div>
   );
 }
