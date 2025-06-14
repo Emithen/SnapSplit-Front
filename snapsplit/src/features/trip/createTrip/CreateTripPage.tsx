@@ -10,9 +10,12 @@ import InputTripNameSection from './steps/Step4_InputTripName';
 
 // steps로 단계별 컴포넌트를 랜더링해주는 Multi Step Form 페이지
 export default function CreateTripPage() {
+  // 현재 진행 중인 스탭
   const [step, setStep] = useState(1);
+
+  // 국가 데이터 상태
   const [countries, setCountries] = useState<{ countryId: number; countryName: string }[]>([]);
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<{ countryId: number; countryName: string }[]>([]);
 
   // JSON에서 국가 목록 로딩
   useEffect(() => {
@@ -21,10 +24,12 @@ export default function CreateTripPage() {
       .then((json) => setCountries(json.data));
   }, []);
 
-  // 국가 선택
-  const toggleCountry = (countryName: string) => {
+  // 국가 선택/해제 토글
+  const toggleCountry = (country: { countryId: number; countryName: string }) => {
     setSelectedCountries((prev) =>
-      prev.includes(countryName) ? prev.filter((c) => c !== countryName) : [...prev, countryName]
+      prev.some((c) => c.countryId === country.countryId)
+        ? prev.filter((c) => c.countryId !== country.countryId)
+        : [...prev, country]
     );
   };
 
@@ -51,6 +56,8 @@ export default function CreateTripPage() {
       {/* 공통 헤더 & 진행 바 */}
       <CreateTripHeader step={step} onPrev={goPrev} />
       <StepProgressBar step={step} />
+
+      {/* 현재 스텝에 해당하는 컴포넌트 렌더링 */}
       {steps[step - 1]}
     </div>
   );

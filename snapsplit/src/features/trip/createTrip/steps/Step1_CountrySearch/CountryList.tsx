@@ -22,12 +22,12 @@ const CountryList = ({ countries, selected, onToggle }: CountryListProps) => {
       style={{ height: 'calc(100vh - 348px - 16px)' }}
     >
       {/* 고정 높이 추후 조정하기 */}
-      {countries.map(({ countryName, countryId }) => (
+      {countries.map((country) => (
         <CountryComponent
-          key={countryId}
-          countryName={countryName}
-          isSelected={selected.includes(countryName)}
-          onClick={() => onToggle(countryName)}
+          key={country.countryId}
+          countryName={country.countryName}
+          isSelected={selected.some((c) => c.countryId === country.countryId)}
+          onClick={() => onToggle(country)}
         />
       ))}
     </div>

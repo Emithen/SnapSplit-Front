@@ -1,16 +1,21 @@
 // Country Search Section Props
+export type Country = {
+    countryId: number;
+    countryName: string;
+};
+
 export type CountrySearchSectionProps = {
-    countries: { countryId: number; countryName: string }[];
-    selected: string[];
-    onToggle: (countryName: string) => void;
+    countries: Country[];
+    selected: Country[];
+    onToggle: (country: Country) => void;
     onNext: () => void;
 };
 
 // Country List Props
 export type CountryListProps = {
     countries: { countryId: number; countryName: string }[];
-    selected: string[];
-    onToggle: (countryName: string) => void;
+    selected: Country[];
+    onToggle: (country: Country) => void;
 };
 
 // Country Component Props
@@ -20,8 +25,11 @@ export type CountryComponentProps = {
     onClick: () => void;
 };
 
-// Selected Country Props
-export type SelectedCountryProps = {
-    selected: string[];
-    onRemove: (countryName: string) => void;
-  };
+// Selected Country List Props
+export type SelectedCountryListProps = {
+    selected: Country[];
+    onRemove: (country: Country) => void;
+};
+  
+// Selected Country Component Props
+export type SelectedCountryProps = { country: Country; onRemove: (country: Country) => void }

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
 import SearchBar from '@/shared/components/SearchBar';
-import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
+import SelectedCountry from '@/features/trip/createTrip/steps/Step1_CountrySearch/SelectedCountryList';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { CountrySearchSectionProps } from './type';
 
@@ -31,7 +31,9 @@ const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Country
       {selected.length > 0 && (
         <BottomCTAButton
           label={
-            selected.length >= 2 ? `${selected[0]} 외 ${selected.length - 1}개 선택 완료` : `${selected[0]} 선택 완료`
+            selected.length >= 2
+              ? `${selected[0].countryName} 외 ${selected.length - 1}개 선택 완료`
+              : `${selected[0].countryName} 선택 완료`
           }
           onClick={onNext}
         />
