@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 import StepProgressBar from '@trip/createTrip/_components/StepProgressBar';
 import CreateTripHeader from '@trip/createTrip/_components/CreateTripHeader';
@@ -11,6 +12,8 @@ import { Country } from '@/shared/types/country';
 
 // steps로 단계별 컴포넌트를 랜더링해주는 Multi Step Form 페이지
 export default function CreateTripPage() {
+  const router = useRouter();
+
   // 현재 진행 중인 스탭
   const [step, setStep] = useState(1);
 
@@ -35,8 +38,18 @@ export default function CreateTripPage() {
   };
 
   // 스탭 이동
-  const goNext = () => setStep((prev) => Math.min(prev + 1, 4));
-  const goPrev = () => setStep((prev) => Math.max(prev - 1, 1));
+  const handleNextStep = () => {
+    if (step === 4) {
+      // 마지막 단계라면 여행 생성하고 생성된 여행 홈으로 이동
+      // 백엔드 API data로 받아오도록 수정하기
+      const TripId = 1;
+      router.push(`/trip/${TripId}`);
+    } else {
+      // 다음 스텝으로 이동
+      setStep((prev) => prev + 1);
+    }
+  };
+  const handlePrevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
   // 스탭마다 랜더링 할 컴포넌트들을 배열로 관리
   const steps = [
@@ -45,20 +58,17 @@ export default function CreateTripPage() {
       countries={countries}
       selected={selectedCountries}
       onToggle={toggleCountry}
-      onNext={goNext}
+      onClick={handleNextStep}
     />,
-    <SelectDateSection key="step2" onNext={goNext} />,
-    <AddMemberSection key="step3" onNext={goNext} />,
-    <InputTripNameSection key="step4" onNext={goNext} />,
+    <SelectDateSection key="step2" onClick={handleNextStep} />,
+    <AddMemberSection key="step3" onClick={handleNextStep} />,
+    <InputTripNameSection key="step4" onClick={handleNextStep} />,
   ];
 
   return (
     <div>
-      {/* 공통 헤더 & 진행 바 */}
-      <CreateTripHeader step={step} onPrev={goPrev} />
+      <CreateTripHeader step={step} onPrev={handlePrevStep} />
       <StepProgressBar step={step} />
-
-      {/* 현재 스텝에 해당하는 컴포넌트 렌더링 */}
       {steps[step - 1]}
     </div>
   );

@@ -1,1 +1,1 @@
-export type SelectDateSectionProps = { onNext: () => void };
+export type SelectDateSectionProps = { onClick: () => void };

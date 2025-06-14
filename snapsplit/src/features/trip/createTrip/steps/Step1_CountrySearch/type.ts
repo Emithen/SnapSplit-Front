@@ -5,7 +5,7 @@ export type CountrySearchSectionProps = {
     countries: Country[];
     selected: Country[];
     onToggle: (country: Country) => void;
-    onNext: () => void;
+    onClick: () => void;
 };
 
 // Country List Props

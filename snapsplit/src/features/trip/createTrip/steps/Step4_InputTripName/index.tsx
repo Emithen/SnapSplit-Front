@@ -4,7 +4,7 @@ import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { SearchBarType } from '@/shared/types/ui';
 import { InputTripNameSectionProps } from './type';
 
-const InputTripNameSection = ({ onNext }: InputTripNameSectionProps) => {
+const InputTripNameSection = ({ onClick: onNext }: InputTripNameSectionProps) => {
   return (
     <div className="px-5 flex flex-col justify-between" style={{ height: 'calc(100vh - 95px - 16px)' }}>
       <div className="flex flex-col">

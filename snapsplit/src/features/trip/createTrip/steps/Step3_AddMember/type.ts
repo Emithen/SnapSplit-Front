@@ -1,1 +1,1 @@
-export type AddMemberSectionProps = { onNext: () => void };
+export type AddMemberSectionProps = { onClick: () => void };

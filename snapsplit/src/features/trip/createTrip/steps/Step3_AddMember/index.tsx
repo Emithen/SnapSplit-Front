@@ -2,7 +2,7 @@ import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import SearchBar from '@/shared/components/SearchBar';
 import { AddMemberSectionProps } from './type';
 
-const AddMemberSection = ({ onNext }: AddMemberSectionProps) => {
+const AddMemberSection = ({ onClick: onNext }: AddMemberSectionProps) => {
   return (
     <div className="flex flex-col justify-between px-5" style={{ height: 'calc(100vh - 95px - 16px)' }}>
       <div className="flex flex-col">
