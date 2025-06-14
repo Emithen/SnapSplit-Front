@@ -7,6 +7,7 @@ import CountrySearchSection from '@trip/createTrip/steps/Step1_CountrySearch';
 import SelectDateSection from './steps/Step2_SelectDate';
 import AddMemberSection from '@trip/createTrip/steps/Step3_AddMember';
 import InputTripNameSection from './steps/Step4_InputTripName';
+import { Country } from '@/shared/types/country';
 
 // steps로 단계별 컴포넌트를 랜더링해주는 Multi Step Form 페이지
 export default function CreateTripPage() {
@@ -14,8 +15,8 @@ export default function CreateTripPage() {
   const [step, setStep] = useState(1);
 
   // 국가 데이터 상태
-  const [countries, setCountries] = useState<{ countryId: number; countryName: string }[]>([]);
-  const [selectedCountries, setSelectedCountries] = useState<{ countryId: number; countryName: string }[]>([]);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
 
   // JSON에서 국가 목록 로딩
   useEffect(() => {

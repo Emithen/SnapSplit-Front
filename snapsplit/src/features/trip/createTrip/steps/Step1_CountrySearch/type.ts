@@ -1,8 +1,5 @@
 // Country Search Section Props
-export type Country = {
-    countryId: number;
-    countryName: string;
-};
+import { Country } from "@/shared/types/country";
 
 export type CountrySearchSectionProps = {
     countries: Country[];
