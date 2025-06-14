@@ -8,6 +8,12 @@
 | 기획, 프론트 | 기획, 백엔드 | 기획, 백엔드 |
 
 # 프론트엔드
+## 폴더 구조
+- **Feature-based structure**
+  - app/ → 라우팅 전용
+  - features/ → 기능별로 컴포넌트/로직 모아놓는 구조
+  - shared/ → 전역에서 공통으로 사용하는 것만 모아놓음
+  - lib/ → 외부 API, 설정, 전역 store 등 범용 모듈
 ## 기술 스택
 - react
 - next.js
