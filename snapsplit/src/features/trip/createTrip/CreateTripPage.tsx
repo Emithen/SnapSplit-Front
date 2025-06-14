@@ -6,7 +6,7 @@ import CreateTripHeader from '@trip/createTrip/_components/CreateTripHeader';
 import CountrySearchSection from '@trip/createTrip/steps/Step1_CountrySearch';
 import SelectDateSection from './steps/Step2_SelectDate';
 import AddMemberSection from '@trip/createTrip/steps/Step3_AddMember';
-import InputTripName from './steps/Step4_InputTripName';
+import InputTripNameSection from './steps/Step4_InputTripName';
 
 // steps로 단계별 컴포넌트를 랜더링해주는 Multi Step Form 페이지
 export default function CreateTripPage() {
@@ -32,23 +32,26 @@ export default function CreateTripPage() {
   const goNext = () => setStep((prev) => Math.min(prev + 1, 4));
   const goPrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
+  // 스탭마다 랜더링 할 컴포넌트들을 배열로 관리
+  const steps = [
+    <CountrySearchSection
+      key="step1"
+      countries={countries}
+      selected={selectedCountries}
+      onToggle={toggleCountry}
+      onNext={goNext}
+    />,
+    <SelectDateSection key="step2" onNext={goNext} />,
+    <AddMemberSection key="step3" onNext={goNext} />,
+    <InputTripNameSection key="step4" onNext={goNext} />,
+  ];
+
   return (
     <div>
       {/* 공통 헤더 & 진행 바 */}
       <CreateTripHeader step={step} onPrev={goPrev} />
       <StepProgressBar step={step} />
-
-      {step === 1 && (
-        <CountrySearchSection
-          countries={countries}
-          selected={selectedCountries}
-          onToggle={toggleCountry}
-          onNext={goNext}
-        />
-      )}
-      {step === 2 && <SelectDateSection onNext={goNext} />}
-      {step === 3 && <AddMemberSection onNext={goNext} />}
-      {step === 4 && <InputTripName onNext={goNext} />}
+      {steps[step - 1]}
     </div>
   );
 }

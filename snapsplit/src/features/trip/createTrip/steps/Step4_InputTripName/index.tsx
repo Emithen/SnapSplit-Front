@@ -2,9 +2,9 @@ import SearchBar from '@/shared/components/SearchBar';
 import TripImageUploader from '@trip/createTrip/steps/Step4_InputTripName/TripImageUploader';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { SearchBarType } from '@/shared/types/ui';
-import { InputTripNameProps } from './type';
+import { InputTripNameSectionProps } from './type';
 
-const InputTripName = ({ onNext }: InputTripNameProps) => {
+const InputTripNameSection = ({ onNext }: InputTripNameSectionProps) => {
   return (
     <div className="px-5 flex flex-col justify-between" style={{ height: 'calc(100vh - 95px - 16px)' }}>
       <div className="flex flex-col">
@@ -23,4 +23,4 @@ const InputTripName = ({ onNext }: InputTripNameProps) => {
   );
 };
 
-export default InputTripName;
+export default InputTripNameSection;

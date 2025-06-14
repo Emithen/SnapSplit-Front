@@ -1,1 +1,1 @@
-export type InputTripNameProps = { onNext: () => void };
+export type InputTripNameSectionProps = { onNext: () => void };
