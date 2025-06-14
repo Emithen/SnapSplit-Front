@@ -7,7 +7,12 @@ import SelectedCountry from '@/features/trip/createTrip/steps/Step1_CountrySearc
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { CountrySearchSectionProps } from './type';
 
-const CountrySearchSection = ({ countries, selected, onToggle, onClick: onNext }: CountrySearchSectionProps) => {
+const CountrySearchSection = ({
+  countries,
+  selected,
+  onToggle,
+  onClick: handleNextStep,
+}: CountrySearchSectionProps) => {
   // 검색어 상태 관리
   const [searchKeyword, setSearchKeyword] = useState('');
   // 검색어에 따라 필터링된 국가 목록 생성
@@ -35,7 +40,7 @@ const CountrySearchSection = ({ countries, selected, onToggle, onClick: onNext }
               ? `${selected[0].countryName} 외 ${selected.length - 1}개 선택 완료`
               : `${selected[0].countryName} 선택 완료`
           }
-          onClick={onNext}
+          onClick={handleNextStep}
         />
       )}
     </div>

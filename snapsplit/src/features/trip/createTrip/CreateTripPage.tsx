@@ -8,6 +8,7 @@ import CountrySearchSection from '@trip/createTrip/steps/Step1_CountrySearch';
 import SelectDateSection from './steps/Step2_SelectDate';
 import AddMemberSection from '@trip/createTrip/steps/Step3_AddMember';
 import InputTripNameSection from './steps/Step4_InputTripName';
+import { routerPath } from '@/shared/constants/routePath';
 import { Country } from '@/shared/types/country';
 
 // steps로 단계별 컴포넌트를 랜더링해주는 Multi Step Form 페이지
@@ -43,7 +44,7 @@ export default function CreateTripPage() {
       // 마지막 단계라면 여행 생성하고 생성된 여행 홈으로 이동
       // 백엔드 API data로 받아오도록 수정하기
       const TripId = 1;
-      router.push(`/trip/${TripId}`);
+      router.push(routerPath.trip.href(TripId));
     } else {
       // 다음 스텝으로 이동
       setStep((prev) => prev + 1);
