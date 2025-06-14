@@ -1,13 +1,11 @@
-'use client';
-
 import { motion } from 'framer-motion';
 
-type Props = {
+type BottomCTAButtonProps = {
   label: string;
   onClick: () => void;
 };
 
-const BottomCTAButton = ({ label, onClick }: Props) => {
+const BottomCTAButton = ({ label, onClick }: BottomCTAButtonProps) => {
   return (
     <motion.button
       onClick={onClick}

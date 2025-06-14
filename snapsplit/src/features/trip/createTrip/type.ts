@@ -1,18 +1,7 @@
-export type CountryProps = {
-    countryName: string;
-    isSelected: boolean;
-}
-
-
-export type SearchBarProps = {
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: SearchBarType;
+// CreateTripPage 내부 컴포넌트
+export type CreateTripHeaderProps = {
+  step: number;
+  onPrev: () => void;
 };
 
-
-export enum SearchBarType {
-  WithIcon = 'WITH_ICON',
-  WithoutIcon = 'WITHOUT_ICON',
-}
+export type StepProgressBarProps = { step: number };

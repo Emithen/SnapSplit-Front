@@ -1,7 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
+import { StepProgressBarProps } from '@/features/trip/createTrip/type';
 
-const StepProgressBar = ({ step }: { step: number }) => {
+const StepProgressBar = ({ step }: StepProgressBarProps) => {
   return (
     <div className="flex gap-1 pt-[18px] pb-6 px-5">
       {[1, 2, 3, 4].map((i) => (

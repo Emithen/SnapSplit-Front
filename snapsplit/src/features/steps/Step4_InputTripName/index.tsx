@@ -2,7 +2,8 @@ import SearchBar from '@/shared/components/SearchBar';
 import TripImageUploader from '@trip/createTrip/steps/Step4_InputTripName/TripImageUploader';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { SearchBarType } from '@/shared/types/ui';
-import { InputTripNameProps } from './type';
+
+type InputTripNameProps = { onNext: () => void };
 
 const InputTripName = ({ onNext }: InputTripNameProps) => {
   return (

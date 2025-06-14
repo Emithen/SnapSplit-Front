@@ -1,18 +1,13 @@
 'use client';
+
 import { useState } from 'react';
 import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
-import SearchBar from '@/shared/components/ui/SearchBar';
+import SearchBar from '@/shared/components/SearchBar';
 import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
-import BottomCTAButton from '@/shared/components/ui/BottomCTAButton';
+import BottomCTAButton from '@/shared/components/BottomCTAButton';
+import { CountrySearchSectionProps } from './type';
 
-type Props = {
-  countries: { countryId: number; countryName: string }[];
-  selected: string[];
-  onToggle: (countryName: string) => void;
-  onNext: () => void;
-};
-
-const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Props) => {
+const CountrySearchSection = ({ countries, selected, onToggle, onNext }: CountrySearchSectionProps) => {
   // 검색어 상태 관리
   const [searchKeyword, setSearchKeyword] = useState('');
   // 검색어에 따라 필터링된 국가 목록 생성

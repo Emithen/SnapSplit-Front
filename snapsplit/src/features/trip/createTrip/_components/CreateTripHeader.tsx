@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import LeftArrow from '@public/svg/leftArrow.svg';
-
-type CreateTripHeaderProps = {
-  step: number;
-  onPrev: () => void;
-};
+import { CreateTripHeaderProps } from '@/features/trip/createTrip/type';
 
 const CreateTripHeader = ({ step, onPrev }: CreateTripHeaderProps) => {
   return (

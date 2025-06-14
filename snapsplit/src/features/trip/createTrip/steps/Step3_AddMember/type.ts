@@ -1,0 +1,1 @@
+export type AddMemberSectionProps = { onNext: () => void };

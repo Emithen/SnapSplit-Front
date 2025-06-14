@@ -1,6 +1,6 @@
 import search from '@public/svg/search.svg';
 import Image from 'next/image';
-import { SearchBarProps, SearchBarType } from '@trip/createTrip/type';
+import { SearchBarProps, SearchBarType } from '@/shared/types/ui';
 
 const SearchBar = ({ placeholder, value, onChange, type = SearchBarType.WithIcon }: SearchBarProps) => {
   return (
