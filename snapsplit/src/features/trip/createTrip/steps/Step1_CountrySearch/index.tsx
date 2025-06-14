@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
 import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
-import SearchBar from '@/shared/components/SearchBar';
+import SearchBar from '@/shared/components/ui/SearchBar';
 import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
-import { motion } from 'framer-motion';
+import BottomCTAButton from '@/shared/components/ui/BottomCTAButton';
 
 type Props = {
   countries: { countryId: number; countryName: string }[];
@@ -34,16 +34,12 @@ const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Props) 
       <SelectedCountry selected={selected} onRemove={onToggle} />
       <CountryList countries={filteredCountries} selected={selected} onToggle={onToggle} />
       {selected.length > 0 && (
-        <motion.button
+        <BottomCTAButton
+          label={
+            selected.length >= 2 ? `${selected[0]} 외 ${selected.length - 1}개 선택 완료` : `${selected[0]} 선택 완료`
+          }
           onClick={onNext}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
-          className="flex w-full p-3 bg-neutral-500 rounded-xl shadow-[0px_-2px_10px_0px_rgba(108,108,108,0.12)] justify-center items-center text-label-1 text-neutral-50"
-        >
-          {selected.length >= 2 ? `${selected[0]} 외 ${selected.length - 1}개 선택 완료` : `${selected[0]} 선택 완료`}
-        </motion.button>
+        />
       )}
     </div>
   );

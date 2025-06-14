@@ -19,7 +19,7 @@ const SelectedCountry = ({ selected, onRemove }: Props) => {
         >
           <p>{name}</p>
           <button
-            className="rounded-[30px] outline-1 outline-offset-[-1px] outline-stone-300"
+            className="cursor-pointer rounded-[30px] outline-1 outline-offset-[-1px] outline-stone-300"
             onClick={() => onRemove(name)}
           >
             <Image src={x_03} alt="x"></Image>
