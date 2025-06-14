@@ -14,12 +14,15 @@ export type TripInfoProps = {
 
 const TripInfo = ({ tripName, countries, memberCount, startDate, endDate }: TripInfoProps) => {
   return (
-    <div className="flex flex-col bg-grey-250 px-5 gap-2">
+    <div className="flex flex-col px-5 gap-2 pt-2 pb-4">
       <div className="flex flex-row space-x-3 items-center">
         <p className="text-grey-850 text-head-0">{tripName}</p>
         <div className="flex space-x-1">
-          <div className="flex px-3 py-[2px] rounded-[20px] text-body-2 text-grey-850 bg-white">런던</div>
-          <div className="flex px-3 py-[2px] rounded-[20px] text-body-2 text-grey-850 bg-white">파리</div>
+          {countries.map(({ countryId, countryName }) => (
+            <div key={countryId} className="flex px-3 py-[2px] rounded-[20px] text-body-2 text-grey-850 bg-white">
+              {countryName}
+            </div>
+          ))}
         </div>
       </div>
       <div className="flex flex-row space-x-2 items-center text-grey-650">
