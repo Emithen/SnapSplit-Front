@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
-import SearchBar from '@trip/createTrip/_components/SearchBar';
+import SearchBar from '@/shared/components/SearchBar';
 import SelectedCountry from '@trip/createTrip/steps/Step1_CountrySearch/SelectedCountry';
 import { motion } from 'framer-motion';
 
@@ -21,7 +21,7 @@ const CountrySearchSection = ({ countries, selected, onToggle, onNext }: Props) 
   );
 
   return (
-    <div className="flex flex-col justify-between h-[590px] px-5">
+    <div className="flex flex-col justify-between max-h-screen px-5">
       {/* 높이 수정해야됨 */}
       <div>
         <div className="pb-6">

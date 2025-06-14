@@ -1,4 +1,4 @@
-import SearchBar from '@trip/createTrip/_components/SearchBar';
+import SearchBar from '@/shared/components/SearchBar';
 
 const AddMemberSection = () => {
   return (

@@ -1,11 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-type CountryProps = {
+export type CountryProps = {
     countryName: string;
     isSelected: boolean;
 }
 
-type SearchBarProps = {
+
+export type SearchBarProps = {
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: SearchBarType;
 };
+
+
+export enum SearchBarType {
+  WithIcon = 'WITH_ICON',
+  WithoutIcon = 'WITHOUT_ICON',
+}

@@ -1,5 +1,6 @@
-import SearchBar from '../../_components/SearchBar';
-import TripImageUploader from './TripImageUploader';
+import SearchBar from '@/shared/components/SearchBar';
+import { SearchBarType } from '@trip/createTrip/type';
+import TripImageUploader from '@trip/createTrip/steps/Step4_InputTripName/TripImageUploader';
 
 const InputTripName = () => {
   return (
@@ -12,7 +13,7 @@ const InputTripName = () => {
         </p>
       </div>
       <TripImageUploader />
-      <SearchBar placeholder="여행명을 입력해주세요" />
+      <SearchBar type={SearchBarType.WithoutIcon} placeholder="여행명을 입력해주세요" />
     </div>
   );
 };
