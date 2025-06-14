@@ -4,7 +4,7 @@ import { SelectedCountryListProps, SelectedCountryProps } from './type';
 
 const SelectedCountry = ({ country, onRemove }: SelectedCountryProps) => {
   return (
-    <div className="flex min-w-fit items-center gap-1 text-body-2 rounded-[20px] border border-grey-750 px-3 py-1">
+    <div className="flex min-w-fit items-center gap-1 text-body-2 rounded-[20px] border border-grey-750 px-3 py-1 pr-1">
       <p>{country.countryName}</p>
       <button
         onClick={() => onRemove(country)}
