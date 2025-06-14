@@ -10,8 +10,8 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
     <div className="flex w-full px-5 pb-5">
       <div className="flex-col w-full items-center rounded-xl bg-grey-650 px-[14px] py-3  text-body-2">
         <div className="w-full flex flex-row justify-between items-center">
-          <p className="text-stone-300">공동경비 잔액</p>
-          <p className="text-grey-650 px-3 py-[6px] bg-grey-50 rounded-lg">추가하기</p>
+          <p className="text-stone-300 ">공동경비 잔액</p>
+          <p className="text-grey-650 text-body-1 px-3 py-[6px] bg-grey-50 rounded-lg">경비 수정하기</p>
         </div>
         <div className="flex flex-row">
           <p className="text-head-0 text-grey-50">

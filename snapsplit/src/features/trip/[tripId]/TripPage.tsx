@@ -40,7 +40,7 @@ export default async function TripPage({ params }: { params: { tripId: number } 
           endDate={'4.12'}
         />
         <SharedBudgetBar totalShared={totalShared} />
-        <TripDateFilterBar />
+        <TripDateFilterBar startDate={'2025-4-7'} endDate={'2025-4-16'} />
         <ExpenseFilter />
       </div>
 
