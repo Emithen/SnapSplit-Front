@@ -1,33 +1,57 @@
+'use client';
+
 import { TripDateFilterBarProps } from '../type';
 import Image from 'next/image';
 import search from '@public/svg/search.svg';
 import { getDateRangeArray } from '@/shared/utils/makeDateList';
 import { getKoreanDay } from '@/shared/utils/getKoreanDay';
+import { useState } from 'react';
 
 const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   const dateList = getDateRangeArray(startDate, endDate);
+  const [selectedKey, setSelectedKey] = useState<string>('전체');
+
+  const handleClick = (key: string) => setSelectedKey(key);
+  const isSelected = (key: string) => selectedKey === key;
+
+  // 조건부 스타일
+  const baseButtonClass = 'min-w-12 max-w-12 h-16 flex flex-col items-center justify-center shrink-0';
+  const selectedClass = 'bg-grey-650 text-white rounded-tl-xl rounded-tr-xl';
 
   return (
-    <div className="w-full pl-5 inline-flex items-center whitespace-nowrap overflow-hidden">
+    <div className="w-full pl-5 flex items-end whitespace-nowrap overflow-hidden">
       {/* '전체' 탭 */}
-      <div className="flex shrink-0 items-center">
-        <p className="px-[11.5px] py-[21.5px] bg-grey-650 rounded-tl-xl rounded-tr-xl text-white shrink-0">전체</p>
-        <div className="flex flex-col px-3 py-[10px] items-center justify-center text-grey-550">
-          <p className="text-caption-2">준비</p>
-          <Image alt="search" src={search} />
-        </div>
-      </div>
+      <button
+        onClick={() => handleClick('전체')}
+        className={`${baseButtonClass} text-body-2 ${isSelected('전체') ? selectedClass : 'text-grey-650'}`}
+      >
+        전체
+      </button>
+
+      {/* '준비' 탭 */}
+      <button
+        onClick={() => handleClick('준비')}
+        className={`${baseButtonClass} ${isSelected('준비') ? selectedClass : 'text-grey-550'}`}
+      >
+        <p className="text-caption-2">준비</p>
+        <Image alt="search" src={search} />
+      </button>
+
+      {/* 날짜들 */}
       <div className="flex overflow-x-auto scrollbar-hide">
-        {/* 날짜 탭 리스트 */}
-        {dateList.map((date) => (
-          <div
-            key={date.format('YYYY-MM-DD')}
-            className="flex flex-col max-w-12 min-w-12 py-[10px] items-center justify-center text-grey-550 shrink-0"
-          >
-            <p className="text-caption-2">{getKoreanDay(date)}</p>
-            <p className="text-body-2">{date.date()}</p>
-          </div>
-        ))}
+        {dateList.map((date) => {
+          const key = date.format('YYYY-MM-DD');
+          return (
+            <button
+              key={key}
+              onClick={() => handleClick(key)}
+              className={`${baseButtonClass} ${isSelected(key) ? selectedClass : 'text-grey-550'}`}
+            >
+              <p className="text-caption-2">{getKoreanDay(date)}</p>
+              <p className="text-body-2">{date.date()}</p>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
