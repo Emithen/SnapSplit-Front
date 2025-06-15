@@ -9,11 +9,17 @@ import FilterBottomSheet from './_components/FilterBottomSheet';
 import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripHeader from '@/features/trip/[tripId]/_components/TripHeader';
 import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
+import { FilterState } from '@/features/snap/type';
 
 export default function GalleryPage() {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
+  const [filters, setFilters] = useState<FilterState>({
+    days: [],
+    people: [],
+    locations: [],
+  });
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -79,7 +85,11 @@ export default function GalleryPage() {
             onClick={() => setFilterOpen(false)}
           />
           {/* 필터 bottom sheet */}
-          <FilterBottomSheet onClose={() => setFilterOpen(false)} />
+          <FilterBottomSheet
+            filters={filters}
+            setFilters={setFilters}
+            onClose={() => setFilterOpen(false)}
+          />
         </div>
       )}
       <BottomNavBar />
