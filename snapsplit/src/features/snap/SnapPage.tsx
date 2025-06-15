@@ -48,6 +48,24 @@ export default function GalleryPage() {
         onSortOpen={() => setSortOpen(true)}
         onFilterOpen={() => setFilterOpen(true)}
       />
+      <div className="flex flex-wrap gap-2 px-4 py-3">
+        {filters.days.map((day) => (
+          <span key={day} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+            Day {day}
+          </span>
+        ))}
+        {filters.people.map((name) => (
+          <span key={name} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+            {name}
+          </span>
+        ))}
+        {filters.locations.map((loc) => (
+          <span key={loc} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+            {loc}
+          </span>
+        ))}
+      </div>
+
       <PhotoGrid />
       <UploadButton inputRef={fileInputRef} />
       <input
