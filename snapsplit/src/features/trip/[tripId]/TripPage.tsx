@@ -41,10 +41,10 @@ export default async function TripPage({ params }: { params: { tripId: number } 
         />
         <SharedBudgetBar totalShared={totalShared} />
         <TripDateFilterBar startDate={'2025-4-7'} endDate={'2025-4-16'} />
-        <ExpenseFilter />
       </div>
 
       {/* 지출 리스트: 가능한 영역만 차지 + 스크롤 */}
+      <ExpenseFilter />
       <div className="flex-grow overflow-y-auto">
         <DailyExpenseList />
       </div>
