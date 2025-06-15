@@ -5,11 +5,11 @@ import PastTripSection from '@home/_components/PastTripSection';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <LandingHeader />
       <CreateTrip />
       <UpcomingTripList />
       <PastTripSection />
-    </main>
+    </>
   );
 }
