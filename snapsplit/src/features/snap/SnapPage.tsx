@@ -38,15 +38,33 @@ export default function GalleryPage() {
         }}
       />
       {sortOpen && (
-        <SortBottomSheet
-          selectedSort={selectedSort}
-          onSelect={(opt) => {
-            setSelectedSort(opt);
-            setSortOpen(false);
-          }}
-        />
+        <div className="fixed inset-0 z-100">
+          {/* 어두운 배경 */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={() => setSortOpen(false)}
+          />
+          {/* 정렬 bottom sheet */}
+          <SortBottomSheet
+            selectedSort={selectedSort}
+            onSelect={(opt) => {
+              setSelectedSort(opt);
+              setSortOpen(false);
+            }}
+          />
+        </div>
       )}
-      {filterOpen && <FilterBottomSheet onClose={() => setFilterOpen(false)} />}
+      {filterOpen && (
+        <div className="fixed inset-0 z-100">
+          {/* 어두운 배경 */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={() => setFilterOpen(false)}
+          />
+          {/* 필터 bottom sheet */}
+          <FilterBottomSheet onClose={() => setFilterOpen(false)} />
+        </div>
+      )}
       <BottomNavBar />
     </div>
   );
