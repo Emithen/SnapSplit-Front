@@ -1,25 +1,40 @@
+'use client';
+
 interface SortBottomSheetProps {
-    selectedSort: string;
-    onSelect: (opt: string) => void;
-  }
-  
-  export default function SortBottomSheet({ selectedSort, onSelect }: SortBottomSheetProps) {
-    const options = ['최신순', '이름순', '좋아요순'];
-    return (
-      <div className="fixed bottom-0 w-full bg-white border-t rounded-t-xl p-4 shadow-xl">
-        <p className="font-semibold mb-2">정렬</p>
-        {options.map(opt => (
-          <div key={opt} className="flex items-center py-1">
-            <input
-              type="radio"
-              id={opt}
-              name="sort"
-              checked={selectedSort === opt}
-              onChange={() => onSelect(opt)}
-            />
-            <label htmlFor={opt} className="ml-2">{opt}</label>
-          </div>
+  selectedSort: string;
+  onSelectSort: (option: string) => void;
+  onClose: () => void;
+}
+
+const sortOptions = ['최신순', '이름순', '좋아요순'];
+
+export default function SortBottomSheet({
+  selectedSort,
+  onSelectSort,
+  onClose,
+}: SortBottomSheetProps) {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lg p-4 z-50">
+      <div className="text-base font-semibold mb-4">정렬</div>
+      <ul className="space-y-3">
+        {sortOptions.map(option => (
+          <li
+            key={option}
+            onClick={() => {
+              onSelectSort(option);
+              onClose();
+            }}
+            className="flex items-center cursor-pointer"
+          >
+            <span className="mr-2">
+              {selectedSort === option ? '✓' : ''}
+            </span>
+            <span className={selectedSort === option ? 'font-medium text-black' : 'text-gray-600'}>
+              {option}
+            </span>
+          </li>
         ))}
-      </div>
-    );
-  }
+      </ul>
+    </div>
+  );
+}

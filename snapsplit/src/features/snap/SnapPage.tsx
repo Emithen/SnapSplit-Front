@@ -10,6 +10,7 @@ import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripHeader from '@/features/trip/[tripId]/_components/TripHeader';
 import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
 import { FilterState } from '@/features/snap/type';
+import { UploadedImage } from '@/features/snap/type';
 
 export default function GalleryPage() {
   const [sortOpen, setSortOpen] = useState(false);
@@ -29,6 +30,34 @@ export default function GalleryPage() {
     { countryId: 2, countryName: '파리' },
     { countryId: 3, countryName: '취리히' },
   ];
+
+  const testImages: UploadedImage[] = [
+    {
+      id: '1-jisu-london',
+      src: '/svg/1-jisu-london.png',
+      tags: {
+        days: [1],
+        people: ['지수'],
+        locations: ['런던']
+      }
+    },
+    {
+      id: '2-jisu-na-yeon-paris',
+      src: '/svg/2-jisu-na-yeon-paris.png',
+      tags: {
+        days: [2],
+        people: ['지수', '나경', '연수'],
+        locations: ['파리']
+      }
+    }
+  ];
+
+  const filteredImages = testImages.filter((img) => {
+    const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));
+    const matchPeople = filters.people.length === 0 || filters.people.some((p) => img.tags.people.includes(p));
+    const matchLocation = filters.locations.length === 0 || filters.locations.some((l) => img.tags.locations.includes(l));
+    return matchDay && matchPeople && matchLocation;
+  });
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -50,23 +79,23 @@ export default function GalleryPage() {
       />
       <div className="flex flex-wrap gap-2 px-4 py-3">
         {filters.days.map((day) => (
-          <span key={day} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+          <span key={day} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
             Day {day}
           </span>
         ))}
         {filters.people.map((name) => (
-          <span key={name} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+          <span key={name} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
             {name}
           </span>
         ))}
         {filters.locations.map((loc) => (
-          <span key={loc} className="bg-gray-100 border border-gray-300 px-3 py-1 rounded-full text-xs text-gray-700">
+          <span key={loc} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
             {loc}
           </span>
         ))}
       </div>
 
-      <PhotoGrid />
+      <PhotoGrid images={filteredImages} />
       <UploadButton inputRef={fileInputRef} />
       <input
         type="file"
@@ -88,10 +117,8 @@ export default function GalleryPage() {
           {/* 정렬 bottom sheet */}
           <SortBottomSheet
             selectedSort={selectedSort}
-            onSelect={(opt) => {
-              setSelectedSort(opt);
-              setSortOpen(false);
-            }}
+            onSelectSort={(opt) => setSelectedSort(opt)}
+            onClose={() => setSortOpen(false)}
           />
         </div>
       )}
