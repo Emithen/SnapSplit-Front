@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import x_03 from '@public/svg/x_03.svg';
 import { SelectedCountryListProps, SelectedCountryProps } from './type';
+import { useDragScroll } from '@/shared/utils/useDragScroll'; // ✅ 커스텀 훅 import
 
 const SelectedCountry = ({ country, onRemove }: SelectedCountryProps) => {
   return (
@@ -18,11 +19,21 @@ const SelectedCountry = ({ country, onRemove }: SelectedCountryProps) => {
 };
 
 const SelectedCountryList = ({ selected, onRemove }: SelectedCountryListProps) => {
-  if (selected.length === 0) return <div className="pb-5"></div>;
+  // 마우스 드래그
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('x');
+
   // 선택된 나라가 없을 경우 빈 공간을 유지하기 위해 패딩을 적용합니다.
+  if (selected.length === 0) return <div className="pb-5"></div>;
 
   return (
-    <div className="py-5 overflow-x-auto">
+    <div
+      className="py-5 overflow-x-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar"
+      ref={scrollRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+    >
       <div className="flex gap-2 whitespace-nowrap">
         {selected.map((country) => (
           <SelectedCountry key={country.countryId} country={country} onRemove={onRemove} />
