@@ -13,6 +13,9 @@
   - app/ → 라우팅 전용
   - features/ → 기능별로 컴포넌트/로직 모아놓는 구조
   - shared/ → 전역에서 공통으로 사용하는 것만 모아놓음
+    - components → 공통 컴포넌트들 (페이지 2개 이상에서 사용 되는 것들)
+    - types → 공통 컴포넌트에 쓰이는 ui 타입 등
+    - constanst → apiPath, routePath와 같은 정적 요소들
   - lib/ → 외부 API, 설정, 전역 store 등 범용 모듈
 ## 기술 스택
 - react
