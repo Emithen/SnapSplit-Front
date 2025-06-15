@@ -3,7 +3,7 @@ interface FilterBottomSheetProps {
   }
   
   export default function FilterBottomSheet({ onClose }: FilterBottomSheetProps) {
-    const people = ['유빈', '지수', '나형', '연수'];
+    const people = ['유빈', '지수', '나경', '연수'];
     const locations = ['런던', '파리', '취리히'];
   
     return (

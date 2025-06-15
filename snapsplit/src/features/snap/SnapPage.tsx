@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef } from 'react';
-import TopBar from './_components/TopBar';
 import TabSelector from './_components/TabSelector';
 import SortFilterBar from './_components/SortFilterBar';
 import PhotoGrid from './_components/PhotoGrid';
@@ -8,6 +7,8 @@ import UploadButton from './_components/UploadButton';
 import SortBottomSheet from './_components/SortBottomSheet';
 import FilterBottomSheet from './_components/FilterBottomSheet';
 import BottomNavBar from '@/shared/components/BottomNavBar';
+import TripHeader from '@/features/trip/[tripId]/_components/TripHeader';
+import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
 
 export default function GalleryPage() {
   const [sortOpen, setSortOpen] = useState(false);
@@ -16,9 +17,25 @@ export default function GalleryPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // 테스트 데이터
+  const countries = [
+    { countryId: 1, countryName: '런던' },
+    { countryId: 2, countryName: '파리' },
+    { countryId: 3, countryName: '취리히' },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <TopBar />
+      <div className="bg-grey-350">
+        <TripHeader />
+        <TripInfo
+          tripName={'유luv여행'}
+          countries={countries}
+          memberCount={4}
+          startDate={'2025.4.7'}
+          endDate={'4.12'}
+        />
+      </div>
       <TabSelector />
       <SortFilterBar
         selectedSort={selectedSort}
