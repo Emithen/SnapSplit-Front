@@ -25,7 +25,7 @@ export default function FolderTabView() {
             {/* 썸네일 */}
           <FolderThumbnailPreview />
           {/* 폴더 이름 */}
-          <div className="mt-2 text-center text-sm text-gray-700">{folder.name}</div>
+          <div className="mt-2 text-center text-sm text-grey-750">{folder.name}</div>
         </div>
       ))}
       </div>

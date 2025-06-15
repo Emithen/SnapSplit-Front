@@ -60,7 +60,7 @@ interface FilterBottomSheetProps {
           ))}
         </div>
         <div className="flex justify-end gap-2 mt-4">
-          <button className="text-gray-500" onClick={() => setFilters({ days: [], people: [], locations: [] })}>초기화</button>
+          <button className="text-grey-450" onClick={() => setFilters({ days: [], people: [], locations: [] })}>초기화</button>
           <button
             className="bg-black text-white px-4 py-1 rounded-full"
             onClick={onClose}

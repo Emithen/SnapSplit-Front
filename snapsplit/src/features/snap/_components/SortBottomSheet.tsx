@@ -29,7 +29,7 @@ export default function SortBottomSheet({
             <span className="mr-2">
               {selectedSort === option ? '✓' : ''}
             </span>
-            <span className={selectedSort === option ? 'font-medium text-black' : 'text-gray-600'}>
+            <span className={selectedSort === option ? 'font-medium text-black' : 'text-grey-650'}>
               {option}
             </span>
           </li>

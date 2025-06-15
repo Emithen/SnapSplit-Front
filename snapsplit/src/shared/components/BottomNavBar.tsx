@@ -16,7 +16,7 @@ export default function BottomNavBar() {
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full h-20 border-t-[1px] border-gray-200 bg-white z-50 flex">
+    <nav className="fixed bottom-0 w-full h-20 border-t-[1px] border-grey-250 bg-white z-50 flex">
       <div className="flex justify-around w-full items-center py-2">
         {tabs.map((tab) => {
           const isActive = pathname === tab.path;
@@ -36,7 +36,7 @@ export default function BottomNavBar() {
                   className={isActive ? 'opacity-100' : 'opacity-40'}
                 />
               </div>
-              <span className={isActive ? 'text-black font-semibold' : 'text-gray-400'}>
+              <span className={isActive ? 'text-black font-semibold' : 'text-grey-450'}>
                 {tab.label}
               </span>
             </button>

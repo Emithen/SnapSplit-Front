@@ -21,7 +21,7 @@ export default function PhotoGrid({ images }: PhotoGridProps) {
         images.map((img) => (
           <div
             key={img.id}
-            className="relative w-full aspect-square rounded-md overflow-hidden border border-gray-300 shadow-sm"
+            className="relative w-full aspect-square rounded-md overflow-hidden border border-grey-350 shadow-sm"
           >
             <Image
               src={img.src}
@@ -33,7 +33,7 @@ export default function PhotoGrid({ images }: PhotoGridProps) {
         ))
       ) : (
         Array.from({ length: 15 }).map((_, idx) => (
-          <div key={idx} className="w-full aspect-square bg-gray-200 rounded-md border border-gray-200" />
+          <div key={idx} className="w-full aspect-square bg-grey-250 rounded-md border border-grey-250" />
         ))
       )}
     </div>

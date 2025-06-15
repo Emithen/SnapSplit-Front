@@ -32,17 +32,17 @@ export default function BaseTabView({
       />
       <div className="flex flex-wrap gap-2 px-4 py-3">
         {filters.days.map((day: number) => (
-          <span key={day} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
+          <span key={day} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
             Day {day}
           </span>
         ))}
         {filters.people.map((name: string) => (
-          <span key={name} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
+          <span key={name} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
             {name}
           </span>
         ))}
         {filters.locations.map((loc: string) => (
-          <span key={loc} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
+          <span key={loc} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
             {loc}
           </span>
         ))}

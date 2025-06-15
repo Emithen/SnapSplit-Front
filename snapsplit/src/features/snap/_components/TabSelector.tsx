@@ -12,7 +12,7 @@ const tabs = ['전체', '폴더별'];
 export default function TabSelector({ activeTab, setActiveTab }: TabSelectorProps) {
 
   return (
-    <div className="flex justify-around mt-4 border-b border-gray-200">
+    <div className="flex justify-around mt-4 border-b border-grey-250">
       {tabs.map((tab) => (
         <button
           key={tab}
@@ -20,7 +20,7 @@ export default function TabSelector({ activeTab, setActiveTab }: TabSelectorProp
           className={`pb-2 transition-colors duration-200 w-full ${
             activeTab === tab
               ? 'font-semibold text-black border-b-2 border-black'
-              : 'text-gray-400'
+              : 'text-grey-450'
           }`}
         >
           {tab}
