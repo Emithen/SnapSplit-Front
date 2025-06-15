@@ -18,7 +18,7 @@ export default function BottomNavBar() {
     <nav className="fixed bottom-0 w-full border-t bg-white z-50">
       <div className="flex justify-around py-2">
         {tabs.map((tab) => {
-          const isActive = pathname.startsWith(tab.path);
+          const isActive = pathname === tab.path;
           return (
             <button
               key={tab.label}
