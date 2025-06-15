@@ -1,3 +1,5 @@
+import { Expense } from "./api";
+
 // TripInfo.tsx
 export type TripInfoProps = {
     tripName: string;
@@ -24,4 +26,15 @@ export type SharedBudgetBarProps = {
 export type TripDateFilterBarProps = {
   startDate: string;
   endDate: string;
+};
+
+// DailyExpenseList.tsx
+export type ExpenseItemProps = {
+  expense: Expense;
+  expenseDay: string;
+};
+
+
+export type DailyExpenseListProps = {
+  expenses: Expense[];
 };
