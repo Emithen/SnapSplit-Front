@@ -7,6 +7,7 @@ import PhotoGrid from './_components/PhotoGrid';
 import UploadButton from './_components/UploadButton';
 import SortBottomSheet from './_components/SortBottomSheet';
 import FilterBottomSheet from './_components/FilterBottomSheet';
+import BottomNavBar from '@/shared/components/BottomNavBar';
 
 export default function GalleryPage() {
   const [sortOpen, setSortOpen] = useState(false);
@@ -46,6 +47,7 @@ export default function GalleryPage() {
         />
       )}
       {filterOpen && <FilterBottomSheet onClose={() => setFilterOpen(false)} />}
+      <BottomNavBar />
     </div>
   );
 }
