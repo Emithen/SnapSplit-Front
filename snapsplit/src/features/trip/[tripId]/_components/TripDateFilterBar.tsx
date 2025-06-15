@@ -6,6 +6,7 @@ import search from '@public/svg/search.svg';
 import { getDateRangeArray } from '@/shared/utils/makeDateList';
 import { getKoreanDay } from '@/shared/utils/getKoreanDay';
 import { useState } from 'react';
+import { useDragScroll } from '@/shared/utils/useDragScroll';
 
 const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   const dateList = getDateRangeArray(startDate, endDate);
@@ -14,8 +15,11 @@ const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   const handleClick = (key: string) => setSelectedKey(key);
   const isSelected = (key: string) => selectedKey === key;
 
+  // 마우스 드래그
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('x');
+
   // 조건부 스타일
-  const baseButtonClass = 'min-w-12 max-w-12 h-16 flex flex-col items-center justify-center shrink-0';
+  const baseButtonClass = 'cursor-pointer min-w-12 max-w-12 h-16 flex flex-col items-center justify-center shrink-0';
   const selectedClass = 'bg-grey-650 text-white rounded-tl-xl rounded-tr-xl';
 
   return (
@@ -38,7 +42,14 @@ const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
       </button>
 
       {/* 날짜들 */}
-      <div className="flex overflow-x-auto scrollbar-hide">
+      <div
+        className="flex overflow-x-auto scrollbar-hide pr-5"
+        ref={scrollRef}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+      >
         {dateList.map((date) => {
           const key = date.format('YYYY-MM-DD');
           return (
