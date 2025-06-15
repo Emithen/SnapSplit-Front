@@ -16,7 +16,7 @@ export default function BottomNavBar() {
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full h-20 border-t-[1px] border-grey-250 bg-white z-50 flex">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[415px] lg:max-w-[360px] h-20 border-t border-grey-250 bg-white z-50">
       <div className="flex justify-around w-full items-center py-2">
         {tabs.map((tab) => {
           const isActive = pathname === tab.path;
