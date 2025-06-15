@@ -1,6 +1,8 @@
 import { Expense } from '../api';
 import { groupExpensesByDate } from '@/shared/utils/groupExpenses';
-import DailyExpenseSection from './DailyExpenseSection';
+import ExpenseDateBar from './ExpenseDateBar';
+import ExpenseItem from './ExpenseItem';
+import AddExpenseButton from './AddExpenseButton';
 
 type DailyExpenseListProps = {
   expenses: Expense[];
@@ -11,12 +13,16 @@ type DailyExpenseListProps = {
 const DailyExpenseList = ({ expenses, tripStartDate, tripEndDate }: DailyExpenseListProps) => {
   const groupedExpenses = groupExpensesByDate(expenses, tripStartDate, tripEndDate);
 
-  console.log('groupedExpenses:', groupedExpenses);
-
   return (
     <div className="w-full space-y-6 px-5 text-grey-850 pb-6">
       {groupedExpenses.map((group) => (
-        <DailyExpenseSection key={group.label} label={group.label} expenses={group.expenses} />
+        <div key={group.label} className="space-y-3">
+          <ExpenseDateBar expenseDay={group.label} type={group.type} dayIndex={group.dayIndex} />
+          {group.expenses.map((expense) => (
+            <ExpenseItem key={`${expense.expenseId}-${expense.expenseCurrency}`} expense={expense} />
+          ))}
+          <AddExpenseButton />
+        </div>
       ))}
     </div>
   );

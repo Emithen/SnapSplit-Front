@@ -66,8 +66,6 @@ export default async function TripPage({ params }: { params: { tripId: number } 
     },
   ];
 
-  console.log('expenses', expenses);
-
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-grey-350">

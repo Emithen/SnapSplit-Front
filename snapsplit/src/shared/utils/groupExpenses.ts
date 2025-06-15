@@ -1,12 +1,13 @@
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { Expense } from '@/features/trip/[tripId]/api';
+import { getKoreanDay } from './getKoreanDay';
 
-dayjs.extend(isSameOrBefore); // ✅ 꼭 필요!!
-
+dayjs.extend(isSameOrBefore);
 type GroupedExpenses = {
-  label: string;
-  date: string | null;
+  type: 'PRE_TRIP' | 'IN_TRIP';
+  dayIndex?: number;
+  label: string; // ex. '4.7(월)', '여행준비'
   expenses: Expense[];
 };
 
@@ -15,41 +16,42 @@ export function groupExpensesByDate(
   tripStartDate: string,
   tripEndDate: string
 ): GroupedExpenses[] {
-  const grouped: Record<string, Expense[]> = {};
+  const result: GroupedExpenses[] = [];
 
-  for (const expense of expenses) {
-    if (dayjs(expense.expenseDate).isBefore(dayjs(tripStartDate))) {
-      grouped['PRE_TRIP'] = [...(grouped['PRE_TRIP'] ?? []), expense];
-    }
+  // 여행 준비
+  const preTripExpenses = expenses.filter((e) =>
+    dayjs(e.expenseDate).isBefore(dayjs(tripStartDate))
+  );
+  if (preTripExpenses.length > 0) {
+    result.push({
+      type: 'PRE_TRIP',
+      label: '여행준비',
+      expenses: preTripExpenses,
+    });
   }
 
-  const result: GroupedExpenses[] = [];
+  // 여행 중
   let current = dayjs(tripStartDate);
   const end = dayjs(tripEndDate);
+  let dayIndex = 1;
 
   while (current.isSameOrBefore(end)) {
     const dateKey = current.format('YYYY-MM-DD');
-    const label = current.format('M.D(dd)');
+    const label = `${current.format('M.D')}(${getKoreanDay(current)})`;
 
-    const dayExpenses = expenses.filter(
-      (e) => dayjs(e.expenseDate).isSame(dateKey, 'day')
+    const dayExpenses = expenses.filter((e) =>
+      dayjs(e.expenseDate).isSame(dateKey, 'day')
     );
 
     result.push({
+      type: 'IN_TRIP',
+      dayIndex,
       label,
-      date: dateKey,
       expenses: dayExpenses,
     });
 
     current = current.add(1, 'day');
-  }
-
-  if (grouped['PRE_TRIP']) {
-    result.unshift({
-      label: '여행준비',
-      date: null,
-      expenses: grouped['PRE_TRIP'],
-    });
+    dayIndex++;
   }
 
   return result;
