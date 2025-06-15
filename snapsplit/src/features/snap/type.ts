@@ -13,3 +13,5 @@ export type UploadedImage = {
       locations: string[];
     };
   };
+
+export type ActiveTab = '전체' | '폴더별';

@@ -1,8 +1,6 @@
 'use client';
 import { useState, useRef } from 'react';
 import TabSelector from './_components/TabSelector';
-import SortFilterBar from './_components/SortFilterBar';
-import PhotoGrid from './_components/PhotoGrid';
 import UploadButton from './_components/UploadButton';
 import SortBottomSheet from './_components/SortBottomSheet';
 import FilterBottomSheet from './_components/FilterBottomSheet';
@@ -11,6 +9,9 @@ import TripHeader from '@/features/trip/[tripId]/_components/TripHeader';
 import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
 import { FilterState } from '@/features/snap/type';
 import { UploadedImage } from '@/features/snap/type';
+import BaseTabView from './_components/tabView/BaseTabView';
+import FolderTabView from './_components/tabView/FolderTabView';
+import { ActiveTab } from '@/features/snap/type';
 
 export default function GalleryPage() {
   const [sortOpen, setSortOpen] = useState(false);
@@ -59,6 +60,8 @@ export default function GalleryPage() {
     return matchDay && matchPeople && matchLocation;
   });
 
+  const [activeTab, setActiveTab] = useState<ActiveTab>('전체');
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <div className="bg-grey-350">
@@ -71,31 +74,20 @@ export default function GalleryPage() {
           endDate={'4.12'}
         />
       </div>
-      <TabSelector />
-      <SortFilterBar
-        selectedSort={selectedSort}
-        onSortOpen={() => setSortOpen(true)}
-        onFilterOpen={() => setFilterOpen(true)}
-      />
-      <div className="flex flex-wrap gap-2 px-4 py-3">
-        {filters.days.map((day) => (
-          <span key={day} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
-            Day {day}
-          </span>
-        ))}
-        {filters.people.map((name) => (
-          <span key={name} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
-            {name}
-          </span>
-        ))}
-        {filters.locations.map((loc) => (
-          <span key={loc} className="bg-gray-400 px-3 py-1 rounded-full text-xs text-white">
-            {loc}
-          </span>
-        ))}
-      </div>
+      <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <PhotoGrid images={filteredImages} />
+      {/* 컨텐츠 영역 */}
+      {activeTab === '전체' ? (
+        <BaseTabView 
+          images={filteredImages}
+          selectedSort={selectedSort}
+          onSortOpen={() => setSortOpen(true)}
+          onFilterOpen={() => setFilterOpen(true)}
+          filters={filters}
+        />
+      ) : (
+        <FolderTabView />
+      )}
       <UploadButton inputRef={fileInputRef} />
       <input
         type="file"
@@ -137,6 +129,10 @@ export default function GalleryPage() {
           />
         </div>
       )}
+      {/* 컨텐츠 영역 */}
+      
+
+      {/* 하단 네비게이션 */}
       <BottomNavBar />
     </div>
   );
