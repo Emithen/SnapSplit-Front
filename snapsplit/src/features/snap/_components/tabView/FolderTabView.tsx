@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import FolderThumbnailPreview from './FolderThumbnailPreview';
 
 const folders = [
@@ -12,6 +12,7 @@ const folders = [
 
 export default function FolderTabView() {
   const router = useRouter();
+  const { tripId } = useParams();
 
   return (
     <div className="px-4 pb-24">
@@ -20,7 +21,7 @@ export default function FolderTabView() {
         <div
           key={folder.id}
           className="mb-6 cursor-pointer"
-          onClick={() => router.push(`/snap/folder/${folder.id}`)}
+          onClick={() => router.push(`/trip/${tripId}/snap/folder/${folder.id}`)}
         >
             {/* 썸네일 */}
           <FolderThumbnailPreview />
