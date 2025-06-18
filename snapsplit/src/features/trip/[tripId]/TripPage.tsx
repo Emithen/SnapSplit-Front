@@ -7,6 +7,7 @@ import TotalExpenseBottomSheet from './_components/TotalExpenseBottomSheet';
 import TripDateBar from './_components/TripDateBar';
 import TripHeader from './_components/TripHeader';
 import BottomSheetWrapper from './_components/BottomSheetWrapper';
+import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
 
 export default async function TripPage({ params }: { params: { tripId: number } }) {
   const tripId = params.tripId;
@@ -101,7 +102,8 @@ export default async function TripPage({ params }: { params: { tripId: number } 
       </BottomSheetWrapper>
 
       {/* 고정 네비게이션 바 */}
-      <BottomNavBar />
+      {/* <BottomNavBar /> */}
+      <BottomSheetTrigger total={1355200} />
     </div>
   );
 }
