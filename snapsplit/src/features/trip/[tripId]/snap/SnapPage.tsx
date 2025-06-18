@@ -1,17 +1,17 @@
 'use client';
 import { useState, useRef } from 'react';
-import TabSelector from './_components/TabSelector';
-import UploadButton from './_components/UploadButton';
-import SortBottomSheet from './_components/SortBottomSheet';
-import FilterBottomSheet from './_components/FilterBottomSheet';
+import TabSelector from '@/features/trip/[tripId]/snap/_components/TabSelector';
+import UploadButton from '@/features/trip/[tripId]/snap/_components/UploadButton';
+import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
+import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/FilterBottomSheet';
 import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripHeader from '@/features/trip/[tripId]/_components/TripHeader';
 import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
-import { FilterState } from '@/features/snap/type';
-import { UploadedImage } from '@/features/snap/type';
-import BaseTabView from './_components/tabView/BaseTabView';
-import FolderTabView from './_components/tabView/FolderTabView';
-import { ActiveTab } from '@/features/snap/type';
+import { FilterState } from '@/features/trip/[tripId]/snap/type';
+import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
+import BaseTabView from '@/features/trip/[tripId]/snap/_components/tabView/BaseTabView';
+import FolderTabView from '@/features/trip/[tripId]/snap/_components/tabView/FolderTabView';
+import { ActiveTab } from '@/features/trip/[tripId]/snap/type';
 
 export default function SnapPage() {
   const [sortOpen, setSortOpen] = useState(false);

@@ -1,4 +1,4 @@
-import { FilterState } from "@/features/snap/type";
+import { FilterState } from "@/features/trip/[tripId]/snap/type";
 
 interface FilterBottomSheetProps {
     filters: FilterState;

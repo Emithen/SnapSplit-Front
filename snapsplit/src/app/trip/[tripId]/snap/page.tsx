@@ -1,4 +1,4 @@
-import SnapPage from '@/features/snap/SnapPage';
+import SnapPage from '@/features/trip/[tripId]/snap/SnapPage';
 
 export default function Snap() {
 	return <SnapPage />;
