@@ -97,13 +97,13 @@ export default async function TripPage({ params }: { params: { tripId: number } 
       <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />
 
       {/* 고정 바텀 시트 */}
-      <BottomSheetWrapper>
+      {/* <BottomSheetWrapper>
         <TotalExpenseBottomSheet tripTotalExpense={1355200} />
-      </BottomSheetWrapper>
+      </BottomSheetWrapper> */}
+      <BottomSheetTrigger total={1355200} />
 
       {/* 고정 네비게이션 바 */}
-      {/* <BottomNavBar /> */}
-      <BottomSheetTrigger total={1355200} />
+      <BottomNavBar />
     </div>
   );
 }
