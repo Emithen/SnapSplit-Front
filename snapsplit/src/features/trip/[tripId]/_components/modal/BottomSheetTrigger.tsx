@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import FullExpenseModal from './FullExpenseModal';
 import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import topArrow from '@public/svg/topArrow.svg';
 
 const BottomSheetTrigger = ({ total }: { total: number }) => {
   const [open, setOpen] = useState(false);
@@ -10,10 +12,15 @@ const BottomSheetTrigger = ({ total }: { total: number }) => {
   return (
     <>
       <div
-        className="mb-10 fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] bg-neutral-500 text-white py-4 text-center z-50"
+        className="mb-10 fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] bg-neutral-500 pt-[22px] pb-[18px] flex flex-col items-center z-50"
         onClick={() => setOpen(true)}
       >
-        총 {total.toLocaleString()}원 지출 ↑
+        <Image
+          alt="↑"
+          src={topArrow}
+          className="absolute top-[2px]" // 겹치게 위로 끌어올림
+        />
+        <div className="text-grey-50 text-title-1 z-10">총 {total.toLocaleString()}원 지출</div>
       </div>
 
       <AnimatePresence>{open && <FullExpenseModal onClose={() => setOpen(false)} />}</AnimatePresence>
