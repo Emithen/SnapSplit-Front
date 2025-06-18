@@ -4,7 +4,7 @@ import DailyExpenseList from './_components/DailyExpenseList';
 import ExpenseFilter from './_components/ExpenseFilter';
 import SharedBudgetBar from './_components/SharedBudgetBar';
 import TotalExpenseBottomSheet from './_components/TotalExpenseBottomSheet';
-import TripDateFilterBar from './_components/TripDateFilterBar';
+import TripDateBar from './_components/TripDateBar';
 import TripHeader from './_components/TripHeader';
 
 export default async function TripPage({ params }: { params: { tripId: number } }) {
@@ -87,7 +87,7 @@ export default async function TripPage({ params }: { params: { tripId: number } 
           endDate={'4.12'}
         />
         <SharedBudgetBar totalShared={totalShared} />
-        <TripDateFilterBar startDate={'2025-4-7'} endDate={'2025-4-16'} />
+        <TripDateBar startDate="2025-04-07" endDate="2025-04-16" />
       </div>
 
       {/* 지출 리스트: 가능한 영역만 차지 + 스크롤 */}

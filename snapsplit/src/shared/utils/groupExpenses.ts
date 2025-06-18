@@ -5,6 +5,7 @@ import { getKoreanDay } from './getKoreanDay';
 
 dayjs.extend(isSameOrBefore);
 type GroupedExpenses = {
+  id?: string; // 스크롤 이동용 ID
   type: 'PRE_TRIP' | 'IN_TRIP';
   dayIndex?: number;
   label: string; // ex. '4.7(월)', '여행준비'
@@ -37,13 +38,13 @@ export function groupExpensesByDate(
 
   while (current.isSameOrBefore(end)) {
     const dateKey = current.format('YYYY-MM-DD');
-    const label = `${current.format('M.D')}(${getKoreanDay(current)})`;
-
+    const label = `${current.format('M.D')}/${getKoreanDay(current)}`;
     const dayExpenses = expenses.filter((e) =>
       dayjs(e.expenseDate).isSame(dateKey, 'day')
     );
 
     result.push({
+      id: dateKey,
       type: 'IN_TRIP',
       dayIndex,
       label,

@@ -8,11 +8,29 @@ import { getKoreanDay } from '@/shared/utils/getKoreanDay';
 import { useState } from 'react';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
 
-const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
+const TripDateBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   const dateList = getDateRangeArray(startDate, endDate);
   const [selectedKey, setSelectedKey] = useState<string>('전체');
 
-  const handleClick = (key: string) => setSelectedKey(key);
+  const handleClick = (key: string) => {
+    // 선택된 날짜로 상태 업데이트
+    if (key === selectedKey) return; // 이미 선택된 날짜는 무시
+    setSelectedKey(key);
+
+    // '전체'가 선택된 경우, 페이지 상단으로 스크롤 이동
+    if (key === '전체') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // 선택된 날짜로 스크롤 이동
+    const el = document.getElementById(`day-${key}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // 선택된 날짜가 현재 선택된 키와 같은지 확인
   const isSelected = (key: string) => selectedKey === key;
 
   // 마우스 드래그
@@ -68,4 +86,4 @@ const TripDateFilterBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   );
 };
 
-export default TripDateFilterBar;
+export default TripDateBar;
