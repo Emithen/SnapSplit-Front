@@ -24,15 +24,23 @@ const BottomSheetWrapper = ({ children }: Props) => {
   }, [y]);
 
   const handleDragEnd = (_: any, info: any) => {
-    const draggedY = info.offset.y;
-    const draggedRatio = Math.abs(draggedY) / window.innerHeight;
+    const offsetY = info.offset.y; // 얼마나 움직였는지
+    const velocityY = info.velocity.y; // 드래그 속도
+    const screenHeight = window.innerHeight;
 
-    if (draggedRatio > 0.3) {
-      // 전체 열기
+    const draggedRatio = Math.abs(offsetY) / screenHeight;
+
+    const shouldOpen = offsetY < 0 && draggedRatio > 0.1; // 위로 충분히 올린 경우
+    const shouldClose = offsetY > 0 || velocityY > 500; // 아래로 내리거나 빠르게 튕긴 경우
+
+    if (shouldOpen) {
       animate(y, dragRange.top, { type: 'spring', stiffness: 300 });
-    } else {
-      // 다시 내리기
+    } else if (shouldClose) {
       animate(y, 0, { type: 'spring', stiffness: 300 });
+    } else {
+      // 작은 흔들림이면 유지
+      const currentY = y.get();
+      animate(y, currentY, { type: 'spring', stiffness: 300 });
     }
   };
 
