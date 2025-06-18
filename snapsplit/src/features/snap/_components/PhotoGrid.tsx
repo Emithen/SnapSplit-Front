@@ -1,14 +1,5 @@
 import Image from 'next/image';
-
-type UploadedImage = {
-  id: string;
-  src: string;
-  tags: {
-    days: number[];
-    people: string[];
-    locations: string[];
-  };
-};
+import { UploadedImage } from '../type';
 
 interface PhotoGridProps {
   images: UploadedImage[];

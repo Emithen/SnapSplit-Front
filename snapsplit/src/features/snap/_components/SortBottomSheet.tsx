@@ -18,7 +18,7 @@ export default function SortBottomSheet({
       <div className="text-base font-semibold mb-4">정렬</div>
       <ul className="space-y-3">
         {sortOptions.map(option => (
-          <li
+          <button
             key={option}
             onClick={() => {
               onSelectSort(option);
@@ -32,7 +32,7 @@ export default function SortBottomSheet({
             <span className={selectedSort === option ? 'font-medium text-black' : 'text-grey-650'}>
               {option}
             </span>
-          </li>
+          </button>
         ))}
       </ul>
     </div>
