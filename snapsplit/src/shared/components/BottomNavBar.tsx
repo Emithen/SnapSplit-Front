@@ -1,13 +1,12 @@
 'use client';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 
 export default function BottomNavBar() {
   const pathname = usePathname();
   const router = useRouter();
-
-  // 임시 test tripId
-  const tripId = 1;
+  const { tripId } = useParams();
 
   const tabs = [
     { label: 'BUDGET', iconPath: '/svg/budget.svg', path: `/trip/${tripId}` },

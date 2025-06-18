@@ -13,7 +13,7 @@ import BaseTabView from './_components/tabView/BaseTabView';
 import FolderTabView from './_components/tabView/FolderTabView';
 import { ActiveTab } from '@/features/snap/type';
 
-export default function GalleryPage() {
+export default function SnapPage() {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
