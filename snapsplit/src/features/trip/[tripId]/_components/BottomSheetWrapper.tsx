@@ -24,23 +24,20 @@ const BottomSheetWrapper = ({ children }: Props) => {
   }, [y]);
 
   const handleDragEnd = (_: any, info: any) => {
-    const offsetY = info.offset.y; // 얼마나 움직였는지
-    const velocityY = info.velocity.y; // 드래그 속도
+    const offsetY = info.offset.y;
+    const velocityY = info.velocity.y;
     const screenHeight = window.innerHeight;
 
     const draggedRatio = Math.abs(offsetY) / screenHeight;
 
-    const shouldOpen = offsetY < 0 && draggedRatio > 0.1; // 위로 충분히 올린 경우
-    const shouldClose = offsetY > 0 || velocityY > 500; // 아래로 내리거나 빠르게 튕긴 경우
+    const shouldOpen = offsetY < 0 && draggedRatio > 0.1;
+    const shouldClose = offsetY > 0 && (draggedRatio > 0.1 || velocityY > 500);
 
     if (shouldOpen) {
       animate(y, dragRange.top, { type: 'spring', stiffness: 300 });
-    } else if (shouldClose) {
-      animate(y, 0, { type: 'spring', stiffness: 300 });
     } else {
-      // 작은 흔들림이면 유지
-      const currentY = y.get();
-      animate(y, currentY, { type: 'spring', stiffness: 300 });
+      // 나머지는 모두 닫힘 (이전 상태 유지 X)
+      animate(y, 0, { type: 'spring', stiffness: 300 });
     }
   };
 
@@ -50,7 +47,7 @@ const BottomSheetWrapper = ({ children }: Props) => {
       dragConstraints={dragRange}
       style={{ y }}
       onDragEnd={handleDragEnd}
-      className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] z-50 touch-none"
+      className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] lg:max-w-[360px] pb-[58px] mx-auto z-50 touch-none"
       ref={containerRef}
     >
       {children}
