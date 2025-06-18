@@ -47,7 +47,7 @@ const BottomSheetWrapper = ({ children }: Props) => {
       dragConstraints={dragRange}
       style={{ y }}
       onDragEnd={handleDragEnd}
-      className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] lg:max-w-[360px] pb-[58px] mx-auto z-50 touch-none"
+      className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] lg:max-w-[360px] mx-auto z-50 touch-none"
       ref={containerRef}
     >
       {children}
