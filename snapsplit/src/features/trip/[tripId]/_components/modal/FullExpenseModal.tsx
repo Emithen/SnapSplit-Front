@@ -12,6 +12,7 @@ const FullExpenseModal = ({ onClose }: Props) => {
       initial={{ y: '100%' }} // 아래에서 시작
       animate={{ y: 0 }} // 올라오기
       exit={{ y: '100%' }} // 아래로 사라짐
+      layout
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       className="fixed inset-0 z-[999] bg-white flex flex-col"
     >

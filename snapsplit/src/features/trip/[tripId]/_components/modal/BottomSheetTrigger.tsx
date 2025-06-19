@@ -16,7 +16,7 @@ const BottomSheetTrigger = ({ total }: { total: number }) => {
         onClick={() => setOpen(true)}
       >
         <Image
-          alt="↑"
+          alt="지출 상세 모달 열기"
           src={topArrow}
           className="absolute top-[2px]" // 겹치게 위로 끌어올림
         />
