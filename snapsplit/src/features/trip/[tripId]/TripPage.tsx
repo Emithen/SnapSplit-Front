@@ -4,8 +4,10 @@ import DailyExpenseList from './_components/DailyExpenseList';
 import ExpenseFilter from './_components/ExpenseFilter';
 import SharedBudgetBar from './_components/SharedBudgetBar';
 import TotalExpenseBottomSheet from './_components/TotalExpenseBottomSheet';
-import TripDateFilterBar from './_components/TripDateFilterBar';
+import TripDateBar from './_components/TripDateBar';
 import TripHeader from './_components/TripHeader';
+import BottomSheetWrapper from './_components/BottomSheetWrapper';
+import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
 
 export default async function TripPage({ params }: { params: { tripId: number } }) {
   const tripId = params.tripId;
@@ -87,17 +89,11 @@ export default async function TripPage({ params }: { params: { tripId: number } 
           endDate={'4.12'}
         />
         <SharedBudgetBar totalShared={totalShared} />
-        <TripDateFilterBar startDate={'2025-4-7'} endDate={'2025-4-16'} />
+        <TripDateBar startDate="2025-04-07" endDate="2025-04-16" />
       </div>
-
-      {/* 지출 리스트: 가능한 영역만 차지 + 스크롤 */}
       <ExpenseFilter />
       <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />
-
-      {/* 고정 바텀 시트 */}
-      <TotalExpenseBottomSheet />
-
-      {/* 고정 네비게이션 바 */}
+      <BottomSheetTrigger total={1355200} />
       <BottomNavBar />
     </div>
   );

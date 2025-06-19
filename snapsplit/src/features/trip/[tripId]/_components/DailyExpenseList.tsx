@@ -14,9 +14,12 @@ const DailyExpenseList = ({ expenses, tripStartDate, tripEndDate }: DailyExpense
   const groupedExpenses = groupExpensesByDate(expenses, tripStartDate, tripEndDate);
 
   return (
-    <div className="flex-grow w-full space-y-8 px-5 text-grey-850 pb-6 overflow-y-auto scrollbar-hide">
+    <div
+      id="scroll-target-top"
+      className="flex-grow w-full space-y-8 px-5 text-grey-850 pb-[100px] overflow-y-auto scrollbar-hide"
+    >
       {groupedExpenses.map((group) => (
-        <div key={group.label} className="space-y-3">
+        <div key={group.label} className="space-y-3" id={group.id ? `day-${group.id}` : undefined}>
           <ExpenseDateBar expenseDay={group.label} type={group.type} dayIndex={group.dayIndex} />
           {group.expenses.map((expense) => (
             <ExpenseItem key={`${expense.expenseId}-${expense.expenseCurrency}`} expense={expense} />
