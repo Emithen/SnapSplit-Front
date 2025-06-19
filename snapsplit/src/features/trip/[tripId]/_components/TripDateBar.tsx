@@ -17,13 +17,6 @@ const TripDateBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
     if (key === selectedKey) return; // 이미 선택된 날짜는 무시
     setSelectedKey(key);
 
-    // '전체'의 기능이 불확실해서 일단 주석 처리
-    // // '전체'가 선택된 경우, 페이지 상단으로 스크롤 이동
-    // if (key === '전체') {
-    //   window.scrollTo({ top: 0, behavior: 'smooth' });
-    //   return;
-    // }
-
     // 선택된 날짜로 스크롤 이동
     const el = document.getElementById(`day-${key}`);
     if (el) {

@@ -91,18 +91,9 @@ export default async function TripPage({ params }: { params: { tripId: number } 
         <SharedBudgetBar totalShared={totalShared} />
         <TripDateBar startDate="2025-04-07" endDate="2025-04-16" />
       </div>
-
-      {/* 지출 리스트: 가능한 영역만 차지 + 스크롤 */}
       <ExpenseFilter />
       <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />
-
-      {/* 고정 바텀 시트 */}
-      {/* <BottomSheetWrapper>
-        <TotalExpenseBottomSheet tripTotalExpense={1355200} />
-      </BottomSheetWrapper> */}
       <BottomSheetTrigger total={1355200} />
-
-      {/* 고정 네비게이션 바 */}
       <BottomNavBar />
     </div>
   );
