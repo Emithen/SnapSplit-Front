@@ -7,7 +7,7 @@ interface PhotoGridProps {
 
 export default function PhotoGrid({ images }: PhotoGridProps) {
   return (
-    <div className="grid grid-cols-3 gap-2 px-2 flex-1 overflow-y-auto">
+    <div className="grid grid-cols-3 gap-2 flex-1 overflow-y-auto">
       {images.length > 0 ? (
         images.map((img) => (
           <div

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import SortFilterBar from '../SortFilterBar';
+import SortFilterBar from '../sortFilterBar/SortFilterBar';
 import PhotoGrid from '../PhotoGrid';
 import { UploadedImage } from '../../type';
 import SortBottomSheet from '../SortBottomSheet';
@@ -48,29 +48,14 @@ export default function BaseTabView() {
   });
 
   return (
-    <div className="p-5">
+    <div className="flex flex-col p-5 gap-5">
       <SortFilterBar
         selectedSort={selectedSort}
         onSortOpen={() => setSortOpen(true)}
         onFilterOpen={() => setFilterOpen(true)}
+        filters={filters}
       />
-      <div className="flex flex-wrap gap-2 px-4 py-3">
-        {filters.days.map((day: number) => (
-          <span key={day} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
-            Day {day}
-          </span>
-        ))}
-        {filters.people.map((name: string) => (
-          <span key={name} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
-            {name}
-          </span>
-        ))}
-        {filters.locations.map((loc: string) => (
-          <span key={loc} className="bg-grey-350 px-3 py-1 rounded-full text-xs text-white">
-            {loc}
-          </span>
-        ))}
-      </div>
+
       <PhotoGrid images={filteredImages} />
 
       {sortOpen && (
