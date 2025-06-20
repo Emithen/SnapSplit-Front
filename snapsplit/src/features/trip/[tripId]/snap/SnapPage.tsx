@@ -52,7 +52,7 @@ export default function SnapPage() {
           const file = e.target.files?.[0];
           if (file) alert(`파일 선택됨: ${file.name}`);
         }}
-      />      
+      />
 
       {/* 하단 네비게이션 */}
       <BottomNavBar />

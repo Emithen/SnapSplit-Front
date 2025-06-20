@@ -88,8 +88,6 @@ export default function BaseTabView() {
           />
         </div>
       )}
-      {/* 컨텐츠 영역 */}
-
     </div>
   );
 }
