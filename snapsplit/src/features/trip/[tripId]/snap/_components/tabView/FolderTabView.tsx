@@ -15,18 +15,17 @@ export default function FolderTabView() {
   const { tripId } = useParams();
 
   return (
-    <div className="px-4 pb-24">
-        <div className="grid grid-cols-2 gap-4 mt-4">
+    <div className="px-5 pt-6 pb-24">
+        <div className="grid grid-cols-2 gap-x-2 gap-y-5">
       {folders.map(folder => (
         <div
           key={folder.id}
-          className="mb-6 cursor-pointer"
           onClick={() => router.push(`/trip/${tripId}/snap/folder/${folder.id}`)}
         >
-            {/* 썸네일 */}
+          {/* 썸네일 */}
           <FolderThumbnailPreview />
           {/* 폴더 이름 */}
-          <div className="mt-2 text-center text-sm text-grey-750">{folder.name}</div>
+          <div className="flex justify-center items-center pt-2 h-8 text-body-1">{folder.name}</div>
         </div>
       ))}
       </div>
