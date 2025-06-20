@@ -8,7 +8,7 @@ interface SortFilterBarProps {
 
 export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen }: SortFilterBarProps) {
   return (
-    <div className="flex justify-between items-center p-4 text-sm">
+    <div className="flex justify-between items-center text-body-2">
       <button onClick={onSortOpen} className="flex gap-1">{selectedSort} <Image src="/svg/bottomArrow.svg" alt="bottomArrow" width={16} height={16} /></button>
       <button onClick={onFilterOpen}>
         <Image
