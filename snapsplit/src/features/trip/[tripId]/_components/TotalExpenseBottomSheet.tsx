@@ -12,7 +12,7 @@ const TotalExpenseBottomSheet = ({ tripTotalExpense = 0 }: TotalExpenseBottomShe
     <div className="relative flex flex-col items-center bg-neutral-500 pt-[22px] pb-[18px]">
       {/* 위쪽 화살표 */}
       <Image
-        alt="↑"
+        alt="총 지출 모달 열기"
         src={topArrow}
         className="absolute top-[2px]" // 겹치게 위로 끌어올림
       />
