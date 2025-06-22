@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import SortFilterBar from '../sortFilterBar/SortFilterBar';
-import PhotoGrid from '../PhotoGrid';
-import { UploadedImage } from '../../type';
-import SortBottomSheet from '../SortBottomSheet';
-import FilterBottomSheet from '../fiterBottomSheet/FilterBottomSheet';
-import { FilterState } from '../../type';
-import Modal from '../Modal';
+import SortFilterBar from '@/features/trip/[tripId]/snap/_components/sortFilterBar/SortFilterBar';
+import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
+import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
+import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
+import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
+import { FilterState } from '@/features/trip/[tripId]/snap/type';
+import Modal from '@/shared/components/Modal';
 
-{/* 테스트 데이터 */}
+// 테스트 데이터
 const testImages: UploadedImage[] = [
   {
     id: '1-jisu-london',

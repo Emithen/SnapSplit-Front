@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { UploadedImage } from '../type';
 
-interface PhotoGridProps {
+type PhotoGridProps = {
   images: UploadedImage[];
 }
 
