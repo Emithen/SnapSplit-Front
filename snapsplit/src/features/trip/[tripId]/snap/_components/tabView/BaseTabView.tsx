@@ -5,8 +5,9 @@ import SortFilterBar from '../sortFilterBar/SortFilterBar';
 import PhotoGrid from '../PhotoGrid';
 import { UploadedImage } from '../../type';
 import SortBottomSheet from '../SortBottomSheet';
-import FilterBottomSheet from '../FilterBottomSheet';
+import FilterBottomSheet from '../fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '../../type';
+import Modal from '../Modal';
 
 {/* 테스트 데이터 */}
 const testImages: UploadedImage[] = [
@@ -57,36 +58,25 @@ export default function BaseTabView() {
       />
 
       <PhotoGrid images={filteredImages} />
-
+      
       {sortOpen && (
-        <div className="fixed inset-0 z-100">
-          {/* 어두운 배경 */}
-          <div
-            className="absolute inset-0 bg-black opacity-50"
-            onClick={() => setSortOpen(false)}
-          />
-          {/* 정렬 bottom sheet */}
+        <Modal onClose={() => setSortOpen(false)}>
           <SortBottomSheet
             selectedSort={selectedSort}
             onSelectSort={(opt) => setSelectedSort(opt)}
             onClose={() => setSortOpen(false)}
           />
-        </div>
+        </Modal>
       )}
+
       {filterOpen && (
-        <div className="fixed inset-0 z-100">
-          {/* 어두운 배경 */}
-          <div
-            className="absolute inset-0 bg-black opacity-50"
-            onClick={() => setFilterOpen(false)}
-          />
-          {/* 필터 bottom sheet */}
+        <Modal onClose={() => setFilterOpen(false)}>
           <FilterBottomSheet
             filters={filters}
             setFilters={setFilters}
             onClose={() => setFilterOpen(false)}
           />
-        </div>
+        </Modal>
       )}
     </div>
   );

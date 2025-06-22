@@ -15,7 +15,7 @@ export default function BottomNavBar() {
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full h-15 max-w-[415px] lg:max-w-[360px] border-t border-grey-250 bg-white z-50">
+    <nav className="fixed bottom-0 w-full h-15 max-w-[415px] lg:max-w-[360px] border-t border-grey-250 bg-white z-navbar">
       <div className="flex w-full items-center py-2">
         {tabs.map((tab) => {
           const isActive = pathname === tab.path;
