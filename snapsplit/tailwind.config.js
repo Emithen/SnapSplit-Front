@@ -37,6 +37,14 @@ module.exports = {
           50: '#FAFAFA',
         },
       },
+      zIndex: {
+        base: 0,
+        navbar: 10,
+        dropdown: 20,
+        backdrop: 40,
+        modal: 50,
+        toast: 100,
+      }
     },
   },
   plugins: [],

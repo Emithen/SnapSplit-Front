@@ -1,0 +1,70 @@
+'use client';
+
+import PhotoGrid from "@/features/trip/[tripId]/snap/_components/PhotoGrid";
+import FilterBar from "./_components/FilterBar";
+import SnapFolderHeader from "./_components/SnapFolderHeader";
+import SnapFolderInfo from "./_components/SnapFolderInfo";
+import { UploadedImage } from "@/features/trip/[tripId]/snap/type";
+import { useState } from "react";
+import { FilterState } from "@/features/trip/[tripId]/snap/type";
+import Modal from "@/shared/components/Modal";
+import FilterBottomSheet from "@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet";
+
+// TODO: 사진 데이터 props로 전달
+const testImages: UploadedImage[] = [
+  {
+    id: '1-jisu-london',
+    src: '/svg/1-jisu-london.png',
+    tags: {
+      days: [1],
+      people: ['지수'],
+      locations: ['런던']
+    }
+  },
+  {
+    id: '2-jisu-na-yeon-paris',
+    src: '/svg/2-jisu-na-yeon-paris.png',
+    tags: {
+      days: [2],
+      people: ['지수', '나경', '연수'],
+      locations: ['파리']
+    }
+  }
+];
+
+function SnapFolderPage() {
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [filters, setFilters] = useState<FilterState>({
+    days: [],
+    people: [],
+    locations: [],
+  });
+      
+  return (
+    <div>
+      <div className="flex flex-col pb-4 border-b border-grey-250">
+        <SnapFolderHeader />
+        <SnapFolderInfo />
+      </div>
+      <div className="flex flex-col px-5 pt-4 gap-4">
+        <FilterBar
+          filters={filters}
+          onFilterOpen={() => setFilterOpen(true)}
+        />
+        <PhotoGrid images={testImages} />
+      </div>
+
+      {filterOpen && (
+        <Modal onClose={() => setFilterOpen(false)}>
+          <FilterBottomSheet
+            filters={filters}
+            setFilters={setFilters}
+            onClose={() => setFilterOpen(false)}
+          />
+        </Modal>
+      )}
+    </div>
+  );
+}
+
+export default SnapFolderPage;
