@@ -1,12 +1,10 @@
-import BottomNavBar from './_components/BottomNavBar';
+import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripInfo from './_components/TripInfo';
 import DailyExpenseList from './_components/DailyExpenseList';
 import ExpenseFilter from './_components/ExpenseFilter';
 import SharedBudgetBar from './_components/SharedBudgetBar';
-import TotalExpenseBottomSheet from './_components/TotalExpenseBottomSheet';
 import TripDateBar from './_components/TripDateBar';
 import TripHeader from './_components/TripHeader';
-import BottomSheetWrapper from './_components/BottomSheetWrapper';
 import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
 
 export default async function TripPage({ params }: { params: { tripId: number } }) {
