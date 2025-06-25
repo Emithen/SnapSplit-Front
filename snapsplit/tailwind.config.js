@@ -43,8 +43,9 @@ module.exports = {
         dropdown: 20,
         backdrop: 40,
         modal: 50,
+        fullscreen: 60,
         toast: 100,
-      }
+      },
     },
   },
   plugins: [],

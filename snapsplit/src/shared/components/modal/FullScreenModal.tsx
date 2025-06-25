@@ -9,7 +9,7 @@ interface FullModalProps {
 
 export default function FullModal({ children }: FullModalProps) {
   return createPortal(
-    <div className="fixed inset-0 z-fullscreen flex items-center justify-center">{children}</div>,
+    <div className="display-base z-fullscreen fixed inset-0 flex items-center justify-center">{children}</div>,
     document.getElementById('modal-root')!
   );
 }
