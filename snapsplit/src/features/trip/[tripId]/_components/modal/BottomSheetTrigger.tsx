@@ -5,6 +5,7 @@ import FullExpenseModal from './FullExpenseModal';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import topArrow from '@public/svg/topArrow.svg';
+import FullScreenModal from '@/shared/components/modal/FullScreenModal';
 
 const BottomSheetTrigger = ({ total }: { total: number }) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,13 @@ const BottomSheetTrigger = ({ total }: { total: number }) => {
         <div className="text-grey-50 text-title-1 z-10">총 {total.toLocaleString()}원 지출</div>
       </div>
 
-      <AnimatePresence>{open && <FullExpenseModal onClose={() => setOpen(false)} />}</AnimatePresence>
+      <AnimatePresence>
+        {open && (
+          <FullScreenModal>
+            <FullExpenseModal onClose={() => setOpen(false)} />
+          </FullScreenModal>
+        )}
+      </AnimatePresence>
     </>
   );
 };
