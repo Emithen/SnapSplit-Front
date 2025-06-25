@@ -1,33 +1,35 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import Modal from './Modal'; // 너가 만든 기본 모달
+import { usePreventScroll } from '@/shared/components/modal/usePreventScroll';
+import { ReactNode, useRef } from 'react';
 
-interface ModalProps {
+type OverlayModalProps = {
+  isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-}
+};
 
-export default function Modal({ onClose, children }: ModalProps) {
-  // 스크롤 잠금
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
+export default function OverlayModal({ isOpen, onClose, children }: OverlayModalProps) {
+  usePreventScroll(isOpen);
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+  const modalBackground = useRef<HTMLDivElement>(null);
 
-  return createPortal(
-    <div
-      onClick={handleOverlayClick}
-      className="display-base fixed inset-0 z-backdrop bg-black/40 flex items-end justify-center"
-    >
-      {children}
-    </div>,
-    document.getElementById('modal-root')!
+  if (!isOpen) return null;
+
+  return (
+    <Modal layer="overlay">
+      <div
+        className="w-full h-full bg-black/40 flex items-end justify-center"
+        ref={modalBackground}
+        onClick={(e) => {
+          if (e.target === modalBackground.current) {
+            onClose();
+          }
+        }}
+      >
+        {children}
+      </div>
+    </Modal>
   );
 }

@@ -1,15 +1,12 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { createPortal } from 'react-dom';
+import Modal from './Modal';
 
-interface FullModalProps {
+type FullScreenModalProps = {
   children: ReactNode;
-}
+};
 
-export default function FullModal({ children }: FullModalProps) {
-  return createPortal(
-    <div className="display-base z-fullscreen fixed inset-0 flex items-center justify-center">{children}</div>,
-    document.getElementById('modal-root')!
-  );
+export default function FullScreenModal({ children }: FullScreenModalProps) {
+  return <Modal layer="fullscreen">{children}</Modal>;
 }

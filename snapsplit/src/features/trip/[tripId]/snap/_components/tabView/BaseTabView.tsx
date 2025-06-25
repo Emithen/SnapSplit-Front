@@ -7,7 +7,7 @@ import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
-import Modal from '@/shared/components/modal/OverlayModal';
+import OverlayModal from '@/shared/components/modal/OverlayModal';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -61,19 +61,19 @@ export default function BaseTabView() {
       <PhotoGrid images={filteredImages} />
 
       {sortOpen && (
-        <Modal onClose={() => setSortOpen(false)}>
+        <OverlayModal isOpen={sortOpen} onClose={() => setSortOpen(false)}>
           <SortBottomSheet
             selectedSort={selectedSort}
             onSelectSort={(opt) => setSelectedSort(opt)}
             onClose={() => setSortOpen(false)}
           />
-        </Modal>
+        </OverlayModal>
       )}
 
       {filterOpen && (
-        <Modal onClose={() => setFilterOpen(false)}>
+        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
           <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
-        </Modal>
+        </OverlayModal>
       )}
     </div>
   );
