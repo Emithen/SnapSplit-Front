@@ -22,10 +22,7 @@ export default function Modal({ onClose, children }: ModalProps) {
   };
 
   return createPortal(
-    <div
-      onClick={handleOverlayClick}
-      className="fixed inset-0 z-backdrop bg-black/40 flex items-end justify-center"
-    >
+    <div onClick={handleOverlayClick} className="fixed inset-0 z-backdrop bg-black/40 flex items-end justify-center">
       {children}
     </div>,
     document.getElementById('modal-root')!
