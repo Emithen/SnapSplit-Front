@@ -7,7 +7,7 @@ interface UploadButtonProps {
 
 export default function UploadButton({ inputRef }: UploadButtonProps) {
     return (
-      <div className="fixed bottom-18 right-4">
+      <div className="mt-auto mb-18 ml-auto mr-5">
         <button
           onClick={() => inputRef.current?.click()}
           className="flex items-center gap-0.5 bg-grey-650 text-white px-4 py-3 rounded-full shadow-md"

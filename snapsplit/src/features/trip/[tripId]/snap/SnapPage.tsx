@@ -8,6 +8,7 @@ import TripInfo from '@/features/trip/[tripId]/_components/TripInfo';
 import BaseTabView from '@/features/trip/[tripId]/snap/_components/tabView/BaseTabView';
 import FolderTabView from '@/features/trip/[tripId]/snap/_components/tabView/FolderTabView';
 import { ActiveTab } from '@/features/trip/[tripId]/snap/type';
+import Modal from '@/shared/components/modal/Modal';
 
 export default function SnapPage() {
 
@@ -42,7 +43,9 @@ export default function SnapPage() {
       ) : (
         <FolderTabView />
       )}
-      <UploadButton inputRef={fileInputRef} />
+      <Modal layer="floating">
+        <UploadButton inputRef={fileInputRef} />
+      </Modal>
       <input
         type="file"
         accept="image/*"
