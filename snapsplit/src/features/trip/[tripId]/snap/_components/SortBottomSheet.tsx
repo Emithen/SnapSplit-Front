@@ -13,7 +13,7 @@ const sortOptions = ['최신순', '이름순', '좋아요순'];
 
 export default function SortBottomSheet({ selectedSort, onSelectSort, onClose }: SortBottomSheetProps) {
   return (
-    <div className="fixed bottom-0 w-full bg-white rounded-t-2xl pt-5 px-5 pb-9">
+    <div className="mt-auto w-full bg-white rounded-t-2xl pt-5 px-5 pb-9">
       <div className="text-title-1">정렬</div>
       <ul className="space-y-4 pt-5">
         {sortOptions.map((option) => (

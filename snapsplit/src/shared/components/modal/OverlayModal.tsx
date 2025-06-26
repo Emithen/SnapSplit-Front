@@ -20,7 +20,7 @@ export default function OverlayModal({ isOpen, onClose, children }: OverlayModal
   return (
     <Modal layer="overlay">
       <div
-        className="w-full h-full bg-black/40 flex items-end justify-center"
+        className="w-full h-full bg-black/40 flex justify-center"
         ref={modalBackground}
         onClick={(e) => {
           if (e.target === modalBackground.current) {
