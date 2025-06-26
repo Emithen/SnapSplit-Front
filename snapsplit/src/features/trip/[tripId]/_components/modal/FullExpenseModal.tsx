@@ -14,7 +14,7 @@ const FullExpenseModal = ({ onClose }: Props) => {
       exit={{ y: '100%' }} // 아래로 사라짐
       layout
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="w-full h-full bg-white flex flex-col"
+      className="fixed inset-0 z-[999] bg-white flex flex-col"
     >
       <button onClick={onClose} className="p-4 text-right text-grey-700">
         닫기 ✕

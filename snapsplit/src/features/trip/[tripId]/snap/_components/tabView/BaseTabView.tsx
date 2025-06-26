@@ -7,7 +7,7 @@ import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
-import OverlayModal from '@/shared/components/modal/OverlayModal';
+import Modal from '@/shared/components/Modal';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -17,8 +17,8 @@ const testImages: UploadedImage[] = [
     tags: {
       days: [1],
       people: ['지수'],
-      locations: ['런던'],
-    },
+      locations: ['런던']
+    }
   },
   {
     id: '2-jisu-na-yeon-paris',
@@ -26,9 +26,9 @@ const testImages: UploadedImage[] = [
     tags: {
       days: [2],
       people: ['지수', '나경', '연수'],
-      locations: ['파리'],
-    },
-  },
+      locations: ['파리']
+    }
+  }
 ];
 
 export default function BaseTabView() {
@@ -40,12 +40,11 @@ export default function BaseTabView() {
     people: [],
     locations: [],
   });
-
+  
   const filteredImages = testImages.filter((img) => {
     const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));
     const matchPeople = filters.people.length === 0 || filters.people.some((p) => img.tags.people.includes(p));
-    const matchLocation =
-      filters.locations.length === 0 || filters.locations.some((l) => img.tags.locations.includes(l));
+    const matchLocation = filters.locations.length === 0 || filters.locations.some((l) => img.tags.locations.includes(l));
     return matchDay && matchPeople && matchLocation;
   });
 
@@ -59,21 +58,25 @@ export default function BaseTabView() {
       />
 
       <PhotoGrid images={filteredImages} />
-
+      
       {sortOpen && (
-        <OverlayModal isOpen={sortOpen} onClose={() => setSortOpen(false)}>
+        <Modal onClose={() => setSortOpen(false)}>
           <SortBottomSheet
             selectedSort={selectedSort}
             onSelectSort={(opt) => setSelectedSort(opt)}
             onClose={() => setSortOpen(false)}
           />
-        </OverlayModal>
+        </Modal>
       )}
 
       {filterOpen && (
-        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
-          <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
-        </OverlayModal>
+        <Modal onClose={() => setFilterOpen(false)}>
+          <FilterBottomSheet
+            filters={filters}
+            setFilters={setFilters}
+            onClose={() => setFilterOpen(false)}
+          />
+        </Modal>
       )}
     </div>
   );
