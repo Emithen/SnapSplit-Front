@@ -13,3 +13,9 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+@layer components {
+  .display-base {
+    @apply h-[100dvh] min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto;
+  }
+}
