@@ -7,8 +7,8 @@ import TripDateBar from './_components/TripDateBar';
 import TripHeader from './_components/TripHeader';
 import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
 
-export default async function TripPage({ params }: { params: { tripId: number } }) {
-  const tripId = params.tripId;
+export default async function TripPage({ tripId }: { tripId: string }) {
+  console.log(tripId);
 
   // 테스트 데이터
   const countries = [

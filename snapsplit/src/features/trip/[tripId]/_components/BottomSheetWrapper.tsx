@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { useMotionValue, animate, motion } from 'framer-motion';
+import { useMotionValue, animate, motion, PanInfo } from 'framer-motion';
 
 type Props = {
   children: React.ReactNode;
@@ -27,14 +27,11 @@ const BottomSheetWrapper = ({ children }: Props) => {
     }
   }, [y]);
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const offsetY = info.offset.y;
-    const velocityY = info.velocity.y;
-
     const draggedRatio = Math.abs(offsetY) / screenHeightRef.current;
 
     const shouldOpen = offsetY < 0 && draggedRatio > 0.1;
-    const shouldClose = offsetY > 0 && (draggedRatio > 0.1 || velocityY > 500);
 
     if (shouldOpen) {
       animate(y, dragRangeRef.current.top, { type: 'spring', stiffness: 300 });
