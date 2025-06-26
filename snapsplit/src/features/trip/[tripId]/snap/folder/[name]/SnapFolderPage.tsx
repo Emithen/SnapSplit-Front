@@ -7,7 +7,7 @@ import SnapFolderInfo from './_components/SnapFolderInfo';
 import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
-import Modal from '@/shared/components/modal/OverlayModal';
+import OverlayModal from '@/shared/components/modal/OverlayModal';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 
 // TODO: 사진 데이터 props로 전달
@@ -52,9 +52,9 @@ function SnapFolderPage() {
       </div>
 
       {filterOpen && (
-        <Modal onClose={() => setFilterOpen(false)}>
+        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
           <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
-        </Modal>
+        </OverlayModal>
       )}
     </div>
   );
