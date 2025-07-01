@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
 import FolderThumbnailPreview from './FolderThumbnailPreview';
 import { useState } from 'react';
 import FullScreenModal from '@/shared/components/modal/FullScreenModal';

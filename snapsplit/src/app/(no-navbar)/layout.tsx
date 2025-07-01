@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import BottomNavBar from '@/shared/components/BottomNavBar';
 
 export const metadata: Metadata = {
   title: 'SnapScpit',
@@ -29,7 +28,6 @@ export default function RootLayout({
       <body className="h-[100dvh] min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto bg-white text-grey-1000 scroll-smooth">
         <div id="modal-root" />
         {children}
-        <BottomNavBar />
       </body>
     </html>
   );
