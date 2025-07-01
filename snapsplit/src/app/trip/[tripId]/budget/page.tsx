@@ -1,4 +1,3 @@
-import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripInfo from '@/features/trip/[tripId]/budget/_components/TripInfo';
 import DailyExpenseList from '@/features/trip/[tripId]/budget/_components/DailyExpenseList';
 import ExpenseFilter from '@/features/trip/[tripId]/budget/_components/ExpenseFilter';
@@ -93,7 +92,6 @@ export default async function Budget({ params }: { params: Promise<{ tripId: str
       <ExpenseFilter />
       <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />
       <BottomSheetTrigger total={1355200} />
-      <BottomNavBar />
     </div>
   );
 }

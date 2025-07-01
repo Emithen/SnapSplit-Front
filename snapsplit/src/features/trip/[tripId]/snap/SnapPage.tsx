@@ -2,7 +2,6 @@
 import { useState, useRef } from 'react';
 import TabSelector from '@/features/trip/[tripId]/snap/_components/TabSelector';
 import UploadButton from '@/features/trip/[tripId]/snap/_components/UploadButton';
-import BottomNavBar from '@/shared/components/BottomNavBar';
 import TripHeader from '../budget/_components/TripHeader';
 import TripInfo from '../budget/_components/TripInfo';
 import BaseTabView from '@/features/trip/[tripId]/snap/_components/tabView/BaseTabView';
@@ -51,9 +50,6 @@ export default function SnapPage() {
           if (file) alert(`파일 선택됨: ${file.name}`);
         }}
       />
-
-      {/* 하단 네비게이션 */}
-      <BottomNavBar />
     </div>
   );
 }
