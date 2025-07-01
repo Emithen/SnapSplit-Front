@@ -1,14 +1,13 @@
-'use client';
-
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
 import FilterBar from './FilterBar';
 import SnapFolderHeader from './SnapFolderHeader';
 import SnapFolderInfo from './SnapFolderInfo';
 import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
+import { useModalBackHandler } from '@/shared/utils/useModalBackHandler';
 
 type SnapFolderModalProps = {
     isOpen: boolean;
@@ -45,26 +44,7 @@ function SnapFolderModal({ isOpen, onClose }: SnapFolderModalProps) {
     locations: [],
   });
 
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-  
-    // 1. 히스토리 상태 추가 (뒤로가기 트리거용)
-    window.history.pushState({ modal: true }, '');
-  
-    // 2. popstate 이벤트 핸들러: 뒤로가기 시 모달 닫기
-    const handlePopState = () => {
-      onClose(); // 모달 닫기 콜백 호출
-    };
-  
-    window.addEventListener('popstate', handlePopState);
-  
-    // 모달이 언마운트 되거나 isOpen 값이 바뀌기 직전에 popstate 이벤트 핸들러 제거
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, [isOpen]);  
+  useModalBackHandler(isOpen, onClose);
   
   return (
     <div className="flex flex-col w-full h-full bg-white">
