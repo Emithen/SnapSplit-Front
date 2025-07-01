@@ -1,9 +1,9 @@
 'use client';
 
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
-import FilterBar from './_components/FilterBar';
-import SnapFolderHeader from './_components/SnapFolderHeader';
-import SnapFolderInfo from './_components/SnapFolderInfo';
+import FilterBar from './FilterBar';
+import SnapFolderHeader from './SnapFolderHeader';
+import SnapFolderInfo from './SnapFolderInfo';
 import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
@@ -32,7 +32,7 @@ const testImages: UploadedImage[] = [
   },
 ];
 
-function SnapFolderPage() {
+function SnapFolderModal() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     days: [],
@@ -41,7 +41,7 @@ function SnapFolderPage() {
   });
 
   return (
-    <div>
+    <div className="flex flex-col w-full h-full bg-white">
       <div className="flex flex-col pb-4 border-b border-grey-250">
         <SnapFolderHeader />
         <SnapFolderInfo />
@@ -60,4 +60,4 @@ function SnapFolderPage() {
   );
 }
 
-export default SnapFolderPage;
+export default SnapFolderModal;

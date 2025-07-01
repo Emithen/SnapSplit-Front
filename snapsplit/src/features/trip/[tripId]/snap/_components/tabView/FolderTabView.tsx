@@ -2,6 +2,9 @@
 
 import { useRouter, useParams } from 'next/navigation';
 import FolderThumbnailPreview from './FolderThumbnailPreview';
+import { useState } from 'react';
+import FullScreenModal from '@/shared/components/modal/FullScreenModal';
+import SnapFolderModal from '@/features/trip/[tripId]/snap/_components/snapFolderModal/SnapFolderModal';
 
 const folders = [
   { name: '유빈', id: 'yubin' },
@@ -13,6 +16,7 @@ const folders = [
 export default function FolderTabView() {
   const router = useRouter();
   const { tripId } = useParams();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="px-5 pt-6 pb-24">
@@ -20,7 +24,7 @@ export default function FolderTabView() {
       {folders.map(folder => (
         <div
           key={folder.id}
-          onClick={() => router.push(`/trip/${tripId}/snap/folder/${folder.id}`)}
+          onClick={() => setIsOpen(true)}
         >
           {/* 썸네일 */}
           <FolderThumbnailPreview />
@@ -29,6 +33,11 @@ export default function FolderTabView() {
         </div>
       ))}
       </div>
+      {isOpen && (
+        <FullScreenModal>
+          <SnapFolderModal />
+        </FullScreenModal>
+      )}
     </div>
   );
 }
