@@ -5,10 +5,15 @@ import FilterBar from './FilterBar';
 import SnapFolderHeader from './SnapFolderHeader';
 import SnapFolderInfo from './SnapFolderInfo';
 import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
+
+type SnapFolderModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+}
 
 // TODO: 사진 데이터 props로 전달
 const testImages: UploadedImage[] = [
@@ -32,7 +37,7 @@ const testImages: UploadedImage[] = [
   },
 ];
 
-function SnapFolderModal() {
+function SnapFolderModal({ isOpen, onClose }: SnapFolderModalProps) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     days: [],
@@ -40,10 +45,31 @@ function SnapFolderModal() {
     locations: [],
   });
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+  
+    // 1. 히스토리 상태 추가 (뒤로가기 트리거용)
+    window.history.pushState({ modal: true }, '');
+  
+    // 2. popstate 이벤트 핸들러: 뒤로가기 시 모달 닫기
+    const handlePopState = () => {
+      onClose(); // 모달 닫기 콜백 호출
+    };
+  
+    window.addEventListener('popstate', handlePopState);
+  
+    // 모달이 언마운트 되거나 isOpen 값이 바뀌기 직전에 popstate 이벤트 핸들러 제거
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [isOpen]);  
+  
   return (
     <div className="flex flex-col w-full h-full bg-white">
       <div className="flex flex-col pb-4 border-b border-grey-250">
-        <SnapFolderHeader />
+        <SnapFolderHeader onClose={onClose}/>
         <SnapFolderInfo />
       </div>
       <div className="flex flex-col px-5 pt-4 gap-4">

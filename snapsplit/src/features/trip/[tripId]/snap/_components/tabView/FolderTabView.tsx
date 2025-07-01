@@ -14,8 +14,6 @@ const folders = [
 ];
 
 export default function FolderTabView() {
-  const router = useRouter();
-  const { tripId } = useParams();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -35,7 +33,7 @@ export default function FolderTabView() {
       </div>
       {isOpen && (
         <FullScreenModal>
-          <SnapFolderModal />
+          <SnapFolderModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </FullScreenModal>
       )}
     </div>
