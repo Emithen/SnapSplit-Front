@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CurrentTriplist from './CurrentTripList';
 
 // 로그인 여부를 가져옴
 // 로그인 했을 시,
@@ -11,6 +12,7 @@ const CreateTrip = () => {
         스냅스플릿과 함께
         <br /> 재밌는 여행을 떠나볼까요?
       </span>
+      <CurrentTriplist />
       <div className="flex flex-col w-full gap-4">
         <Link href="/trip/createTrip" className="flex bg-primary py-[14px] px-5 justify-center text-grey-50 rounded-xl">
           여행 등록하기
