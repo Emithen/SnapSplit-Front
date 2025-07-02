@@ -12,7 +12,7 @@ export const PastTripCard = ({ tripName, dateRange, countryName }: PastTripCardP
   return (
     <div className="w-full p-4 bg-white rounded-xl flex justify-between items-center">
       <div className="flex flex-col flex-1 gap-1">
-        <div className="text-title-1 font-semibold text-black">{tripName}</div>
+        <div className="text-label-1 text-black">{tripName}</div>
         <div className="flex items-center gap-2 text-caption-1 text-grey-550 font-medium">
           <span className="whitespace-nowrap">{dateRange}</span>
           <div className="w-px h-3 bg-grey-350" />
