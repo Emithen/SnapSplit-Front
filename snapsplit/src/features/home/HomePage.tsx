@@ -2,6 +2,7 @@ import LandingHeader from './_components/HomeHeader';
 import CreateTrip from './_components/CreateTrip';
 import UpcomingTripList from './_components/UpcomingTripList';
 import PastTripSection from './_components/PastTripSection';
+import PastTripCardList from './_components/PastTripCardList';
 
 export default function HomePage() {
   return (
@@ -9,7 +10,7 @@ export default function HomePage() {
       <LandingHeader />
       <CreateTrip />
       {/* <UpcomingTripList /> */}
-      <PastTripSection />
+      <PastTripCardList />
     </div>
   );
 }
