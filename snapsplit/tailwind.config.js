@@ -20,8 +20,11 @@ module.exports = {
         'caption-2': ['12px', { lineHeight: '18px', letterSpacing: '-0.015em', fontWeight: '400' }],
       },
       colors: {
-        // Primary Colors
-        // Secondary Colors
+        primary: '#41D596',
+        dark_green: '#14B470',
+        light_green: '#BCF0DA',
+        light_grey: '#F5F5F5',
+        bg_green: '#DFF5EC',
         black: '#0C0D11',
         white: '#FFFFFF',
         grey: {
