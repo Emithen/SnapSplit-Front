@@ -1,17 +1,22 @@
+'use client';
+
 import { SharedBudgetBarProps } from '../type';
 import { useCurrencySymbol } from '@/shared/utils/useCurrencySymbol';
 import rightArrow from '@public/svg/rightArrow.svg';
 import Image from 'next/image';
+import { useState } from 'react';
+import AddExpenseModal from '@/features/trip/[tripId]/budget/_components/modal/expenseModifyModal/AddExpenseModal';
 
 const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex w-full px-5 pb-5">
       <div className="flex-col w-full items-center rounded-xl bg-grey-650 px-[14px] py-3  text-body-2">
         <div className="w-full flex flex-row justify-between items-center">
           <p className="text-stone-300 ">공동경비 잔액</p>
-          <p className="text-grey-650 text-body-1 px-3 py-[6px] bg-grey-50 rounded-lg">경비 수정하기</p>
+          <p className="text-grey-650 text-body-1 px-3 py-[6px] bg-grey-50 rounded-lg" onClick={() => setIsOpen(!isOpen)}>경비 수정하기</p>
         </div>
         <div className="flex flex-row">
           <p className="text-head-0 text-grey-50">
@@ -23,6 +28,7 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
         </div>
         <p className="text-body-2 text-grey-50">어제보다 36유로 덜 썼어요!</p>
       </div>
+      {isOpen && <AddExpenseModal onClose={() => setIsOpen(false)} />}
     </div>
   );
 };

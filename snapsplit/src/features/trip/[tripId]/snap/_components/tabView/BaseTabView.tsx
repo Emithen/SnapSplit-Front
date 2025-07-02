@@ -61,7 +61,7 @@ export default function BaseTabView() {
       <PhotoGrid images={filteredImages} />
 
       {sortOpen && (
-        <OverlayModal isOpen={sortOpen} onClose={() => setSortOpen(false)}>
+        <OverlayModal isOpen={sortOpen} onClose={() => setSortOpen(false)} layer="overlay">
           <SortBottomSheet
             selectedSort={selectedSort}
             onSelectSort={(opt) => setSelectedSort(opt)}
@@ -71,7 +71,7 @@ export default function BaseTabView() {
       )}
 
       {filterOpen && (
-        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
+        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)} layer="overlay">
           <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
         </OverlayModal>
       )}
