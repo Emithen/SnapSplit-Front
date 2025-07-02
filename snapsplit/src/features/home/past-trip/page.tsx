@@ -12,7 +12,7 @@ const mockTrips = [
 
 export default function PastTripPage() {
   return (
-    <div className="flex flex-col px-5 pb-6 bg-grey-50 min-h-[100dvh] bg-light_grey overflow-auto">
+    <div className="flex flex-col px-5 pb-6 min-h-[100dvh] bg-light_grey overflow-auto">
       <PastTripHeader />
       <PastTripSummary tripCount={mock.tripCount} countryCount={mock.countryCount} />
       <PastTripList trips={mockTrips} />
