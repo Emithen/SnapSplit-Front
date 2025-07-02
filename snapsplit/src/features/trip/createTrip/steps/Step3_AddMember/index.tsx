@@ -28,7 +28,16 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
     }
 
     setError('');
-    const found = mockUsers.filter((user) => user.userId.toLowerCase().includes(searchId.trim().toLowerCase()));
+    const found = mockUsers.filter(
+      (user) =>
+        user.userId.toLowerCase().includes(searchId.trim().toLowerCase()) ||
+        user.name.toLowerCase().includes(searchId.trim().toLowerCase())
+    );
+
+    if (found.length === 0) {
+      setError('검색 결과가 없습니다.');
+    }
+
     setFilteredUsers(found);
   };
 
@@ -49,7 +58,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
         </div>
         <div className="flex gap-2 relative">
           <SearchBar
-            placeholder="사용자코드를 입력해주세요"
+            placeholder="코드 또는 이름을 입력해주세요"
             value={searchId}
             onChange={(e) => {
               setSearchId(e.target.value);
