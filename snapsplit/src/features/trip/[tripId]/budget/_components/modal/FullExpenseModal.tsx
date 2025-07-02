@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import ModalMotionWrapper from './ModalMotionWrapper_temp';
+import ModalMotionWrapper from './ModalMotionWrapper';
 
 type Props = {
   onClose: () => void;
