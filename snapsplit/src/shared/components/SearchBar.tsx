@@ -1,17 +1,14 @@
-import search from '@public/svg/search.svg';
-import Image from 'next/image';
-import { SearchBarProps, SearchBarType } from '@/shared/types/ui';
+import { SearchBarProps } from '@/shared/types/ui';
 
-const SearchBar = ({ placeholder, value, onChange, type = SearchBarType.WithIcon }: SearchBarProps) => {
+const SearchBar = ({ placeholder, value, onChange }: SearchBarProps) => {
   return (
-    <div className="flex w-full rounded-xl border-[1px] border-grey-150 items-center justify-center pr-4">
+    <div className="flex w-full rounded-xl bg-grey-150 items-center justify-center pr-4">
       <input
-        className="flex w-full p-4 text-body-2 outline-none"
+        className="flex w-full py-[13px] px-4 outline-none text-body-2"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
-      {type === SearchBarType.WithIcon && <Image alt="search" src={search} />}
     </div>
   );
 };

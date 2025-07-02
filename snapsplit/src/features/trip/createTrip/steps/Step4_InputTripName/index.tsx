@@ -1,7 +1,6 @@
 import SearchBar from '@/shared/components/SearchBar';
 import TripImageUploader from '@trip/createTrip/steps/Step4_InputTripName/TripImageUploader';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
-import { SearchBarType } from '@/shared/types/ui';
 import { InputTripNameSectionProps } from './type';
 
 const InputTripNameSection = ({ onClick: handleNextStep }: InputTripNameSectionProps) => {
@@ -16,7 +15,7 @@ const InputTripNameSection = ({ onClick: handleNextStep }: InputTripNameSectionP
           </p>
         </div>
         <TripImageUploader />
-        <SearchBar type={SearchBarType.WithoutIcon} placeholder="여행명을 입력해주세요" />
+        <SearchBar placeholder="여행명을 입력해주세요" />
       </div>
       <BottomCTAButton label="다음으로" onClick={handleNextStep} />
     </div>
