@@ -1,23 +1,21 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import landing_logo from '@public/svg/landing-logo.svg';
 
 const LandingSection = () => {
   return (
-    <main className="flex flex-col justify-between bg-grey-1000 w-full h-screen p-6">
+    <main className="flex flex-col justify-between w-full h-screen p-6 bg-gradient-to-br from-[#B9F5E2] via-white to-[#DDF9F7]">
       {/* 상단 콘텐츠 */}
-      <div className="flex flex-col pt-32 gap-6 items-center">
-        <p className="text-5xl font-semibold text-white">
-          SNAP
-          <br />
-          SPLIT
-        </p>
-        <div className="flex flex-col items-center text-label-2 text-white">
-          <p>함께 찍고, 함께 나눠요!</p>
-          <p>Snap the memories, Split the costs</p>
+      <div className="flex flex-col pt-44 gap-5 items-center">
+        <Image src={landing_logo} alt="SnapSplit" />
+        <div className="flex flex-col items-center text-[16px] font-light text-primary justify-center">
+          <p className="flex items-center justify-center">Snap the memories,</p>
+          <p className="flex items-center justify-center">Split the costs</p>
         </div>
       </div>
 
       {/* 하단 고정 버튼 */}
-      <Link href="/home" className="w-full bg-grey-450 flex justify-center p-4 rounded-2xl">
+      <Link href="/home" className="w-full bg-primary flex justify-center p-4 rounded-2xl text-white">
         시작하기
       </Link>
     </main>
