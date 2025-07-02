@@ -1,14 +1,18 @@
-'use client';
-
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
-import FilterBar from './_components/FilterBar';
-import SnapFolderHeader from './_components/SnapFolderHeader';
-import SnapFolderInfo from './_components/SnapFolderInfo';
+import FilterBar from './FilterBar';
+import SnapFolderHeader from './SnapFolderHeader';
+import SnapFolderInfo from './SnapFolderInfo';
 import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
+import { useModalBackHandler } from '@/shared/utils/useModalBackHandler';
+
+type SnapFolderModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+}
 
 // TODO: 사진 데이터 props로 전달
 const testImages: UploadedImage[] = [
@@ -32,7 +36,7 @@ const testImages: UploadedImage[] = [
   },
 ];
 
-function SnapFolderPage() {
+function SnapFolderModal({ isOpen, onClose }: SnapFolderModalProps) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     days: [],
@@ -40,10 +44,12 @@ function SnapFolderPage() {
     locations: [],
   });
 
+  useModalBackHandler(isOpen, onClose);
+  
   return (
-    <div>
+    <div className="flex flex-col w-full h-full bg-white">
       <div className="flex flex-col pb-4 border-b border-grey-250">
-        <SnapFolderHeader />
+        <SnapFolderHeader onClose={onClose}/>
         <SnapFolderInfo />
       </div>
       <div className="flex flex-col px-5 pt-4 gap-4">
@@ -60,4 +66,4 @@ function SnapFolderPage() {
   );
 }
 
-export default SnapFolderPage;
+export default SnapFolderModal;

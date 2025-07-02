@@ -1,7 +1,10 @@
 
 import Image from 'next/image';
+type SnapFolderHeaderProps = {
+    onClose: () => void;
+}
 
-function SnapFolderHeader() {
+function SnapFolderHeader({ onClose }: SnapFolderHeaderProps) {
   return (
     <div className="flex justify-between items-center w-full h-12 px-5 py-3">
       <Image 
@@ -9,6 +12,7 @@ function SnapFolderHeader() {
         alt="폴더 썸네일"
         width={24}
         height={24}
+        onClick={onClose}
       />
       <div className="text-body-2">
         사진 선택
