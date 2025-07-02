@@ -15,5 +15,4 @@ type PastTripListProps = {
   tripName: string;
   tripStartDate: string;
   tripEndDate: string;
-  numOfTripMember: number;
 }
