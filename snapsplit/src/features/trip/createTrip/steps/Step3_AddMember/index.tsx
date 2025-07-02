@@ -47,7 +47,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
           </p>
           <p className="text-body-2 text-grey-850">동행은 나중에 다시 추가할 수 있어요</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 relative">
           <SearchBar
             placeholder="사용자코드를 입력해주세요"
             value={searchId}
@@ -58,7 +58,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
           />
           <button
             onClick={handleSearch}
-            className="px-4 py-2 rounded-xl bg-primary text-white text-body-2 font-medium whitespace-nowrap cursor-pointer"
+            className="absolute right-0 px-4 py-3 rounded-xl text-grey-550 text-body-2 font-medium whitespace-nowrap cursor-pointer"
           >
             확인
           </button>
