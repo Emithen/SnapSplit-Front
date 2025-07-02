@@ -18,17 +18,22 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
   const [searchId, setSearchId] = useState('');
   const [filteredUsers, setFilteredUsers] = useState<UserItemProps[]>([]);
   const [error, setError] = useState('');
+  const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
 
   const handleSearch = () => {
     if (!searchId.trim()) {
       setError('검색어를 입력해주세요.');
-      setFilteredUsers([]); // 검색 결과 비우기
+      setFilteredUsers([]);
       return;
     }
 
-    setError(''); // 기존 에러 초기화
+    setError('');
     const found = mockUsers.filter((user) => user.userId.toLowerCase().includes(searchId.trim().toLowerCase()));
     setFilteredUsers(found);
+  };
+
+  const toggleSelectUser = (userId: string) => {
+    setSelectedUserIds((prev) => (prev.includes(userId) ? prev.filter((id) => id !== userId) : [...prev, userId]));
   };
 
   return (
@@ -48,7 +53,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
             value={searchId}
             onChange={(e) => {
               setSearchId(e.target.value);
-              setError(''); // 입력 중 에러 제거
+              setError('');
             }}
           />
           <button
@@ -59,7 +64,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
           </button>
         </div>
         {error && <p className="text-caption-1 text-red-500 pt-2">{error}</p>}
-        <UserList users={filteredUsers} />
+        <UserList users={filteredUsers} selectedUserIds={selectedUserIds} onToggle={toggleSelectUser} />
       </div>
       <BottomCTAButton label="다음으로" onClick={handleNextStep} />
     </div>
