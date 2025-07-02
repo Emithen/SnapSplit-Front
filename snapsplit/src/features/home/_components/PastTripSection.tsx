@@ -1,9 +1,12 @@
 const PastTripCard = ({ tripName, tripDate }: PastTripCardProp) => {
   return (
-    <div className="flex flex-col justify-center items-center bg-white rounded-2xl w-52 h-[262px]">
-      <div className="bg-grey-350 rounded-2xl  w-[184px] h-[184px] mb-3"></div> {/* 여행 이미지 */}
-      <p className="text-body-1"> {tripName} </p>
-      <p className="text-body-2"> {tripDate}</p>
+    <div className="flex flex-col space-y-3 pl-5">
+      <label className="text-title-1">지난 여행을 추억해봐요!</label>
+      <div className="flex flex-col justify-center items-center bg-white rounded-2xl w-52 h-[262px]">
+        <div className="bg-grey-250 rounded-2xl  w-[184px] h-[184px] mb-3"></div> {/* 여행 이미지 */}
+        <p className="text-body-1"> {tripName} </p>
+        <p className="text-body-2 text-grey-550"> {tripDate}</p>
+      </div>
     </div>
   );
 };
@@ -31,14 +34,8 @@ const PastTripList = ({ tripName, tripStartDate, tripEndDate, numOfTripMember }:
 
 const PastTripSection = () => {
   return (
-    <section className="flex flex-col bg-grey-50 pt-4">
-      <div className="flex justify-between px-5 pb-3">
-        <p className="text-label-1">지난 여행 추억하기</p>
-        <p>다음</p>
-      </div>
-      <section className="pl-5">
-        <PastTripCard tripName="대만" tripDate="2024.6.5" />
-      </section>
+    <section className="flex flex-col pt-6">
+      <PastTripCard tripName="대만" tripDate="2024.6.5" />
       <section className="p-5 ">
         <PastTripList numOfTripMember={4} tripEndDate="4.12" tripName="도쿄, 오사카" tripStartDate="2025.4.7" />
       </section>

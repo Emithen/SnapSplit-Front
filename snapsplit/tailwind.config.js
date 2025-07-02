@@ -21,7 +21,10 @@ module.exports = {
       },
       colors: {
         primary: '#41D596',
-        // Secondary Colors
+        dark_green: '#14B470',
+        light_green: '#BCF0DA',
+        light_grey: '#F5F5F5',
+        bg_green: '##41D59626',
         black: '#0C0D11',
         white: '#FFFFFF',
         grey: {

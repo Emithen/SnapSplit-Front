@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const CreateTrip = () => {
   return (
-    <section className="flex flex-col w-full p-4 pt-2 rounded-b-3xl gap-5">
+    <section className="flex flex-col w-full p-4 pt-2 rounded-b-3xl gap-5 bg-white">
       <span className="text-head-1 flex-auto">
         스냅스플릿과 함께
         <br /> 재밌는 여행을 떠나볼까요?
@@ -15,7 +15,9 @@ const CreateTrip = () => {
         <Link href="/trip/createTrip" className="flex bg-primary py-[14px] px-5 justify-center text-grey-50 rounded-xl">
           여행 등록하기
         </Link>
-        <p className="flex justify-center underline text-grey-550 text-body-2 items-center">코드로 여행 참여하기</p>
+        <p className="flex justify-center underline text-grey-550 text-body-2 items-center cursor-pointer">
+          코드로 여행 참여하기
+        </p>
       </div>
     </section>
   );

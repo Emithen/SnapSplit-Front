@@ -5,11 +5,11 @@ import PastTripSection from './_components/PastTripSection';
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-grey-50">
       <LandingHeader />
       <CreateTrip />
-      <UpcomingTripList />
+      {/* <UpcomingTripList /> */}
       <PastTripSection />
-    </>
+    </div>
   );
 }
