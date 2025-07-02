@@ -1,6 +1,7 @@
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import SearchBar from '@/shared/components/SearchBar';
 import { AddMemberSectionProps } from './type';
+import UserList from './UserList';
 
 const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) => {
   return (
@@ -15,6 +16,7 @@ const AddMemberSection = ({ onClick: handleNextStep }: AddMemberSectionProps) =>
           <p className="text-body-2 text-grey-850">동행은 나중에 다시 추가할 수 있어요</p>
         </div>
         <SearchBar placeholder="사용자코드를 입력해주세요" />
+        <UserList />
       </div>
       <BottomCTAButton label="다음으로" onClick={handleNextStep} />
     </div>
