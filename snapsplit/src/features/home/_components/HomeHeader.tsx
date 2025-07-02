@@ -1,4 +1,4 @@
-import mainLogo from '@public/svg/mainLogo.svg';
+import mainLogo from '@public/svg/logo_main.svg';
 import homeMenu from '@public/svg/homeMenu.svg';
 import Image from 'next/image';
 
