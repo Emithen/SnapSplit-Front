@@ -20,16 +20,16 @@ const PastTripItem = ({ tripName, tripStartDate, tripEndDate }: PastTripListProp
 
 const AllPastTripList = () => {
   const pastTrips: PastTripListProps[] = [
-    { tripName: '일본 여행', tripStartDate: '2025. 4. 7', tripEndDate: '2025. 4. 12' },
-    { tripName: '프랑스 여행', tripStartDate: '2024. 8. 1', tripEndDate: '2024. 8. 10' },
-    { tripName: '베트남 여행', tripStartDate: '2023. 12. 5', tripEndDate: '2023. 12. 15' },
+    { tripName: '일본 오타쿠 여행', tripStartDate: '2025. 4. 7', tripEndDate: '2025. 4. 12' },
+    { tripName: '유럽 배낭 여행', tripStartDate: '2024. 8. 1', tripEndDate: '2024. 8. 10' },
+    { tripName: '시베리아 횡단 열차', tripStartDate: '2023. 12. 5', tripEndDate: '2023. 12. 15' },
   ];
 
   return (
     <div className="px-5">
       <section className="flex flex-col bg-white rounded-[20px] py-4 px-5">
         <div className="flex justify-between pb-1">
-          <label className="text-label-1">이전 여행</label>
+          <label className="text-label-1">다녀온 여행들</label>
           <Link href="/home/past-trip" className="text-body-2 text-grey-550">
             전체보기
           </Link>
