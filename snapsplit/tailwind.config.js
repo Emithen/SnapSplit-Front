@@ -20,7 +20,7 @@ module.exports = {
         'caption-2': ['12px', { lineHeight: '18px', letterSpacing: '-0.015em', fontWeight: '400' }],
       },
       colors: {
-        // Primary Colors
+        primary: '#41D596',
         // Secondary Colors
         black: '#0C0D11',
         white: '#FFFFFF',
