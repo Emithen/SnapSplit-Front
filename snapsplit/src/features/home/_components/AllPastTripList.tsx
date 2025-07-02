@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PastTripListProps } from '../types';
 
 const PastTripItem = ({ tripName, tripStartDate, tripEndDate }: PastTripListProps) => {
   return (

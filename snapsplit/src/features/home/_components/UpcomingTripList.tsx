@@ -1,3 +1,5 @@
+import { UpcomingTripProps } from '../types';
+
 const UpcomingTrip = ({ tripName, tripCountry, tripDate, dDay }: UpcomingTripProps) => {
   return (
     <div className="flex justify-between items-center bg-white p-4 rounded-xl">
