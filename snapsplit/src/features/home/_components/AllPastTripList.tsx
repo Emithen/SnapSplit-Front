@@ -30,7 +30,7 @@ const AllPastTripList = () => {
       <section className="flex flex-col bg-white rounded-[20px] py-4 px-5">
         <div className="flex justify-between pb-1">
           <label className="text-label-1">이전 여행</label>
-          <Link href={'#'} className="text-body-2 text-grey-550">
+          <Link href="/home/past-trip" className="text-body-2 text-grey-550">
             전체보기
           </Link>
         </div>
