@@ -5,13 +5,9 @@ import { useDragScroll } from '@/shared/utils/useDragScroll'; // ✅ 커스텀 �
 
 const SelectedCountry = ({ country, onRemove }: SelectedCountryProps) => {
   return (
-    <div className="flex min-w-fit items-center gap-1 text-body-2 rounded-[20px] border border-grey-750 px-3 py-1 pr-1">
+    <div className="flex min-w-fit items-center text-body-2 rounded-[20px] bg-primary text-white px-3 py-1 pr-1">
       <p>{country.countryName}</p>
-      <button
-        onClick={() => onRemove(country)}
-        className="cursor-pointer rounded-full outline-1 outline-offset-[-1px] outline-stone-300"
-        aria-label={`나라 선택 취소`}
-      >
+      <button onClick={() => onRemove(country)} className="cursor-pointer rounded-full" aria-label={`나라 선택 취소`}>
         <Image src={x_03} alt={`x`} />
       </button>
     </div>
