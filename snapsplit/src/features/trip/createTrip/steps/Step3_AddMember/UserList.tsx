@@ -20,7 +20,7 @@ const UserList = ({ users, selectedUserIds, onToggle }: UserListProps) => {
           onClick={() => onToggle(userId)}
           aria-label={`${name} ${isSelected ? '선택 취소' : '선택'}`}
         >
-          {isSelected ? '선택됨' : '추가'}
+          추가
         </button>
       </div>
     );
