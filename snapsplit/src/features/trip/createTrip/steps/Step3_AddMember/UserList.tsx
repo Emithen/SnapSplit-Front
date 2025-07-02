@@ -1,4 +1,5 @@
 import { UserItemProps } from './type';
+import SelectButton from '@/shared/components/SelectButton';
 
 type UserListProps = {
   users: UserItemProps[];
@@ -14,14 +15,7 @@ const UserList = ({ users, selectedUserIds, onToggle }: UserListProps) => {
       <div className="w-full flex items-center gap-3 bg-white rounded-xl">
         <img src={avatarUrl} alt={name} className="w-11 h-11 rounded-full object-cover" />
         <div className="flex-1 text-body-1 text-black">{name}</div>
-        <button
-          className={`px-3 py-1 rounded-full border text-body-2 font-medium cursor-pointer
-          ${isSelected ? 'bg-primary border-primary text-white' : 'border-grey-250 text-grey-450'}`}
-          onClick={() => onToggle(userId)}
-          aria-label={`${name} ${isSelected ? '선택 취소' : '선택'}`}
-        >
-          추가
-        </button>
+        <SelectButton isSelected={isSelected} onClick={() => onToggle(userId)} label="추가" />
       </div>
     );
   };
