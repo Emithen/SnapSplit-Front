@@ -5,15 +5,15 @@ import CurrentTripList from './CurrentTripList';
 // 로그인 했을 시,
 // 여행 전 / 여행 중 / 여행 후에 따라 다르게 표시
 
-const CreateTrip = () => {
+const CreateTripSection = () => {
   return (
-    <section className="flex flex-col w-full p-4 pt-2 rounded-b-3xl gap-5 bg-white">
-      <span className="text-head-1 flex-auto">
+    <section className="flex flex-col w-full pb-4 pt-2 rounded-b-3xl gap-5 bg-white">
+      <span className="text-head-1 flex-auto px-5">
         스냅스플릿과 함께
         <br /> 재밌는 여행을 떠나볼까요?
       </span>
       <CurrentTripList />
-      <div className="flex flex-col w-full gap-4">
+      <div className="flex flex-col w-full gap-4 px-5">
         <Link href="/trip/createTrip" className="flex bg-primary py-[14px] px-5 justify-center text-grey-50 rounded-xl">
           여행 등록하기
         </Link>
@@ -25,4 +25,4 @@ const CreateTrip = () => {
   );
 };
 
-export default CreateTrip;
+export default CreateTripSection;

@@ -2,14 +2,14 @@
 
 import { useDragScroll } from '@/shared/utils/useDragScroll'; // 아까 보낸 훅 가져오기
 
-type CurrentTripProps = {
+type CurrentTripItemProps = {
   dDay: string;
   title: string;
   dateRange: string;
   locations: string;
 };
 
-const CurrentTripItem = ({ dDay, title, dateRange, locations }: CurrentTripProps) => {
+const CurrentTripItem = ({ dDay, title, dateRange, locations }: CurrentTripItemProps) => {
   return (
     <div className="flex-shrink-0 flex items-center p-[1px] rounded-[12px] bg-gradient-to-br from-primary to-transparent w-[296px] mr-2">
       <div className="flex items-center w-full rounded-[12px] bg-[#41D59626]">
@@ -28,7 +28,7 @@ const CurrentTripItem = ({ dDay, title, dateRange, locations }: CurrentTripProps
 };
 
 const CurrentTripList = () => {
-  const trips: CurrentTripProps[] = [
+  const trips: CurrentTripItemProps[] = [
     {
       dDay: 'D-2',
       title: '스냅스플릿 연구팟',
@@ -58,7 +58,7 @@ const CurrentTripList = () => {
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
-      className="flex overflow-x-auto scrollbar-hide"
+      className="flex overflow-x-auto scrollbar-hide px-8"
     >
       {trips.map((trip, index) => (
         <CurrentTripItem
