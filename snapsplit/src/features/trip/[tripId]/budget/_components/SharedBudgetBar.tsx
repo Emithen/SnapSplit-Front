@@ -9,7 +9,7 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
 
   return (
-    <div className="flex w-full px-5 pb-5">
+    <div className="flex w-full px-5 pb-4">
       <div className="flex w-full bg-gradient-to-br from-primary via-primary/40 to-transparent p-[1px] rounded-xl">
         <div className="flex flex-col w-full items-center rounded-xl bg-bg_green px-5 py-4 text-body-2">
           <div className="w-full flex flex-row justify-between items-center text-green text-sm pb-1">
