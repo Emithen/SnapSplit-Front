@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import exit from '@public/svg/exit.svg';
-import burger from '@public/svg/burger.svg';
+import myPage from '@public/svg/my-page.svg';
+import plus3Black from '@public/svg/plus-3-black.svg';
 
 const TripHeader = () => {
   return (
@@ -9,11 +10,15 @@ const TripHeader = () => {
       <Link href="/home">
         <Image src={exit} alt="exit" aria-label="홈으로" />
       </Link>
-
-      {/* 메뉴 열리는 걸로 나중에 수정 */}
-      <Link href="/">
-        <Image src={burger} alt="burger" aria-label="menu" />
-      </Link>
+      <div className="flex flex-row space-x-3 items-center justify-center">
+        <button className="flex flex-row rounded-[20px] border-1 p-1 pr-3 cursor-pointer" onClick={() => {}}>
+          <Image src={plus3Black} alt="동행추가" />
+          동행
+        </button>
+        <Link href="/my">
+          <Image src={myPage} alt="my-page" aria-label="마이페이지로" className="cursor-pointer" />
+        </Link>
+      </div>
     </header>
   );
 };

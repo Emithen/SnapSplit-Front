@@ -11,7 +11,6 @@ export type TripInfoProps = {
       countryId: number;
       countryName: string;
     }[];
-    memberCount: number;
     startDate: string;
     endDate: string;
 };
