@@ -21,7 +21,7 @@ const BudgetPage = ({ tripId }: BudgetPageProps) => {
       <div className="bg-white">
         <TripHeader />
         <TripInfo tripName={'유luv여행'} countries={countries} startDate={'2025. 12. 22'} endDate={'2025 .12. 28'} />
-        <SharedBudgetBar totalShared={totalShared} />
+        <SharedBudgetBar totalShared={totalShared} tripId={tripId} />
         <TripDateBar startDate="2025-04-07" endDate="2025-04-16" />
       </div>
       <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />

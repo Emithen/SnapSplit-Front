@@ -6,16 +6,20 @@ import rightArrow from '@public/svg/rightArrow.svg';
 import Image from 'next/image';
 import devider from '@public/svg/devider-2-green.svg';
 import Link from 'next/link';
-import { useState } from 'react';
-import AddExpenseModal from '@/features/trip/[tripId]/budget/_components/modal/expenseModifyModal/AddExpenseModal';
+import { useRouter } from 'next/navigation';
 
-const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
+const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/trip/${tripId}/budget/expense-add`);
+  };
 
   if (!totalShared) {
     return <div>예산 정보를 불러올 수 없습니다.</div>;
   } // 에러 페이지나 모달 띄우기
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex w-full px-5 pb-[14px]">
@@ -26,7 +30,7 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
             <div className="flex flex-row gap-3">
               <Link href="#">빼기</Link>
               <Image src={devider} alt="devider" width={2} height={20} />
-              <button onClick={() => setIsOpen(true)}>추가하기</button>
+              <button onClick={handleClick}>추가하기</button>
             </div>
           </div>
           <div className="flex flex-row w-full">
@@ -39,7 +43,6 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
           <p className="text-body-2 text-grey-550 w-full">지금까지 쇼핑에 150,000원 썼어요!</p>
         </div>
       </div>
-      {isOpen && <AddExpenseModal onClose={() => setIsOpen(false)} />}
     </div>
   );
 };
