@@ -11,7 +11,10 @@ const TripHeader = () => {
         <Image src={exit} alt="exit" aria-label="홈으로" />
       </Link>
       <div className="flex flex-row space-x-3 items-center justify-center">
-        <button className="flex flex-row rounded-[20px] border-1 p-1 pr-3 cursor-pointer" onClick={() => {}}>
+        <button
+          className="flex flex-row rounded-[20px] border-1 p-[2px] pr-2 cursor-pointer text-sm items-center justify-center"
+          onClick={() => {}}
+        >
           <Image src={plus3Black} alt="동행추가" />
           동행
         </button>

@@ -41,3 +41,13 @@ export type ExpenseItemProps = {
 export type DailyExpenseListProps = {
   expenses: Expense[];
 };
+
+export type User = {
+  userId: number;
+  userIconImg: string;
+};
+
+
+export type UserIconListProps = {
+  users: User[];
+};
