@@ -18,4 +18,12 @@ html {
   .display-base {
     @apply h-[100dvh] min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto;
   }
+
+  .display-w-full {
+    @apply w-full min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto;
+  }
+
+  .display-fixed {
+    @apply fixed left-1/2 -translate-x-1/2;
+  }
 }

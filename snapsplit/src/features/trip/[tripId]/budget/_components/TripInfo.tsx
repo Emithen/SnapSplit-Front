@@ -16,7 +16,7 @@ const TripInfo = ({ tripName, countries, startDate, endDate }: TripInfoProps) =>
           {startDate} - {endDate}
         </p>
         <Image alt="|" src={devider} />
-        <p className="text-body-2">{countries.map((c) => c.countryName).join(', ')}</p>
+        <p className="text-body-2">{countries?.map((c) => c.countryName).join(', ') || '국가 정보 없음'}</p>
       </div>
     </div>
   );

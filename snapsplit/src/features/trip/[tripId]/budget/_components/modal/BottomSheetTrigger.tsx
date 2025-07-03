@@ -13,7 +13,7 @@ const BottomSheetTrigger = ({ total }: { total: number }) => {
   return (
     <>
       <div
-        className="lg:max-w-[360px] mx-auto mb-[58px] fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[415px] min-w-[360px] bg-grey-850 pt-[22px] pb-[18px] flex flex-col items-center"
+        className="display-w-full display-fixed bottom-0 bg-grey-850 pt-[22px] pb-[18px] mb-[58px] flex flex-col items-center"
         onClick={() => setOpen(true)}
       >
         <Image

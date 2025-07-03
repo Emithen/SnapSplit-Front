@@ -33,9 +33,9 @@
       "expenseCurrency": "EUR",
       "expenseUsers": [
         { "userId": 11, "userName": "유빈" },
-        { "userId": 11, "userName": "나경" },
-        { "userId": 11, "userName": "지수" },
-        { "userId": 11, "userName": "연수" }
+        { "userId": 12, "userName": "나경" },
+        { "userId": 13, "userName": "지수" },
+        { "userId": 14, "userName": "연수" }
       ],
       "expenseCategory": "런던 숙소"
     },
@@ -46,8 +46,8 @@
       "expenseCurrency": "EUR",
       "expenseUsers": [
         { "userId": 11, "userName": "유빈" },
-        { "userId": 11, "userName": "나경" },
-        { "userId": 11, "userName": "지수" }
+        { "userId": 12, "userName": "나경" },
+        { "userId": 13, "userName": "지수" }
       ],
       "expenseCategory": "점심"
     },

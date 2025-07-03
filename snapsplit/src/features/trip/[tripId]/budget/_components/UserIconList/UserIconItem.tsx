@@ -1,4 +1,4 @@
-const ICON_OFFSET = 18;
+import { ICON_OFFSET } from '@/shared/constants/icon';
 
 export const UserIconItem = ({ index, userIconImg }: { index: number; userIconImg: string }) => {
   return (
