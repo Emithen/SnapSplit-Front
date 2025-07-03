@@ -15,6 +15,7 @@ const totalShared = tripBudgetData.totalShared;
 const expenses = tripBudgetData.expenses;
 
 const BudgetPage = ({ tripId }: BudgetPageProps) => {
+  console.log(tripId);
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-white">
