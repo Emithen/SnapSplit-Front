@@ -3,7 +3,7 @@ import { groupExpensesByDate } from '@/shared/utils/groupExpenses';
 import ExpenseDateBar from './ExpenseDateBar';
 import ExpenseItem from './ExpenseItem';
 import AddExpenseButton from './AddExpenseButton';
-import TopFloatingButton from './TopFloatingButton';
+import TopFloatingButton from '@/shared/components/TopFloatingButton';
 
 type DailyExpenseListProps = {
   expenses: Expense[];
