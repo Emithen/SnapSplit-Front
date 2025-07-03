@@ -25,13 +25,7 @@ export default function SnapPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <div className="bg-grey-350">
         <TripHeader />
-        <TripInfo
-          tripName={'유luv여행'}
-          countries={countries}
-          memberCount={4}
-          startDate={'2025.4.7'}
-          endDate={'4.12'}
-        />
+        <TripInfo tripName={'유luv여행'} countries={countries} startDate={'2025.4.7'} endDate={'4.12'} />
       </div>
       <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
 

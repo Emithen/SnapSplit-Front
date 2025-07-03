@@ -12,8 +12,8 @@ const currencyList = ['한국 - KRW', '미국 - USD', '유럽 - EUR', '일본 - 
 
 const CurrencyList = ({ onClose, setCurrency }: CurrencyListProps) => {
     return (
-        <OverlayModal isOpen={true} onClose={onClose} layer="toast">
-            <div className="mt-auto w-full flex flex-col items-center bg-white pt-3 px-5 pb-8 gap-3 rounded-t-xl">
+        <OverlayModal isOpen={true} onClose={onClose} position="bottom">
+            <div className="w-full flex flex-col items-center bg-white pt-3 px-5 pb-8 gap-3 rounded-t-xl">
                 {/* TODO: bottomsheet handle 컴포넌트 추가 */}
                 <div className="bg-grey-350 rounded-xl w-11 h-1" />
                 <div className="flex flex-col w-full">

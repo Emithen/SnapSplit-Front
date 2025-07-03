@@ -1,3 +1,5 @@
+import { UpcomingTripProps } from '../types';
+
 const UpcomingTrip = ({ tripName, tripCountry, tripDate, dDay }: UpcomingTripProps) => {
   return (
     <div className="flex justify-between items-center bg-white p-4 rounded-xl">
@@ -17,8 +19,7 @@ const UpcomingTrip = ({ tripName, tripCountry, tripDate, dDay }: UpcomingTripPro
 
 const UpcomingTripList = () => {
   return (
-    <section className="flex flex-col justify-between gap-3 w-full p-4 bg-grey-50 border-b-8 border-grey-150">
-      <span className="text-label-1">다가오는 여행</span>
+    <section className="flex flex-col justify-between gap-3 w-full p-4 border-b-8 border-grey-150">
       <UpcomingTrip
         tripName="스냅스플릿 연구팟"
         tripCountry="런던, 파리, 취리히"

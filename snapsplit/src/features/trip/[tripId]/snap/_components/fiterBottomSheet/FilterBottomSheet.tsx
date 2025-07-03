@@ -12,7 +12,7 @@ interface FilterBottomSheetProps {
 
 export default function FilterBottomSheet({ filters, setFilters, onClose }: FilterBottomSheetProps) {
   return (
-    <div className="mt-auto w-full bg-white rounded-t-xl pt-5 px-5 pb-9">
+    <div className="w-full bg-white rounded-t-xl pt-5 px-5 pb-9">
       <div className="flex flex-col gap-6">
         <DaySection filters={filters} setFilters={setFilters} />
 

@@ -19,7 +19,9 @@ export default function FloatingModal({ children }: FloatingModalProps) {
   if (!mounted || !modalRoot) return null;
 
   return createPortal(
-    <div className="display-base z-float fixed inset-0 flex items-center justify-center pointer-events-none">{children}</div>,
+    <div className="display-base z-float fixed inset-0 flex items-center justify-center pointer-events-none">
+      {children}
+    </div>,
     modalRoot
   );
 }

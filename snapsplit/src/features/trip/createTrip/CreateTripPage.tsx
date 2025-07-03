@@ -67,7 +67,7 @@ export default function CreateTripPage() {
   ];
 
   return (
-    <div className="h-screen">
+    <div className="min-h-[100dvh]">
       <CreateTripHeader step={step} onPrev={handlePrevStep} />
       <StepProgressBar step={step} />
       {steps[step - 1]}

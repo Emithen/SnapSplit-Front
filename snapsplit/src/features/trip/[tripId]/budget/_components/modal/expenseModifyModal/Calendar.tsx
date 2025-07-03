@@ -67,7 +67,7 @@ export default function Calendar({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 bg-white p-4 rounded-2xl w-full mt-auto">
+    <div className="flex flex-col items-center justify-center space-y-4 bg-white p-4 rounded-2xl w-full">
       <div className="flex items-center justify-between gap-3">
         <button onClick={handlePrevMonth} className="p-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">

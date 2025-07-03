@@ -1,4 +1,5 @@
 'use client';
+
 import { motion } from 'framer-motion';
 import { StepProgressBarProps } from '@/features/trip/createTrip/type';
 
@@ -8,8 +9,8 @@ const StepProgressBar = ({ step }: StepProgressBarProps) => {
       {[1, 2, 3, 4].map((i) => (
         <motion.div
           key={i}
-          initial={{ backgroundColor: '#D1D1D1' }} // grey-350
-          animate={{ backgroundColor: i <= step ? '#1F1F1F' : '#D1D1D1' }} // grey-850 or grey-350
+          initial={{ backgroundColor: '#E8E8E8' }} // grey-250
+          animate={{ backgroundColor: i <= step ? '#41D596' : '#E8E8E8' }} // 선택 시 primary, 아니면 grey-250
           transition={{ duration: 0.3 }}
           className="h-1 flex-1 rounded"
         />

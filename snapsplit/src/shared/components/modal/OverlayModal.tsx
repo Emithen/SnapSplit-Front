@@ -3,26 +3,31 @@
 import Modal from './Modal'; // 너가 만든 기본 모달
 import { usePreventScroll } from '@/shared/components/modal/usePreventScroll';
 import { ReactNode, useRef } from 'react';
-import { Layer } from './type';
 
 type OverlayModalProps = {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
-  layer: Layer;
+  position?: 'center' | 'bottom' | 'top';
 };
 
-export default function OverlayModal({ isOpen, onClose, children, layer }: OverlayModalProps) {
+export default function OverlayModal({ isOpen, onClose, children, position = 'bottom' }: OverlayModalProps) {
   usePreventScroll(isOpen);
 
   const modalBackground = useRef<HTMLDivElement>(null);
 
+  const positionClasses = {
+    center: 'items-center',
+    bottom: 'items-end',
+    top: 'items-start',
+  };
+
   if (!isOpen) return null;
 
   return (
-    <Modal layer={layer}>
+    <Modal layer="overlay">
       <div
-        className="w-full h-full bg-black/40 flex justify-center"
+        className={`w-full h-full bg-black/40 flex ${positionClasses[position]} justify-center`}
         ref={modalBackground}
         onClick={(e) => {
           if (e.target === modalBackground.current) {

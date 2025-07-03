@@ -67,7 +67,7 @@ const AddExpenseModal = ({ onClose }: AddExpenseModalProps) => {
                             </button>
                         </div>
                         {isCalendarOpen && (
-                            <OverlayModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} layer="toast">
+                            <OverlayModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)}>
                                 <Calendar
                                     onStartDateChange={handleDateSelect}
                                     onEndDateChange={() => {}}
