@@ -3,6 +3,7 @@ import { groupExpensesByDate } from '@/shared/utils/groupExpenses';
 import ExpenseDateBar from './ExpenseDateBar';
 import ExpenseItem from './ExpenseItem';
 import AddExpenseButton from './AddExpenseButton';
+import TopFloatingButton from '@/shared/components/TopFloatingButton';
 
 type DailyExpenseListProps = {
   expenses: Expense[];
@@ -16,7 +17,7 @@ const DailyExpenseList = ({ expenses, tripStartDate, tripEndDate }: DailyExpense
   return (
     <div
       id="scroll-target-top"
-      className="flex-grow w-full space-y-8 px-5 text-grey-850 pb-[147px] overflow-y-auto scrollbar-hide"
+      className="flex-grow w-full space-y-8 px-5 pt-5 text-grey-850 pb-[159px] overflow-y-auto scrollbar-hide bg-grey-50"
     >
       {groupedExpenses.map((group) => (
         <div key={group.label} className="space-y-3" id={group.id ? `day-${group.id}` : undefined}>
@@ -27,6 +28,7 @@ const DailyExpenseList = ({ expenses, tripStartDate, tripEndDate }: DailyExpense
           <AddExpenseButton />
         </div>
       ))}
+      <TopFloatingButton />
     </div>
   );
 };

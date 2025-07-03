@@ -1,8 +1,6 @@
 'use client';
 
 import { TripDateFilterBarProps } from '../type';
-import Image from 'next/image';
-import search from '@public/svg/search.svg';
 import { getDateRangeArray } from '@/shared/utils/makeDateList';
 import { getKoreanDay } from '@/shared/utils/getKoreanDay';
 import { useState } from 'react';
@@ -10,12 +8,22 @@ import { useDragScroll } from '@/shared/utils/useDragScroll';
 
 const TripDateBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
   const dateList = getDateRangeArray(startDate, endDate);
-  const [selectedKey, setSelectedKey] = useState<string>('전체');
+  const [selectedKey, setSelectedKey] = useState<string>('준비');
 
   const handleClick = (key: string) => {
     // 선택된 날짜로 상태 업데이트
     if (key === selectedKey) return; // 이미 선택된 날짜는 무시
     setSelectedKey(key);
+
+    if (key === '준비') {
+      const container = document.getElementById('scroll-target-top');
+      if (container) {
+        container.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        console.warn('[TripDateBar] 스크롤 컨테이너를 찾지 못했습니다.');
+      }
+      return;
+    }
 
     // 선택된 날짜로 스크롤 이동
     const el = document.getElementById(`day-${key}`);
@@ -34,25 +42,16 @@ const TripDateBar = ({ startDate, endDate }: TripDateFilterBarProps) => {
 
   // 조건부 스타일
   const baseButtonClass = 'cursor-pointer min-w-12 max-w-12 h-16 flex flex-col items-center justify-center shrink-0';
-  const selectedClass = 'bg-grey-650 text-white rounded-tl-xl rounded-tr-xl';
+  const selectedClass = 'text-green border-b-2 border-primary';
 
   return (
     <div className="w-full pl-5 flex items-end whitespace-nowrap overflow-hidden">
-      {/* '전체' 탭 */}
-      <button
-        onClick={() => handleClick('전체')}
-        className={`${baseButtonClass} text-body-2 ${isSelected('전체') ? selectedClass : 'text-grey-650'}`}
-      >
-        전체
-      </button>
-
       {/* '준비' 탭 */}
       <button
         onClick={() => handleClick('준비')}
         className={`${baseButtonClass} ${isSelected('준비') ? selectedClass : 'text-grey-550'}`}
       >
-        <p className="text-caption-2">준비</p>
-        <Image alt="search" src={search} />
+        <p className="text-caption-2 text-sm">준비</p>
       </button>
 
       {/* 날짜들 */}

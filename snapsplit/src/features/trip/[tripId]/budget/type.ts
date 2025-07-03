@@ -1,5 +1,9 @@
 import { Expense } from "./api";
 
+export type BudgetPageProps = {
+  tripId: string;
+};
+
 // TripInfo.tsx
 export type TripInfoProps = {
     tripName: string;
@@ -7,7 +11,6 @@ export type TripInfoProps = {
       countryId: number;
       countryName: string;
     }[];
-    memberCount: number;
     startDate: string;
     endDate: string;
 };
@@ -37,4 +40,14 @@ export type ExpenseItemProps = {
 
 export type DailyExpenseListProps = {
   expenses: Expense[];
+};
+
+export type User = {
+  userId: number;
+  userIconImg: string;
+};
+
+
+export type UserIconListProps = {
+  users: User[];
 };
