@@ -20,7 +20,7 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
             <p>공동경비 잔액</p>
             <div className="flex flex-row gap-3">
               <Link href="#">빼기</Link>
-              <Image src={devider} alt="devider" />
+              <Image src={devider} alt="devider" width={2} height={20} />
               <Link href="#">추가하기</Link>
             </div>
           </div>
@@ -29,7 +29,7 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
               {Currencysymbol}
               {totalShared[0].totalSharedAmount.toLocaleString()}
             </p>
-            <Image alt=">" src={rightArrow} />
+            <Image alt=">" src={rightArrow} width={25} height={25} />
           </div>
           <p className="text-body-2 text-grey-550 w-full">지금까지 쇼핑에 150,000원 썼어요!</p>
         </div>

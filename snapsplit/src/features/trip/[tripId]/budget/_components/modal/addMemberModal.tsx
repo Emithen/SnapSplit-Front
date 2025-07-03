@@ -24,6 +24,14 @@ const AddMemberModal = ({ onClose }: AddMemberModalProps) => {
     }
   };
 
+  const animateAndClose = async () => {
+    await animate(y, 500, { type: 'tween', duration: 0.2, ease: 'easeIn' });
+
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <motion.div
       style={{ y }}
@@ -37,16 +45,17 @@ const AddMemberModal = ({ onClose }: AddMemberModalProps) => {
       dragControls={controls}
       onDrag={(e, info) => {
         if (info.offset.y > 0) {
+          // 하단 스크롤만 가능
           y.set(info.offset.y);
         } else {
+          // 상단 스크롤 제한
           y.set(0);
         }
       }}
       onDragEnd={() => {
         const currentY = y.get();
-        console.log(onClose);
-        if (currentY > 10 && onClose) {
-          onClose();
+        if (currentY > 10) {
+          animateAndClose();
         } else {
           animate(y, 0, { type: 'spring', stiffness: 300, damping: 30 });
         }
