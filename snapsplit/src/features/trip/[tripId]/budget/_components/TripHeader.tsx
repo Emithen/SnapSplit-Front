@@ -35,7 +35,7 @@ const TripHeader = () => {
 
       {/* 동행 추가 모달 */}
       <OverlayModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} position="bottom">
-        <AddMemberModal />
+        <AddMemberModal onClose={() => setIsModalOpen(false)} />
       </OverlayModal>
     </>
   );

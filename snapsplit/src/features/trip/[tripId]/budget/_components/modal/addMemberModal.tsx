@@ -36,15 +36,16 @@ const AddMemberModal = ({ onClose }: AddMemberModalProps) => {
       dragListener={false}
       dragControls={controls}
       onDrag={(e, info) => {
-        // 아래로만 움직이도록 제한
         if (info.offset.y > 0) {
           y.set(info.offset.y);
         } else {
           y.set(0);
         }
       }}
-      onDragEnd={(e, info) => {
-        if (info.offset.y > 100 && onClose) {
+      onDragEnd={() => {
+        const currentY = y.get();
+        console.log(onClose);
+        if (currentY > 10 && onClose) {
           onClose();
         } else {
           animate(y, 0, { type: 'spring', stiffness: 300, damping: 30 });
