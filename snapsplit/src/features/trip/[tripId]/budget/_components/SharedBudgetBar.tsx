@@ -5,16 +5,18 @@ import { useCurrencySymbol } from '@/shared/utils/useCurrencySymbol';
 import rightArrow from '@public/svg/rightArrow.svg';
 import Image from 'next/image';
 import devider from '@public/svg/devider-2-green.svg';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
-
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClickAdd = () => {
     router.push(`/trip/${tripId}/budget/expense-add`);
+  };
+
+  const handleClickRemove = () => {
+    router.push(`/trip/${tripId}/budget/expense-remove`);
   };
 
   if (!totalShared) {
@@ -28,9 +30,9 @@ const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
           <div className="w-full flex flex-row justify-between items-center text-green text-sm pb-1">
             <p>공동경비 잔액</p>
             <div className="flex flex-row gap-3">
-              <Link href="#">빼기</Link>
+              <button onClick={handleClickRemove}>빼기</button>
               <Image src={devider} alt="devider" width={2} height={20} />
-              <button onClick={handleClick}>추가하기</button>
+              <button onClick={handleClickAdd}>추가하기</button>
             </div>
           </div>
           <div className="flex flex-row w-full">
