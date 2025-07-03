@@ -1,6 +1,6 @@
 import { ICON_OFFSET } from '@/shared/constants/icon';
 
-export const UserIconItem = ({ index, userIconImg }: { index: number; userIconImg: string }) => {
+export const UserIconItem = ({ index }: { index: number; userIconImg: string }) => {
   return (
     <div
       className="absolute rounded-full w-5 h-5 bg-grey-250 outline-3 outline-white"
