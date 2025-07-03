@@ -3,6 +3,7 @@ import { groupExpensesByDate } from '@/shared/utils/groupExpenses';
 import ExpenseDateBar from './ExpenseDateBar';
 import ExpenseItem from './ExpenseItem';
 import AddExpenseButton from './AddExpenseButton';
+import TopFloatingButton from './TopFloatingButton';
 
 type DailyExpenseListProps = {
   expenses: Expense[];
@@ -27,6 +28,7 @@ const DailyExpenseList = ({ expenses, tripStartDate, tripEndDate }: DailyExpense
           <AddExpenseButton />
         </div>
       ))}
+      <TopFloatingButton />
     </div>
   );
 };
