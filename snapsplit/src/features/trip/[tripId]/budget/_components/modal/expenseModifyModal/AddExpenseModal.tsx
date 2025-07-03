@@ -1,9 +1,13 @@
+// TODO: shared 로 refactor
+
 import FullScreenModal from "@/shared/components/modal/FullScreenModal";
 import backArrow from "@public/svg/leftArrow.svg";
 import arrow_bottom from "@public/svg/arrow_bottom.svg";
 import Image from "next/image";
 import { useState } from "react";
 import CurrencyList from "./CurrencyList";
+import Calendar from "./Calendar";
+import OverlayModal from "@/shared/components/modal/OverlayModal";
 
 type AddExpenseModalProps = {
     onClose: () => void;
@@ -12,6 +16,13 @@ type AddExpenseModalProps = {
 const AddExpenseModal = ({ onClose }: AddExpenseModalProps) => {
     const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
     const [currency, setCurrency] = useState('KRW');
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+    const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+    const handleDateSelect = (date: string | null) => {
+      setSelectedDate(date);
+      setIsCalendarOpen(false);
+    };
 
     return (
         <FullScreenModal>
@@ -50,11 +61,20 @@ const AddExpenseModal = ({ onClose }: AddExpenseModalProps) => {
                     <div className="flex flex-col pt-6 gap-3">
                         <div className="text-label-2">날짜</div>
                         <div className="flex items-center justify-between h-12 px-4 rounded-xl border border-grey-350">
-                            <div>2025-04-01</div>
-                            <button>
+                            <div>{selectedDate || '날짜 선택'}</div>
+                            <button onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
                                 <Image alt="arrow" src={arrow_bottom} width={24} height={24} />
                             </button>
-                        </div>                       
+                        </div>
+                        {isCalendarOpen && (
+                            <OverlayModal isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} layer="toast">
+                                <Calendar
+                                    onStartDateChange={handleDateSelect}
+                                    onEndDateChange={() => {}}
+                                    setRentDuration={() => {}}
+                                />
+                            </OverlayModal>
+                        )}                       
                     </div>
                     {/* category section */}
                     <div className="flex flex-col pt-7 gap-3">
