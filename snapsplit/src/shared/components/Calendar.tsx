@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay, addDays } from 'date-fns';
-import rightArrow from '@public/svg/rightArrow.svg';
+import rightArrow from '@public/svg/arrow-right-black.svg';
 import leftArrow from '@public/svg/leftArrow.svg';
 import Image from 'next/image';
 
