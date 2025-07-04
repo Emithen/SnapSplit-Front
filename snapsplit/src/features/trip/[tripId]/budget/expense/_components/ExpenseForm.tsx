@@ -10,12 +10,15 @@ import { useRouter } from 'next/navigation';
 import CalendarSheet from './CalendarSheet';
 import CategorySection from './CategorySection';
 import { format } from 'date-fns';
+import StatusMessage from './StatusMessage';
 
 // TODO: FormData 타입 정의
 type ExpenseFormProps = {
   mode: 'add' | 'remove'; // '추가하기' | '빼기'
   onSubmit: (data: FormData) => void;
 };
+
+const result = '$980';
 
 const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const isAdd = mode === 'add';
@@ -99,6 +102,9 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
           {isAdd ? '추가하기' : '빼기'}
         </button>
       </div>
+
+      {/* Toast */}
+      {isFormDataReady && <StatusMessage result={result} />}
     </div>
   );
 };
