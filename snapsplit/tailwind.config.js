@@ -23,7 +23,7 @@ module.exports = {
         primary: '#41D596',
         dark_green: '#14B470',
         light_green: '#41d5961a',
-        // light_green_tp: '#BCF0DA',
+        light_green_deep: '#BCF0DA',
         light_grey: '#F5F5F5',
         bg_green: '#DFF5EC',
         green: '#2ecd89',
