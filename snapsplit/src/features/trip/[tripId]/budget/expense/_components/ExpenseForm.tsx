@@ -21,7 +21,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const isAdd = mode === 'add';
   const [amount, setAmount] = useState('');
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
-  const [currency, setCurrency] = useState('KRW');
+  const [currency, setCurrency] = useState<string>('미국 - USD(달러)');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -64,7 +64,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
           isCurrencyOpen={isCurrencyOpen}
           setIsCurrencyOpen={setIsCurrencyOpen}
         />
-        {isCurrencyOpen && <CurrencyList onClose={() => setIsCurrencyOpen(false)} setCurrency={setCurrency} />}
+        {isCurrencyOpen && <CurrencyList onClose={() => setIsCurrencyOpen(false)} setCurrency={setCurrency} selectedCurrency={currency} />}
 
         {/* date section */}
         <div className="flex flex-col pt-6 gap-3">
