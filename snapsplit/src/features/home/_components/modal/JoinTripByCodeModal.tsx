@@ -1,11 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import close from '@public/svg/close-grey.svg';
+import { useState } from 'react';
 
 type JoinTripByCodeModalProps = {
   onClose: () => void;
 };
 
 export default function JoinTripByCodeModal({ onClose }: JoinTripByCodeModalProps) {
+  const [code, setCode] = useState('');
+
+  // 8자리가 입력됐는지 여부
+  const isValid = code.length === 8;
+
   return (
     <div className="bg-white rounded-xl p-5 pb-6 w-full flex flex-col justify-center items-center">
       <div className="flex w-full justify-end pb-2">
@@ -17,8 +25,17 @@ export default function JoinTripByCodeModal({ onClose }: JoinTripByCodeModalProp
       <input
         className="w-full border-1 mb-6 text-body-2 border-grey-250 rounded-xl py-[14px] px-4"
         placeholder="영문/숫자 8자리"
-      ></input>
-      <button className="bg-primary w-full rounded-xl py-[14px] text-label-1 text-white">참여하기</button>
+        value={code}
+        onChange={(e) => setCode(e.target.value)}
+      />
+      <button
+        disabled={!isValid}
+        className={`w-full rounded-xl py-[14px] text-label-1  text-white ${
+          isValid ? 'bg-primary cursor-pointer' : 'bg-light_green_deep cursor-not-allowed'
+        }`}
+      >
+        참여하기
+      </button>
     </div>
   );
 }
