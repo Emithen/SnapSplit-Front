@@ -2,8 +2,9 @@
 
 import ExpenseForm from "@/features/trip/[tripId]/budget/expense/_components/ExpenseForm";
 
-const postExpense = () => {
+const postExpense = (formData: FormData) => {
   // TODO: API 호출
+  console.log(formData);
 }
 
 const AddExpenseModal = () => {

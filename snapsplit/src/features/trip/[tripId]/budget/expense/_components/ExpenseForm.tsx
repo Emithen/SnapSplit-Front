@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import CurrencyList from '@/features/trip/[tripId]/budget/expense/_components/CurrencyList';
 import ExpenseSection from './ExpenseSection';
@@ -8,8 +8,10 @@ import backArrow from '@public/svg/leftArrow.svg';
 import arrow_bottom from '@public/svg/arrow_bottom.svg';
 import { useRouter } from 'next/navigation';
 import CalendarSheet from './CalendarSheet';
+import CategorySection from './CategorySection';
 import { format } from 'date-fns';
 
+// TODO: FormData 타입 정의
 type ExpenseFormProps = {
   mode: 'add' | 'remove'; // '추가하기' | '빼기'
   onSubmit: (data: FormData) => void;
@@ -22,7 +24,17 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const [currency, setCurrency] = useState('KRW');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isFormDataReady, setIsFormDataReady] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if (amount && currency && selectedDate && selectedCategory) {
+      setIsFormDataReady(true);
+    } else {
+      setIsFormDataReady(false);
+    }
+  }, [amount, currency, selectedDate, selectedCategory]);
 
   const handleSubmit = () => {
     const formData = new FormData();
@@ -64,20 +76,26 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
             </button>
           </div>
         </div>
-        {isCalendarOpen && <CalendarSheet isOpen={isCalendarOpen} onClose={() => setIsCalendarOpen(false)} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />}
+        {isCalendarOpen && (
+          <CalendarSheet
+            isOpen={isCalendarOpen}
+            onClose={() => setIsCalendarOpen(false)}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        )}
 
         {/* category section */}
-        <div className="flex flex-col pt-7 gap-3">
-          <div className="text-label-2">경비 형태</div>
-          <div className="flex items-center gap-3">
-            <button className="border border-grey-350 rounded-xl w-full h-12 px-5 text-body-1">현금</button>
-            <button className="border border-grey-350 rounded-xl w-full h-12 px-5 text-body-1">카드</button>
-          </div>
-        </div>
+        <CategorySection selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
       </div>
+
       {/* submit button */}
       <div className="w-full mt-auto p-5">
-        <button onClick={handleSubmit} className="w-full h-13 rounded-2xl bg-light_green text-label-2 text-white">
+        <button
+          onClick={handleSubmit}
+          className="w-full h-13 rounded-2xl bg-primary text-label-2 text-white disabled:bg-light_green"
+          disabled={!isFormDataReady}
+        >
           {isAdd ? '추가하기' : '빼기'}
         </button>
       </div>
