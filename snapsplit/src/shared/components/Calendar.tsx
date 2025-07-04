@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay, addDays } from 'date-fns';
 import rightArrow from '@public/svg/rightArrow.svg';
 import leftArrow from '@public/svg/leftArrow.svg';
@@ -12,8 +12,7 @@ type CalendarProps = {
 };
 
 export default function Calendar({ selectedDate, setSelectedDate }: CalendarProps) {
-  const today = useMemo(() => new Date(), []);
-  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(today));
+  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(selectedDate || new Date()));
 
   const handlePrevMonth = () => {
     setCurrentMonth(addMonths(currentMonth, -1));
@@ -50,9 +49,9 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
 
   useEffect(() => {
     if (!selectedDate) {
-      setSelectedDate(today);
+      setSelectedDate(new Date());
     }
-  }, [selectedDate, setSelectedDate, today]);
+  }, [selectedDate, setSelectedDate]);
 
   return (
     <div className="flex flex-col items-center justify-center gap-2 py-4 bg-white rounded-2xl w-full">

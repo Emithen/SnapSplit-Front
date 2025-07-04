@@ -21,7 +21,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [currency, setCurrency] = useState('KRW');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const router = useRouter();
 
   const handleSubmit = () => {
