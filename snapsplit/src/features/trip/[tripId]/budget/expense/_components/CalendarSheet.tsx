@@ -15,6 +15,15 @@ const CalendarSheet = ({
   return (
     <BottomSheet isOpen={isOpen} onClose={onClose}>
       <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+      <button 
+        onClick={() => {
+          onClose();
+          // TODO: selectedDate 전달
+        }}
+        className="w-full h-13 rounded-2xl bg-primary text-label-2 text-white"
+      >
+        선택하기
+      </button>
     </BottomSheet>
   );
 };
