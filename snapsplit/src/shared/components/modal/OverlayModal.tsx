@@ -9,9 +9,16 @@ type OverlayModalProps = {
   onClose: () => void;
   children: ReactNode;
   position?: 'center' | 'bottom' | 'top';
+  className?: string;
 };
 
-export default function OverlayModal({ isOpen, onClose, children, position = 'bottom' }: OverlayModalProps) {
+export default function OverlayModal({
+  isOpen,
+  onClose,
+  children,
+  position = 'bottom',
+  className = '',
+}: OverlayModalProps) {
   usePreventScroll(isOpen);
 
   const modalBackground = useRef<HTMLDivElement>(null);
@@ -27,7 +34,7 @@ export default function OverlayModal({ isOpen, onClose, children, position = 'bo
   return (
     <Modal layer="overlay">
       <div
-        className={`w-full h-full bg-black/40 flex ${positionClasses[position]} justify-center`}
+        className={`w-full h-full bg-black/40 flex ${positionClasses[position]} justify-center ${className}`}
         ref={modalBackground}
         onClick={(e) => {
           if (e.target === modalBackground.current) {

@@ -1,11 +1,22 @@
+'use client';
+
 import Link from 'next/link';
 import CurrentTripList from './CurrentTripList';
-
-// 로그인 여부를 가져옴
-// 로그인 했을 시,
-// 여행 전 / 여행 중 / 여행 후에 따라 다르게 표시
+import OverlayModal from '@/shared/components/modal/OverlayModal';
+import JoinTripByCodeModal from './modal/JoinTripByCodeModal';
+import { useState } from 'react';
 
 const CreateTripSection = () => {
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+
+  const openJoinModal = () => {
+    setIsJoinModalOpen(true);
+  };
+
+  const closeJoinModal = () => {
+    setIsJoinModalOpen(false);
+  };
+
   return (
     <section className="flex flex-col w-full pb-4 pt-2 rounded-b-3xl gap-5 bg-white">
       <span className="text-head-1 flex-auto px-5">
@@ -17,10 +28,16 @@ const CreateTripSection = () => {
         <Link href="/trip/createTrip" className="flex bg-primary py-[14px] px-5 justify-center text-grey-50 rounded-xl">
           여행 등록하기
         </Link>
-        <p className="flex justify-center underline text-grey-550 text-body-2 items-center cursor-pointer">
+        <button
+          className="flex justify-center underline text-grey-550 text-body-2 items-center cursor-pointer"
+          onClick={openJoinModal}
+        >
           코드로 여행 참여하기
-        </p>
+        </button>
       </div>
+      <OverlayModal isOpen={isJoinModalOpen} onClose={closeJoinModal} position="center" className="px-5">
+        <JoinTripByCodeModal onClose={closeJoinModal} />
+      </OverlayModal>
     </section>
   );
 };
