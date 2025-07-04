@@ -18,7 +18,8 @@ type ExpenseFormProps = {
   onSubmit: (data: FormData) => void;
 };
 
-const result = '$980';
+// TODO: result 값 API 호출 후 받아오기
+const result = '$9805596000000';
 
 const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const isAdd = mode === 'add';
@@ -96,7 +97,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
       <div className="w-full mt-auto p-5">
         <button
           onClick={handleSubmit}
-          className="w-full h-13 rounded-2xl bg-primary text-label-2 text-white disabled:bg-light_green"
+          className="w-full h-13 rounded-xl bg-primary text-label-2 text-white disabled:bg-light_green"
           disabled={!isFormDataReady}
         >
           {isAdd ? '추가하기' : '빼기'}
