@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay } from 'date-fns';
+import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay, addDays } from 'date-fns';
 import rightArrow from '@public/svg/rightArrow.svg';
 import leftArrow from '@public/svg/leftArrow.svg';
 import Image from 'next/image';
@@ -26,10 +26,26 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
   const generateDates = () => {
     const start = startOfMonth(currentMonth);
     const end = endOfMonth(currentMonth);
-    const dates = eachDayOfInterval({ start, end });
+    const startDay = getDay(start); // 0=일
 
-    const firstDayOfWeek = getDay(start);
-    return Array(firstDayOfWeek).fill(null).concat(dates);
+    const prevMonthEnd = endOfMonth(addMonths(start, -1));
+    const prevDates =
+      startDay === 0
+        ? []
+        : eachDayOfInterval({
+            start: addDays(prevMonthEnd, -startDay + 1),
+            end: prevMonthEnd,
+          });
+
+    const currentDates = eachDayOfInterval({ start, end });
+
+    const totalCells = prevDates.length + currentDates.length;
+    const nextDatesCount = (7 - (totalCells % 7)) % 7;
+
+    const nextMonthStart = startOfMonth(addMonths(start, 1));
+    const nextDates = Array.from({ length: nextDatesCount }, (_, i) => addDays(nextMonthStart, i));
+
+    return [...prevDates, ...currentDates, ...nextDates];
   };
 
   useEffect(() => {
@@ -54,26 +70,34 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
 
       <div className="w-full grid place-items-center grid-cols-7 gap-y-[10px]">
         {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
-          <div key={day} className="flex w-11 h-11 items-center justify-center text-body-1 text-grey-550">
+          <div
+            key={day}
+            className={`
+            flex w-11 h-11 items-center justify-center text-body-1
+            ${day === '일' ? 'text-[#FD7564]' : 'text-grey-550'}
+          `}
+          >
             {day}
           </div>
         ))}
         {generateDates().map((date, index) => {
-          if (date === null) {
-            return <div key={`empty-${index}`} className="w-11 h-11" />;
-          }
+          if (!date) return null;
 
           const isSelected = selectedDate && isSameDay(date, selectedDate);
+          const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
 
-          // TODO: position 정리 (z-index, relative, absolute)
           return (
             <button
-              key={date}
+              key={`${date.toISOString()}-${index}`} // ✅ 중복 방지
               onClick={() => setSelectedDate(date)}
-              className={`relative flex w-11 h-11 p-1 rounded-full text-body-1 items-center justify-center`}
+              className="relative flex w-11 h-11 p-1 rounded-full items-center justify-center"
             >
-              <span className={`relative z-1 ${isSelected ? 'text-white' : 'text-black'}`}>{format(date, 'd')}</span>
-              {isSelected ? <span className="absolute inset-0 rounded-full bg-primary"></span> : null}
+              <span
+                className={`relative z-10 text-body-1 ${!isCurrentMonth ? 'text-grey-550' : isSelected ? 'text-white' : 'text-black'}`}
+              >
+                {format(date, 'd')}
+              </span>
+              {isSelected ? <span className="absolute inset-0 rounded-full bg-primary z-0" /> : null}
             </button>
           );
         })}
