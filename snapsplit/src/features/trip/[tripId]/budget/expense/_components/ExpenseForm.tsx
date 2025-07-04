@@ -5,7 +5,7 @@ import Image from 'next/image';
 import CurrencyList from '@/features/trip/[tripId]/budget/expense/_components/CurrencyList';
 import ExpenseSection from './ExpenseSection';
 import backArrow from '@public/svg/leftArrow.svg';
-import arrow_bottom from '@public/svg/arrow_bottom.svg';
+import calendar from '@public/svg/calendar.svg';
 import { useRouter } from 'next/navigation';
 import CalendarSheet from './CalendarSheet';
 import CategorySection from './CategorySection';
@@ -72,7 +72,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
           <div className="flex items-center justify-between h-12 px-4 rounded-xl border border-grey-350">
             <div>{selectedDate ? format(selectedDate, 'yyyy-MM-dd') : '날짜 선택'}</div>
             <button onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
-              <Image alt="arrow" src={arrow_bottom} width={24} height={24} />
+              <Image alt="calendar" src={calendar} />
             </button>
           </div>
         </div>

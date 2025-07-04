@@ -9,6 +9,7 @@ type ExpenseSectionProps = {
   setIsCurrencyOpen: (open: boolean) => void;
 };
 
+// TODO: 통화별 환율 적용 결과 표시
 const ExpenseSection = ({
   currency,
   amount,
