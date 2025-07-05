@@ -23,6 +23,7 @@ export type SharedCurrency = {
   
 export type SharedBudgetBarProps = {
     totalShared: SharedCurrency[];
+    tripId: string;
   };
 
 // TripDateFilterBarProps.tsx

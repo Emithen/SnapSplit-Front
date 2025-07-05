@@ -10,6 +10,7 @@ import FullScreenModal from '@/shared/components/modal/FullScreenModal';
 const BottomSheetTrigger = ({ total }: { total: number }) => {
   const [open, setOpen] = useState(false);
 
+  // TODO: BottomNavBar fixed 제거 시 포지션 꼬이는 지 확인해보기
   return (
     <>
       <div

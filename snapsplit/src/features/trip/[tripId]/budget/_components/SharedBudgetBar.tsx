@@ -1,12 +1,23 @@
+'use client';
+
 import { SharedBudgetBarProps } from '../type';
 import { useCurrencySymbol } from '@/shared/utils/useCurrencySymbol';
 import rightArrow from '@public/svg/rightArrow.svg';
 import Image from 'next/image';
 import devider from '@public/svg/devider-2-green.svg';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
+const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
+  const router = useRouter();
+
+  const handleClickAdd = () => {
+    router.push(`/trip/${tripId}/budget/expense-add`);
+  };
+
+  const handleClickRemove = () => {
+    router.push(`/trip/${tripId}/budget/expense-remove`);
+  };
 
   if (!totalShared) {
     return <div>예산 정보를 불러올 수 없습니다.</div>;
@@ -19,9 +30,9 @@ const SharedBudgetBar = ({ totalShared }: SharedBudgetBarProps) => {
           <div className="w-full flex flex-row justify-between items-center text-green text-sm pb-1">
             <p>공동경비 잔액</p>
             <div className="flex flex-row gap-3">
-              <Link href="#">빼기</Link>
+              <button onClick={handleClickRemove}>빼기</button>
               <Image src={devider} alt="devider" width={2} height={20} />
-              <Link href="#">추가하기</Link>
+              <button onClick={handleClickAdd}>추가하기</button>
             </div>
           </div>
           <div className="flex flex-row w-full">

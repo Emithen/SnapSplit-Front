@@ -58,7 +58,7 @@ function SnapFolderModal({ isOpen, onClose }: SnapFolderModalProps) {
       </div>
 
       {filterOpen && (
-        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
+        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)} position="bottom">
           <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
         </OverlayModal>
       )}
