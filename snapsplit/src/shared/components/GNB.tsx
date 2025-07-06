@@ -3,7 +3,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
-export default function BottomNavBar() {
+export default function GNB() {
   const pathname = usePathname();
   const router = useRouter();
   const { tripId } = useParams();
