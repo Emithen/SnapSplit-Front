@@ -9,13 +9,13 @@ export default function GNB() {
   const { tripId } = useParams();
 
   const tabs = [
-    { label: 'BUDGET', iconPath: '/svg/budget.svg', path: `/trip/${tripId}/budget` },
-    { label: 'SNAP', iconPath: '/svg/snap.svg', path: `/trip/${tripId}/snap` },
-    { label: 'SPLIT', iconPath: '/svg/split.svg', path: `/trip/${tripId}/split` },
+    { label: 'BUDGET', iconPath: '/svg/budget-grey.svg', iconPathActive: '/svg/budget-green.svg', path: `/trip/${tripId}/budget` },
+    { label: 'SNAP', iconPath: '/svg/snap-grey.svg', iconPathActive: '/svg/snap-green.svg', path: `/trip/${tripId}/snap` },
+    { label: 'SPLIT', iconPath: '/svg/split-grey.svg', iconPathActive: '/svg/split-green.svg', path: `/trip/${tripId}/split` },
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full h-15 max-w-[415px] lg:max-w-[360px] border-t border-grey-250 bg-white z-navbar">
+    <nav className="fixed bottom-0 h-15 display-w-full border-t border-grey-250 bg-white z-navbar">
       <div className="flex w-full items-center py-[9px]">
         {tabs.map((tab) => {
           const isActive = pathname === tab.path;
@@ -23,19 +23,28 @@ export default function GNB() {
             <button
               key={tab.label}
               onClick={() => router.push(tab.path)}
-              className="flex flex-col items-center w-full text-xs"
+              className="flex flex-col items-center w-full"
             >
               <div className="w-6 h-6 flex items-center justify-center">
-                <Image
-                  src={tab.iconPath}
-                  alt={`${tab.label} icon`}
-                  width={24}
-                  height={24}
-                  unoptimized
-                  className={isActive ? 'opacity-100' : 'opacity-40'}
-                />
+                {isActive ? (
+                  <Image
+                    src={tab.iconPathActive}
+                    alt={`${tab.label} icon`}
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                ) : (
+                  <Image
+                    src={tab.iconPath}
+                    alt={`${tab.label} icon`}
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                )}
               </div>
-              <span className={isActive ? 'text-black font-semibold' : 'text-grey-450'}>{tab.label}</span>
+              <span className={`text-caption-1 ${isActive ? 'text-green' : 'text-grey-550'}`}>{tab.label}</span>
             </button>
           );
         })}
