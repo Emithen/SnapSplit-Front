@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         pretendard: ['Pretendard', 'sans-serif'],
+        cal: ['var(--font-cal-sans)']
       },
       fontSize: {
         'head-0': ['24px', { lineHeight: '36px', letterSpacing: '0', fontWeight: '600' }],
