@@ -127,7 +127,7 @@ const LogSection = () => {
         <div className="flex items-center justify-start">
           <p className="text-body-1 text-grey-1000">여행 준비</p>
         </div>
-        {beforeTripData.map((item, index) =>
+        {beforeTripData.map((item) =>
           item.entries.map((entry, entryIndex) => (
             <LogItem
               key={entryIndex}
