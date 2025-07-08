@@ -6,6 +6,7 @@ import rightArrow from '@public/svg/rightArrow.svg';
 import Image from 'next/image';
 import devider from '@public/svg/devider-2-green.svg';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
   const Currencysymbol = useCurrencySymbol(totalShared[0].totalSharedCurrency);
@@ -35,12 +36,14 @@ const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
               <button onClick={handleClickAdd}>추가하기</button>
             </div>
           </div>
-          <div className="flex flex-row w-full">
+          <div className="flex flex-row w-full items-center">
             <p className="text-head-0 text-black">
               {Currencysymbol}
               {totalShared[0].totalSharedAmount.toLocaleString()}
             </p>
-            <Image alt=">" src={rightArrow} width={25} height={25} />
+            <Link href={`/trip/${tripId}/budget/detail`}>
+              <Image alt=">" src={rightArrow} width={25} height={25} />
+            </Link>
           </div>
           <p className="text-body-2 text-grey-550 w-full">지금까지 쇼핑에 150,000원 썼어요!</p>
         </div>

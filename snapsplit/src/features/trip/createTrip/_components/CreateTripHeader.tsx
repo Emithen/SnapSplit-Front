@@ -7,11 +7,11 @@ const CreateTripHeader = ({ step, onPrev }: CreateTripHeaderProps) => {
     <header className="px-5 py-3">
       {step <= 1 ? (
         <Link href="/home">
-          <Image src="/svg/arrow-left-grey-1000.svg" alt="back" aria-label="홈으로" />
+          <Image src="/svg/arrow-left-grey-850.svg" alt="back" aria-label="홈으로" />
         </Link>
       ) : (
         <button onClick={onPrev} aria-label="이전 단계로 이동">
-          <Image src="/svg/arrow-left-grey-1000.svg" alt="back" />
+          <Image src="/svg/arrow-left-grey-850.svg" alt="back" />
         </button>
       )}
     </header>

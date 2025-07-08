@@ -57,7 +57,7 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
         <h2 className="text-label-1">{format(currentMonth, 'yyyy년 M월')}</h2>
         <div className="flex items-center gap-3">
           <button onClick={handlePrevMonth}>
-            <Image alt="arrow" src="/svg/arrow-left-grey-1000.svg" width={24} height={24} />
+            <Image alt="arrow" src="/svg/arrow-left-grey-850.svg" width={24} height={24} />
           </button>
           <button onClick={handleNextMonth}>
             <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} />

@@ -52,7 +52,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
     <div className="w-full h-full pb-15 flex flex-col items-center bg-white">
       <div className="flex w-full h-12 items-center justify-between px-5 py-3">
         <button onClick={() => router.back()}>
-          <Image alt="back" src="/svg/arrow-left-grey-1000.svg" />
+          <Image alt="back" src="/svg/arrow-left-grey-850.svg" />
         </button>
         <p className="text-label-1">{isAdd ? '경비 추가하기' : '경비 빼기'}</p>
         <div className="w-6 h-6" />
