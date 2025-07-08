@@ -3,6 +3,7 @@
 
 import React from 'react';
 import LogItem from './LogItem';
+import { useDragScroll } from '@/shared/utils/useDragScroll';
 
 type LogData = {
   day: string;
@@ -79,11 +80,48 @@ const mockData: LogData[] = [
       },
     ],
   },
+  {
+    day: 'Day 3',
+    date: '5.23/수',
+    entries: [
+      {
+        type: 'expense',
+        label: '지출 내용',
+        detail: '지출 상세',
+        amount: -500,
+        currency: '€',
+        krwEquivalent: '875,656',
+      },
+    ],
+  },
+  {
+    day: 'Day 4',
+    date: '5.24/목',
+    entries: [
+      {
+        type: 'expense',
+        label: '지출 내용',
+        detail: '지출 상세',
+        amount: -500,
+        currency: '€',
+        krwEquivalent: '875,656',
+      },
+    ],
+  },
 ];
 
 const LogSection = () => {
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y');
+
   return (
-    <div className="flex flex-col items-center px-5 py-5 gap-6">
+    <div
+      ref={scrollRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      className="flex-1 flex flex-col items-center px-5 py-5 gap-6 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar"
+    >
       {/* 여행 준비 */}
       <div className="w-full">
         <div className="flex items-center justify-start">
