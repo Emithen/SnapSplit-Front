@@ -26,7 +26,7 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [currency, setCurrency] = useState<string>('미국 - USD(달러)');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isFormDataReady, setIsFormDataReady] = useState(false);
   const router = useRouter();

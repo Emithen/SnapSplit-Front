@@ -1,24 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay, addDays } from 'date-fns';
 import Image from 'next/image';
 
 type CalendarProps = {
-  selectedDate: Date | null;
-  setSelectedDate: (date: Date | null) => void;
+  selectedDate: Date;
+  setSelectedDate: (date: Date) => void;
 };
 
 export default function Calendar({ selectedDate, setSelectedDate }: CalendarProps) {
-  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(selectedDate || new Date()));
-
-  const handlePrevMonth = () => {
-    setCurrentMonth(addMonths(currentMonth, -1));
-  };
-
-  const handleNextMonth = () => {
-    setCurrentMonth(addMonths(currentMonth, 1));
-  };
+  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(selectedDate));
 
   const generateDates = () => {
     const start = startOfMonth(currentMonth);
@@ -45,11 +37,15 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
     return [...prevDates, ...currentDates, ...nextDates];
   };
 
-  useEffect(() => {
-    if (!selectedDate) {
-      setSelectedDate(new Date());
-    }
-  }, [selectedDate, setSelectedDate]);
+  const dates = useMemo(() => generateDates(), [currentMonth]);
+
+  const handlePrevMonth = () => {
+    setCurrentMonth(addMonths(currentMonth, -1));
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonth(addMonths(currentMonth, 1));
+  };
 
   return (
     <div className="flex flex-col items-center justify-center gap-2 py-4 bg-white rounded-2xl w-full">
@@ -77,7 +73,7 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
             {day}
           </div>
         ))}
-        {generateDates().map((date, index) => {
+        {dates.map((date, index) => {
           if (!date) return null;
 
           const isSelected = selectedDate && isSameDay(date, selectedDate);
