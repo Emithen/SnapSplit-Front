@@ -11,7 +11,7 @@ interface SortFilterBarProps {
 
 export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters }: SortFilterBarProps) {
   return (
-    <div className="display-fixed min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto">
+    <div className="display-fixed display-w-full">
       <div className="flex items-center justify-between w-full mb-auto px-5 py-4">
         <div className="flex flex-col">
           <FilterTagContainer filters={filters} />
