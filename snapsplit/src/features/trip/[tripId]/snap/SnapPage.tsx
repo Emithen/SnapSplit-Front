@@ -21,6 +21,7 @@ export default function SnapPage() {
 
   const [activeTab, setActiveTab] = useState<ActiveTab>('전체');
   const [showTopButton, setShowTopButton] = useState(false);
+  const [scrollToTop, setScrollToTop] = useState<(() => void) | null>(null);
 
   return (
     <div className="flex flex-col h-screen">
@@ -31,9 +32,13 @@ export default function SnapPage() {
       <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* 컨텐츠 영역 */}
-      {activeTab === '전체' ? <BaseTabView setShowTopButton={setShowTopButton} /> : <FolderTabView />}
+      {activeTab === '전체' ? (
+        <BaseTabView setShowTopButton={setShowTopButton} setScrollToTop={setScrollToTop} />
+      ) : (
+        <FolderTabView />
+      )}
       <FloatingModal>
-        <UploadButton showTopButton={showTopButton} inputRef={fileInputRef} />
+        <UploadButton showTopButton={showTopButton} inputRef={fileInputRef} scrollToTop={scrollToTop} />
       </FloatingModal>
       <input
         type="file"

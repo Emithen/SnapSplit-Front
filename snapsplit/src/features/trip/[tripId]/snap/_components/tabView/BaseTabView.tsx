@@ -9,6 +9,7 @@ import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBo
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
+import { useEffect } from 'react';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -34,9 +35,10 @@ const testImages: UploadedImage[] = [
 
 type BaseTabViewProps = {
   setShowTopButton: (show: boolean) => void;
+  setScrollToTop: (fn: () => void) => void;
 };
 
-export default function BaseTabView({ setShowTopButton }: BaseTabViewProps) {
+export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTabViewProps) {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
@@ -58,6 +60,14 @@ export default function BaseTabView({ setShowTopButton }: BaseTabViewProps) {
       filters.locations.length === 0 || filters.locations.some((l) => img.tags.locations.includes(l));
     return matchDay && matchPeople && matchLocation;
   });
+
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const scrollToTop = () => {
+      scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    setScrollToTop(() => scrollToTop);
+  }, [scrollRef, setScrollToTop]);
 
   return (
     <div

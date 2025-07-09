@@ -31,7 +31,9 @@ const SharedBudgetDetailPage = () => {
               <div className="px-2 py-0.5 bg-primary rounded-full text-body-1 text-white">대표통화</div>
               <div className="text-body-2">{selectedCurrency}</div>
             </div>
-            <div onClick={() => setIsOpen(!isOpen)} className="text-body-2 text-grey-450">변경</div>
+            <div onClick={() => setIsOpen(!isOpen)} className="text-body-2 text-grey-450">
+              변경
+            </div>
           </div>
         </div>
       </div>
@@ -40,10 +42,15 @@ const SharedBudgetDetailPage = () => {
 
       <BudgetOverview />
 
-      {isOpen && 
-      <OverlayModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <CurrencyBottomSheet onClose={() => setIsOpen(false)} selectedCurrency={selectedCurrency} setCurrency={setSelectedCurrency} />
-      </OverlayModal>}
+      {isOpen && (
+        <OverlayModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <CurrencyBottomSheet
+            onClose={() => setIsOpen(false)}
+            selectedCurrency={selectedCurrency}
+            setCurrency={setSelectedCurrency}
+          />
+        </OverlayModal>
+      )}
     </div>
   );
 };
