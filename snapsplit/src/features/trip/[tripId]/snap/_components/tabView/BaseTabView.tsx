@@ -9,7 +9,6 @@ import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBo
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
-import FloatingModal from '@/shared/components/modal/FloatingModal';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -67,16 +66,17 @@ export default function BaseTabView({ setShowTopButton }: BaseTabViewProps) {
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
-      className="flex-1 flex flex-col p-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
+      className="flex-1 flex flex-col px-5 pb-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
     >
-      <FloatingModal>
-        <SortFilterBar
-          selectedSort={selectedSort}
-          onSortOpen={() => setSortOpen(true)}
-          onFilterOpen={() => setFilterOpen(true)}
-          filters={filters}
-        />
-      </FloatingModal>
+      <SortFilterBar
+        selectedSort={selectedSort}
+        onSortOpen={() => {
+          setSortOpen(true);
+          console.log('sortOpen');
+        }}
+        onFilterOpen={() => setFilterOpen(true)}
+        filters={filters}
+      />
 
       <PhotoGrid images={filteredImages} />
 
