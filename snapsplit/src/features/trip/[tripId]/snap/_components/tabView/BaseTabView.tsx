@@ -33,7 +33,11 @@ const testImages: UploadedImage[] = [
   },
 ];
 
-export default function BaseTabView() {
+type BaseTabViewProps = {
+  setShowTopButton: (show: boolean) => void;
+};
+
+export default function BaseTabView({ setShowTopButton }: BaseTabViewProps) {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
@@ -43,7 +47,10 @@ export default function BaseTabView() {
     locations: [],
   });
 
-  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y');
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y', (scrollTop) => {
+    console.log(scrollTop);
+    setShowTopButton(scrollTop > 100);
+  });
 
   const filteredImages = testImages.filter((img) => {
     const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));

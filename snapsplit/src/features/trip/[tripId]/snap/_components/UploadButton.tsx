@@ -3,14 +3,26 @@ import Image from 'next/image';
 
 interface UploadButtonProps {
   inputRef: RefObject<HTMLInputElement | null>;
+  showTopButton: boolean;
 }
 
-export default function UploadButton({ inputRef }: UploadButtonProps) {
+export default function UploadButton({ inputRef, showTopButton }: UploadButtonProps) {
   return (
-    <div className="flex items-center mt-auto mb-18 ml-auto mr-5 pointer-events-auto bg-primary pl-2 pr-3 h-11 rounded-full shadow-[0px_0px_2px_0px_rgba(34,34,34,0.25)]">
-      <button onClick={() => inputRef.current?.click()} className="flex items-center gap-0.5">
+    <div className="flex flex-col items-center gap-2 mt-auto mb-18 ml-auto mr-5 pointer-events-auto ">
+      {showTopButton && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center justify-center gap-0.5 px-2 bg-primary min-w-11 h-11 rounded-full shadow-[0px_0px_2px_0px_rgba(34,34,34,0.25)]"
+        >
+          <Image src="/svg/arrow-top-white.svg" alt="arrowTop" width={24} height={24} />
+        </button>
+      )}
+      <button
+        onClick={() => inputRef.current?.click()}
+        className="flex items-center justify-center gap-0.5 px-2 bg-primary min-w-11 h-11 rounded-full shadow-[0px_0px_2px_0px_rgba(34,34,34,0.25)]"
+      >
         <Image src="/svg/plus-upload.svg" alt="plus" width={24} height={24} />
-        <div className="text-body-1 text-white">사진 업로드</div>
+        {!showTopButton && <div className="pr-1 text-body-1 text-white">사진 업로드</div>}
       </button>
     </div>
   );
