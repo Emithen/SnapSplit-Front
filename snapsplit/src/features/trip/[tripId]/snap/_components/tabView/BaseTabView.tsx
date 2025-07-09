@@ -48,10 +48,11 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
     locations: [],
   });
 
-  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y', (scrollTop) => {
-    console.log(scrollTop);
-    setShowTopButton(scrollTop > 100);
-  });
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp, onTouchStart, onTouchMove, onTouchEnd, onTouchCancel } =
+    useDragScroll('y', (scrollTop) => {
+      console.log(scrollTop);
+      setShowTopButton(scrollTop > 100);
+    });
 
   const filteredImages = testImages.filter((img) => {
     const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));
@@ -75,6 +76,10 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onTouchCancel={onTouchCancel}
       onMouseLeave={onMouseUp}
       className="flex-1 flex flex-col px-5 pb-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
     >
