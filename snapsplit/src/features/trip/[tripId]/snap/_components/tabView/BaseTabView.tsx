@@ -8,6 +8,8 @@ import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBotto
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
+import { useDragScroll } from '@/shared/utils/useDragScroll';
+import FloatingModal from '@/shared/components/modal/FloatingModal';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -41,6 +43,8 @@ export default function BaseTabView() {
     locations: [],
   });
 
+  const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y');
+
   const filteredImages = testImages.filter((img) => {
     const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));
     const matchPeople = filters.people.length === 0 || filters.people.some((p) => img.tags.people.includes(p));
@@ -50,13 +54,22 @@ export default function BaseTabView() {
   });
 
   return (
-    <div className="flex flex-col p-5 gap-5">
-      <SortFilterBar
-        selectedSort={selectedSort}
-        onSortOpen={() => setSortOpen(true)}
-        onFilterOpen={() => setFilterOpen(true)}
-        filters={filters}
-      />
+    <div
+      ref={scrollRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      className="flex-1 flex flex-col p-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
+    >
+      <FloatingModal>
+        <SortFilterBar
+          selectedSort={selectedSort}
+          onSortOpen={() => setSortOpen(true)}
+          onFilterOpen={() => setFilterOpen(true)}
+          filters={filters}
+        />
+      </FloatingModal>
 
       <PhotoGrid images={filteredImages} />
 

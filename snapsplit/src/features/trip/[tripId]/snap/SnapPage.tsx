@@ -22,7 +22,7 @@ export default function SnapPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('전체');
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-screen">
       <div className="bg-white">
         <TripHeader />
         <TripInfo tripName={'스냅스플릿 연구팟'} countries={countries} startDate={'2025.4.7'} endDate={'4.12'} />
