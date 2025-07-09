@@ -48,11 +48,17 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
     locations: [],
   });
 
-  const { scrollRef, onMouseDown, onMouseMove, onMouseUp, onTouchStart, onTouchMove, onTouchEnd, onTouchCancel } =
-    useDragScroll('y', (scrollTop) => {
-      console.log(scrollTop);
-      setShowTopButton(scrollTop > 100);
-    });
+  const {
+    scrollRef,
+    onMouseDown,
+    onMouseMove,
+    onMouseUp,
+    onMouseLeave,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    onTouchCancel,
+  } = useDragScroll('y');
 
   const filteredImages = testImages.filter((img) => {
     const matchDay = filters.days.length === 0 || filters.days.some((d) => img.tags.days.includes(d));
@@ -62,6 +68,7 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
     return matchDay && matchPeople && matchLocation;
   });
 
+  // 탑 버튼 이벤트 설정
   useEffect(() => {
     if (!scrollRef.current) return;
     const scrollToTop = () => {
@@ -70,17 +77,32 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
     setScrollToTop(() => scrollToTop);
   }, [scrollRef, setScrollToTop]);
 
+  // 브라우저에서 스크롤 이벤트 직접 감지
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      setShowTopButton(el.scrollTop > 100);
+    };
+    el.addEventListener('scroll', handleScroll);
+
+    return () => {
+      el.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollRef, setShowTopButton]);
+
   return (
     <div
       ref={scrollRef}
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
+      onMouseLeave={onMouseLeave}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       onTouchCancel={onTouchCancel}
-      onMouseLeave={onMouseUp}
       className="flex-1 flex flex-col px-5 pb-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
     >
       <SortFilterBar

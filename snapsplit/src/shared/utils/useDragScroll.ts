@@ -1,11 +1,13 @@
 // 마우스와 터치 드래그 커스텀 훅
+// TODO: 호출 컴포넌트에서 변경 사항 적용
+
 import { useRef } from 'react';
 
 type ScrollDirection = 'x' | 'y';
 
 type DragEvent = React.MouseEvent | React.TouchEvent;
 
-export const useDragScroll = (direction: ScrollDirection = 'x', onScrollChange?: (scroll: number) => void) => {
+export const useDragScroll = (direction: ScrollDirection = 'x') => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const start = useRef(0);
@@ -40,10 +42,6 @@ export const useDragScroll = (direction: ScrollDirection = 'x', onScrollChange?:
     } else {
       scrollRef.current.scrollTop = scrollStart.current - walk;
     }
-
-    if (onScrollChange) {
-      onScrollChange(scrollRef.current?.scrollLeft || scrollRef.current?.scrollTop || 0);
-    }
   };
 
   const handleDragEnd = () => {
@@ -55,6 +53,7 @@ export const useDragScroll = (direction: ScrollDirection = 'x', onScrollChange?:
     onMouseDown: handleDragStart,
     onMouseMove: handleDragMove,
     onMouseUp: handleDragEnd,
+    onMouseLeave: handleDragEnd,
     onTouchStart: handleDragStart,
     onTouchMove: handleDragMove,
     onTouchEnd: handleDragEnd,
