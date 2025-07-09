@@ -26,12 +26,14 @@ const SharedBudgetBar = ({ totalShared, tripId }: SharedBudgetBarProps) => {
               <Link href={`/trip/${tripId}/budget/expense/add`}>추가하기</Link>
             </div>
           </div>
-          <div className="flex flex-row w-full">
+          <div className="flex flex-row w-full items-center">
             <p className="text-head-0 text-black">
               {Currencysymbol}
               {totalShared[0].totalSharedAmount.toLocaleString()}
             </p>
-            <Image alt=">" src={rightArrow} width={25} height={25} />
+            <Link href={`/trip/${tripId}/budget/detail`}>
+              <Image alt=">" src={rightArrow} width={25} height={25} />
+            </Link>
           </div>
           <p className="text-body-2 text-grey-550 w-full">지금까지 쇼핑에 150,000원 썼어요!</p>
         </div>
