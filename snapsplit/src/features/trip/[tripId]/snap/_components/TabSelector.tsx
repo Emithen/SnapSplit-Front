@@ -10,18 +10,13 @@ interface TabSelectorProps {
 const tabs = ['전체', '폴더별'];
 
 export default function TabSelector({ activeTab, setActiveTab }: TabSelectorProps) {
-
   return (
-    <div className="flex h-11 border-b border-grey-250 text-body-1">
+    <div className="flex h-11">
       {tabs.map((tab) => (
         <button
           key={tab}
           onClick={() => setActiveTab(tab as ActiveTab)}
-          className={`transition-colors duration-200 w-full ${
-            activeTab === tab
-              ? 'border-b-1 border-black'
-              : ''
-          }`}
+          className={`w-full text-body-1 ${activeTab === tab ? 'border-b-2 border-primary text-primary' : 'text-grey-1000'}`}
         >
           {tab}
         </button>
