@@ -77,7 +77,7 @@ export default function Calendar({
         {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
           <div
             key={day}
-            className={`flex w-11 h-11 items-center justify-center text-body-1 ${
+            className={`flex w-11 h-11 items-center justify-center text-body-3 ${
               day === '일' ? 'text-[#FD7564]' : 'text-grey-550'
             }`}
           >
@@ -97,7 +97,7 @@ export default function Calendar({
                   className="relative flex w-11 h-11 p-1 rounded-full items-center justify-center"
                 >
                   <span
-                    className={`relative z-10 text-body-1 ${
+                    className={`relative z-10 text-body-3 ${
                       !isCurrentMonth ? 'text-grey-550' : isSelected ? 'text-white' : 'text-black'
                     }`}
                   >
@@ -125,7 +125,7 @@ export default function Calendar({
                     isInRange ? 'bg-pale_green w-11' : 'bg-transparent w-10 rounded-full'
                   }`}>
                     <span
-                      className={`relative z-10 text-body-1 ${
+                      className={`relative z-10 text-body-3 ${
                         !isCurrentMonth
                           ? 'text-grey-550'
                           : isSelectedStart || isSelectedEnd

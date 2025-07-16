@@ -17,6 +17,7 @@ module.exports = {
         'label-2': ['16px', { lineHeight: '24px', letterSpacing: '-0.015em', fontWeight: '500' }],
         'body-1': ['14px', { lineHeight: '21px', letterSpacing: '-0.015em', fontWeight: '600' }],
         'body-2': ['14px', { lineHeight: '21px', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'body-3': ['14px', { lineHeight: '21px', letterSpacing: '-0.015em', fontWeight: '500' }],
         'caption-1': ['12px', { lineHeight: '18px', letterSpacing: '-0.015em', fontWeight: '500' }],
         'caption-2': ['12px', { lineHeight: '18px', letterSpacing: '-0.015em', fontWeight: '400' }],
       },
