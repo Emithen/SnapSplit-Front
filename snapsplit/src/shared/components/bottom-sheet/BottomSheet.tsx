@@ -14,8 +14,8 @@ const BottomSheet = ({ isOpen, onClose, children }: BottomSheetProps) => {
   const controls = useDragControls();
 
   const animateAndClose = async () => {
-    await animate(y, 500, { type: 'tween', duration: 0.2, ease: 'easeIn' });
-    onClose?.();
+    await animate(y, window.innerHeight, { type: 'tween', duration: 0.2, ease: 'easeIn' });
+    onClose();
   };
 
   return (
