@@ -48,7 +48,7 @@ export default function Calendar({ selectedDate, setSelectedDate }: CalendarProp
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 py-4 bg-white rounded-2xl w-full">
+    <div className="flex flex-col items-center w-full px-1.5 py-4 gap-2">
       <div className="flex items-center justify-between w-70">
         <h2 className="text-label-1">{format(currentMonth, 'yyyy년 M월')}</h2>
         <div className="flex items-center gap-3">
