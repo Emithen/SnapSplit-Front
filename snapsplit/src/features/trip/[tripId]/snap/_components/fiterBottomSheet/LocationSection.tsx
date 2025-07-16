@@ -4,13 +4,13 @@ function LocationSection({ filters, setFilters }: { filters: FilterState; setFil
   const locations = ['런던', '파리', '취리히'];
 
   return (
-    <div>
-      <p className="text-title-1">장소</p>
-      <div className="flex gap-2 flex-wrap pt-3">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-3 text-grey-1000">장소</p>
+      <div className="flex gap-2 flex-wrap">
         {locations.map(loc => (
           <button
             key={loc}
-            className={`px-3 h-8 rounded-full text-body-2 ${filters.locations.includes(loc) ? 'bg-black text-white' : 'bg-grey-150'}`}
+            className={`px-3 py-0.75 rounded-[20px] text-body-3 ${filters.locations.includes(loc) ? 'bg-primary text-white' : 'bg-white text-grey-450 box-border border-1 border-grey-250'}`}
             onClick={() =>
               setFilters((prev) => ({
                 ...prev,

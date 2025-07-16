@@ -7,9 +7,9 @@ import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
-import OverlayModal from '@/shared/components/modal/OverlayModal';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
 import { useEffect } from 'react';
+import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
 
 // 테스트 데이터
 const testImages: UploadedImage[] = [
@@ -118,19 +118,19 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
       <PhotoGrid images={filteredImages} />
 
       {sortOpen && (
-        <OverlayModal isOpen={sortOpen} onClose={() => setSortOpen(false)} position="bottom">
+        <BottomSheet isOpen={sortOpen} onClose={() => setSortOpen(false)}>
           <SortBottomSheet
             selectedSort={selectedSort}
             onSelectSort={(opt) => setSelectedSort(opt)}
             onClose={() => setSortOpen(false)}
           />
-        </OverlayModal>
+        </BottomSheet>
       )}
 
       {filterOpen && (
-        <OverlayModal isOpen={filterOpen} onClose={() => setFilterOpen(false)} position="bottom">
+        <BottomSheet isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
           <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
-        </OverlayModal>
+        </BottomSheet>
       )}
     </div>
   );

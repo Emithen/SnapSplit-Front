@@ -4,13 +4,13 @@ function PeopleSection({ filters, setFilters }: { filters: FilterState; setFilte
   const people = ['유빈', '지수', '나경', '연수'];
 
   return (
-    <div>
-      <p className="text-title-1">사람</p>
-      <div className="flex gap-2 flex-wrap pt-3">
+    <div className="flex flex-col gap-2">
+      <p className="text-body-3 text-grey-1000">사람</p>
+      <div className="flex gap-2 flex-wrap">
         {people.map(name => (
           <button
             key={name}
-            className={`px-3 h-8 rounded-full text-body-2 ${filters.people.includes(name) ? 'bg-black text-white' : 'bg-grey-150'}`}
+            className={`px-3 py-0.75 rounded-[20px] text-body-3 ${filters.people.includes(name) ? 'bg-primary text-white' : 'bg-white text-grey-450 box-border border-1 border-grey-250'}`}
             onClick={() =>
               setFilters((prev) => ({
                 ...prev,
