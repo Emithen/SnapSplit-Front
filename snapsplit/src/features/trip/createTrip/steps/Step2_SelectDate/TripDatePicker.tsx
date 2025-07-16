@@ -1,5 +1,5 @@
 import Calendar from '@/shared/components/Calendar';
-import { format } from 'date-fns';
+import { format, isSameDay } from 'date-fns';
 
 type TripDatePickerProps = {
   startDate: Date | null;
@@ -35,7 +35,7 @@ const TripDatePicker = ({ startDate, endDate, onStartDateChange, onEndDateChange
                 if (date < startDate) {
                     onEndDateChange(startDate);
                     onStartDateChange(date);
-                } else if (date === startDate) {
+                } else if (isSameDay(date, startDate)) {
                     onStartDateChange(null);
                     onEndDateChange(null);
                 } else {

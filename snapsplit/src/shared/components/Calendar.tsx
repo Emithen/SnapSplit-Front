@@ -115,14 +115,14 @@ export default function Calendar({
                     </span>
                     {/* 오른쪽 반 (예: startDate용) */}
                     {isSelectedStart && selectedRange?.end !== null && (
-                      <span className="absolute right-0 h-10 w-1/2 bg-pale_green z-0" />
+                      <span className="absolute right-0 h-10 w-1/2 bg-pale_green" />
                     )}
                     {/* 왼쪽 반 (예: endDate용) */}
                     {isSelectedEnd && selectedRange?.start !== null && (
-                      <span className="absolute left-0 h-10 w-1/2 bg-pale_green z-0" />
+                      <span className="absolute left-0 h-10 w-1/2 bg-pale_green" />
                     )}
                     {isSelectedStart || isSelectedEnd ? (
-                      <span className="absolute w-10 h-10 rounded-full bg-primary z-1" />
+                      <span className="absolute w-10 h-10 rounded-full bg-primary" />
                     ) : null}
                   </div>
                 </button>
