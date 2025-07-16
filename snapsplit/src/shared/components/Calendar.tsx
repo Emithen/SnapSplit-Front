@@ -1,13 +1,9 @@
-/*
-  공용 캘린더 컴포넌트를 구성하기 위해 핵심 아이디어는 "선택 로직을 캘린더 내부에서 고정하지 말고, 외부로 위임"하는 것이다.
-  즉, "어떻게 선택되었는가?"를 캘린더가 판단하는 것이 아니라, "언제, 어떤 날짜가 선택되었는지"를 외부에 알려주는 구조로 만들자.
-*/
-
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { addMonths, format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, isSameDay, addDays } from 'date-fns';
+import { addMonths, format, isSameDay, isSameMonth, startOfMonth } from 'date-fns';
 import Image from 'next/image';
+import { generateDates } from '@/shared/utils/calendar';
 
 // 선택 타입 정의
 export type CalendarMode = 'single' | 'range';
@@ -17,7 +13,6 @@ export type CalendarProps = {
   selectedDate?: Date;
   selectedRange?: { start: Date | null; end: Date | null };
   onSelectDate: (date: Date) => void;
-  currentMonth?: Date; // 초기 월 (optional)
 };
 
 export default function Calendar({
@@ -25,38 +20,18 @@ export default function Calendar({
   selectedDate,
   selectedRange,
   onSelectDate,
-  currentMonth: initialMonth,
 }: CalendarProps) {
-  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(initialMonth || selectedDate || new Date()));
+  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(selectedDate || new Date()));
+  const dates = useMemo(() => generateDates(currentMonth), [currentMonth]); // generateDates(currentMonth: Date) -> 이번 달 페이지의 모든 날짜를 반환
+  const isCurrentMonthPage = useMemo(() => isSameMonth(currentMonth, new Date()), [currentMonth]);
+  
+  const handlePrevMonth = () => {
+    if (isCurrentMonthPage) {
+      return;
+    } // 현재 페이지가 현재 달이면 이전 달로 이동하지 않음
 
-  const generateDates = () => {
-    const start = startOfMonth(currentMonth);
-    const end = endOfMonth(currentMonth);
-    const startDay = getDay(start);
-
-    const prevMonthEnd = endOfMonth(addMonths(start, -1));
-    const prevDates =
-      startDay === 0
-        ? []
-        : eachDayOfInterval({
-            start: addDays(prevMonthEnd, -startDay + 1),
-            end: prevMonthEnd,
-          });
-
-    const currentDates = eachDayOfInterval({ start, end });
-
-    const totalCells = prevDates.length + currentDates.length;
-    const nextDatesCount = (7 - (totalCells % 7)) % 7;
-
-    const nextMonthStart = startOfMonth(addMonths(start, 1));
-    const nextDates = Array.from({ length: nextDatesCount }, (_, i) => addDays(nextMonthStart, i));
-
-    return [...prevDates, ...currentDates, ...nextDates];
+    setCurrentMonth(addMonths(currentMonth, -1));
   };
-
-  const dates = useMemo(() => generateDates(), [currentMonth]);
-
-  const handlePrevMonth = () => setCurrentMonth(addMonths(currentMonth, -1));
   const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
 
   return (
@@ -65,7 +40,8 @@ export default function Calendar({
         <h2 className="text-label-1">{format(currentMonth, 'yyyy년 M월')}</h2>
         <div className="flex items-center gap-3">
           <button onClick={handlePrevMonth}>
-            <Image alt="arrow" src="/svg/arrow-left-grey-850.svg" width={24} height={24} />
+            {isCurrentMonthPage && <Image alt="arrow" src="/svg/arrow-left-grey-350.svg" width={24} height={24} />}
+            {!isCurrentMonthPage && <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} className="scale-x-[-1]" />}
           </button>
           <button onClick={handleNextMonth}>
             <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} />
@@ -78,7 +54,7 @@ export default function Calendar({
           <div
             key={day}
             className={`flex w-11 h-11 items-center justify-center text-body-3 ${
-              day === '일' ? 'text-[#FD7564]' : 'text-grey-550'
+              day === '일' ? 'text-status_error' : 'text-grey-550'
             }`}
           >
             {day}
@@ -98,7 +74,7 @@ export default function Calendar({
                 >
                   <span
                     className={`relative z-10 text-body-3 ${
-                      !isCurrentMonth ? 'text-grey-550' : isSelected ? 'text-white' : 'text-black'
+                      !isCurrentMonth ? 'text-grey-350' : isSelected ? 'text-white' : 'text-black'
                     }`}
                   >
                     {format(date, 'd')}
@@ -127,7 +103,7 @@ export default function Calendar({
                     <span
                       className={`relative z-10 text-body-3 ${
                         !isCurrentMonth
-                          ? 'text-grey-550'
+                          ? 'text-grey-350'
                           : isSelectedStart || isSelectedEnd
                             ? 'text-white'
                             : isInRange
@@ -138,12 +114,12 @@ export default function Calendar({
                       {format(date, 'd')}
                     </span>
                     {/* 오른쪽 반 (예: startDate용) */}
-                    {isSelectedStart && (
-                      <span className="absolute right-0 h-10 w-1/2 bg-green-100 z-0" />
+                    {isSelectedStart && selectedRange?.end !== null && (
+                      <span className="absolute right-0 h-10 w-1/2 bg-pale_green z-0" />
                     )}
                     {/* 왼쪽 반 (예: endDate용) */}
-                    {isSelectedEnd && (
-                      <span className="absolute left-0 h-10 w-1/2 bg-green-100 z-0" />
+                    {isSelectedEnd && selectedRange?.start !== null && (
+                      <span className="absolute left-0 h-10 w-1/2 bg-pale_green z-0" />
                     )}
                     {isSelectedStart || isSelectedEnd ? (
                       <span className="absolute w-10 h-10 rounded-full bg-primary z-1" />

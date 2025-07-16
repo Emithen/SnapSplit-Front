@@ -30,6 +30,7 @@ module.exports = {
         light_grey: '#F5F5F5',
         bg_green: '#DFF5EC',
         green: '#2ecd89',
+        status_error: '#FD7564',
         black: '#0C0D11',
         white: '#FFFFFF',
         grey: {
