@@ -1,10 +1,14 @@
 import Calendar from '@/shared/components/Calendar';
-import { useState } from 'react';
 import { format } from 'date-fns';
 
-const TripDatePicker = () => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+type TripDatePickerProps = {
+  startDate: Date | null;
+  endDate: Date | null;
+  onStartDateChange: (date: Date | null) => void;
+  onEndDateChange: (date: Date | null) => void;
+};
+
+const TripDatePicker = ({ startDate, endDate, onStartDateChange, onEndDateChange }: TripDatePickerProps) => {
 
   return (
     <div className="flex flex-col items-center gap-5 ">
@@ -25,14 +29,17 @@ const TripDatePicker = () => {
           selectedRange={{ start: startDate, end: endDate }}
           onSelectDate={(date) => {
             if (!startDate || (startDate && endDate)) {
-              setStartDate(date);
-              setEndDate(null);
+              onStartDateChange(date);
+              onEndDateChange(null);
             } else if (startDate && !endDate) {
                 if (date < startDate) {
-                    setEndDate(startDate);
-                    setStartDate(date);
+                    onEndDateChange(startDate);
+                    onStartDateChange(date);
+                } else if (date === startDate) {
+                    onStartDateChange(null);
+                    onEndDateChange(null);
                 } else {
-                    setEndDate(date);
+                    onEndDateChange(date);
                 }
             }
           }}
