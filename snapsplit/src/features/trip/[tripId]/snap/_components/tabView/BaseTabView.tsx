@@ -94,6 +94,7 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
         }}
         onFilterOpen={() => setFilterOpen(true)}
         filters={filters}
+        setFilters={setFilters}
       />
 
       {/* 상단 여백: 필터 태그가 있는 경우 108px, 없는 경우 64px */}

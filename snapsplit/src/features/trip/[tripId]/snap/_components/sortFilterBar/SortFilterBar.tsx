@@ -7,14 +7,15 @@ interface SortFilterBarProps {
   onSortOpen: () => void;
   onFilterOpen: () => void;
   filters: FilterState;
+  setFilters: (filters: FilterState) => void;
 }
 
-export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters }: SortFilterBarProps) {
+export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters, setFilters }: SortFilterBarProps) {
   return (
     <div className="display-fixed display-w-full">
       <div className="flex items-center justify-between gap-2 w-full mb-auto px-5 py-4">
         <div className="flex flex-col gap-3">
-          <FilterTagContainer filters={filters} />
+          <FilterTagContainer filters={filters} setFilters={setFilters} />
           <button
             onClick={onSortOpen}
             className="self-start flex items-center h-8 text-body-2 pl-3 pr-1 py-1 rounded-full bg-white border-1 border-grey-250"
