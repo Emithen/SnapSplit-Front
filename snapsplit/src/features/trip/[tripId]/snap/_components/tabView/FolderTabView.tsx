@@ -16,19 +16,16 @@ export default function FolderTabView() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="px-5 pt-6 pb-24">
-        <div className="grid grid-cols-2 gap-x-2 gap-y-5">
-      {folders.map(folder => (
-        <div
-          key={folder.id}
-          onClick={() => setIsOpen(true)}
-        >
-          {/* 썸네일 */}
-          <FolderThumbnailPreview />
-          {/* 폴더 이름 */}
-          <div className="flex justify-center items-center pt-2 h-8 text-body-1">{folder.name}</div>
-        </div>
-      ))}
+    <div className="px-5 pt-6 pb-24 bg-light_grey">
+      <div className="grid grid-cols-2 gap-x-2 gap-y-5">
+        {folders.map((folder) => (
+          <div key={folder.id} onClick={() => setIsOpen(true)}>
+            {/* 썸네일 */}
+            <FolderThumbnailPreview />
+            {/* 폴더 이름 */}
+            <div className="flex justify-center items-center pt-2 h-8 text-body-1">{folder.name}</div>
+          </div>
+        ))}
       </div>
       {isOpen && (
         <FullScreenModal>
