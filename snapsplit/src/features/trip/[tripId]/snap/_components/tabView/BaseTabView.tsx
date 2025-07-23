@@ -103,7 +103,7 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
       onTouchCancel={onTouchCancel}
-      className="flex-1 flex flex-col px-5 pb-5 gap-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
+      className="flex-1 flex flex-col px-5 pb-5 h-full overflow-y-auto scrollbar-hide scrollbar-hide::-webkit-scrollbar bg-light_grey"
     >
       <SortFilterBar
         selectedSort={selectedSort}
@@ -114,6 +114,9 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
         onFilterOpen={() => setFilterOpen(true)}
         filters={filters}
       />
+
+      {/* 상단 여백: 필터 태그가 있는 경우 108px, 없는 경우 64px */}
+      <div className={filters.days.length > 0 || filters.people.length > 0 || filters.locations.length > 0 ? "min-h-27" : "min-h-16"}/>
 
       <PhotoGrid images={filteredImages} />
 

@@ -12,8 +12,8 @@ function FilterTagContainer({ filters }: FilterTagContainerProps) {
     return (
       <>
         {isTagExist && (
-          <div className="flex gap-1.5 pb-3">
-            <button className="flex justify-center items-center bg-grey-450 w-7 h-7 rounded-full">
+          <div className="flex items-center gap-1.5 h-8">
+            <button className="flex justify-center items-center bg-primary w-7 h-7 rounded-full">
               <Image src="/svg/refresh.svg" alt="refresh" width={12} height={12} />
             </button>
             {filters.days.length > 0 && (

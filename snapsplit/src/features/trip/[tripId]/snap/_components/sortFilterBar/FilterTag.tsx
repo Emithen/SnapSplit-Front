@@ -4,7 +4,7 @@ type FilterTagProps = {
 
 function FilterTag({ label }: FilterTagProps) {
   return (
-    <div className="flex justify-center items-center bg-grey-450 px-3 h-7 rounded-full text-body-2 text-white">{label}</div>
+    <div className="flex justify-center items-center bg-primary px-3 h-7 rounded-full text-body-2 text-white">{label}</div>
   );
 }
 

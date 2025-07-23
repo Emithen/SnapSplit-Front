@@ -9,7 +9,7 @@ export default function PhotoGrid({ images }: PhotoGridProps) {
   const totalPhotos = 30;
 
   return (
-    <div className="grid grid-cols-3 gap-2 flex-1 pt-16 pb-15">
+    <div className="grid grid-cols-3 gap-2 flex-1 pb-15">
       {Array.from({ length: totalPhotos }).map((_, idx) => {
         const image = images[idx];
         return (
