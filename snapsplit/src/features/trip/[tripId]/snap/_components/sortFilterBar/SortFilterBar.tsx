@@ -12,7 +12,7 @@ interface SortFilterBarProps {
 export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters }: SortFilterBarProps) {
   return (
     <div className="display-fixed display-w-full">
-      <div className="flex items-center justify-between w-full mb-auto px-5 py-4">
+      <div className="flex items-center justify-between gap-2 w-full mb-auto px-5 py-4">
         <div className="flex flex-col gap-3">
           <FilterTagContainer filters={filters} />
           <button
@@ -24,7 +24,7 @@ export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, 
         </div>
         <button
           onClick={onFilterOpen}
-          className="self-start flex items-center w-8 h-8 p-1 bg-white rounded-full border-1 border-grey-250"
+          className="self-start flex-shrink-0 flex items-center w-8 h-8 p-1 bg-white rounded-full border-1 border-grey-250"
         >
           <Image src="/svg/filter-grey-650.svg" alt="filter" width={24} height={24} />
         </button>
