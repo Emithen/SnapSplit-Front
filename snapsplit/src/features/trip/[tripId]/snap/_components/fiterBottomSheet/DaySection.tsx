@@ -8,7 +8,7 @@ function DaySection({ filters, setFilters }: { filters: FilterState; setFilters:
         {Array.from({ length: 6 }).map((_, i) => (
           <button
             key={i}
-            className={`px-3 py-0.75 rounded-[20px] text-body-3 ${filters.days.includes(i + 1) ? 'bg-primary text-white' : 'bg-white text-grey-450 box-border border-1 border-grey-250'}`}
+            className={`h-[29px] px-3 py-0.75 rounded-[20px] text-body-3 border box-border ${filters.days.includes(i + 1) ? 'bg-primary text-white border-primary' : 'bg-white text-grey-450 border-grey-250'}`}
             onClick={() =>
               setFilters((prev) => ({
                 ...prev,

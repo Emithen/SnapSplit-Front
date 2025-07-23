@@ -10,7 +10,7 @@ function PeopleSection({ filters, setFilters }: { filters: FilterState; setFilte
         {people.map(name => (
           <button
             key={name}
-            className={`px-3 py-0.75 rounded-[20px] text-body-3 ${filters.people.includes(name) ? 'bg-primary text-white' : 'bg-white text-grey-450 box-border border-1 border-grey-250'}`}
+            className={`px-3 py-0.75 rounded-[20px] text-body-3 h-[29px] border box-border ${filters.people.includes(name) ? 'bg-primary text-white border-primary' : 'bg-white text-grey-450 border-grey-250'}`}
             onClick={() =>
               setFilters((prev) => ({
                 ...prev,
