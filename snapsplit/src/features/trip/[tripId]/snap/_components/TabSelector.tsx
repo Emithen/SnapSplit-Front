@@ -11,7 +11,7 @@ const tabs = ['전체', '폴더별'];
 
 export default function TabSelector({ activeTab, setActiveTab }: TabSelectorProps) {
   return (
-    <div className="flex h-11">
+    <div className="flex h-11 bg-white">
       {tabs.map((tab) => (
         <button
           key={tab}

@@ -24,7 +24,7 @@ export default function SnapPage() {
   const [scrollToTop, setScrollToTop] = useState<(() => void) | null>(null);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-light_grey">
       <div className="bg-white">
         <TripHeader />
         <TripInfo tripName={'스냅스플릿 연구팟'} countries={countries} startDate={'2025.4.7'} endDate={'4.12'} />
