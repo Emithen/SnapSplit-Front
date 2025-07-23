@@ -9,12 +9,12 @@ function SnapFolderHeader({ onClose }: SnapFolderHeaderProps) {
     <div className="flex justify-between items-center w-full h-12 px-5 py-3">
       <Image 
         src="/svg/arrow-left-grey-850.svg"
-        alt="폴더 썸네일"
+        alt="뒤로가기"
         width={24}
         height={24}
         onClick={onClose}
       />
-      <div className="text-body-2">
+      <div className="text-body-3 text-grey-1000">
         사진 선택
       </div>
     </div>
