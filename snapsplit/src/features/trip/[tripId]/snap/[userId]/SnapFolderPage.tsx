@@ -3,7 +3,6 @@
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
 import SnapFolderHeader from '@/features/trip/[tripId]/snap/_components/snapFolderModal/SnapFolderHeader';
 import SnapFolderInfo from '@/features/trip/[tripId]/snap/_components/snapFolderModal/SnapFolderInfo';
-import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
@@ -11,28 +10,11 @@ import { useRouter } from 'next/navigation';
 import SortFilterBar from '@/features/trip/[tripId]/snap/_components/sortFilterBar/SortFilterBar';
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
+import { mockPhotos } from '@/shared/mock/Photos';
+import SelectModeActionBar from './SelectModeActionBar';
 
 // TODO: 사진 데이터 props로 전달
-const testImages: UploadedImage[] = [
-  {
-    id: '1-jisu-london',
-    src: '/svg/1-jisu-london.png',
-    tags: {
-      days: [1],
-      people: ['지수'],
-      locations: ['런던'],
-    },
-  },
-  {
-    id: '2-jisu-na-yeon-paris',
-    src: '/svg/2-jisu-na-yeon-paris.png',
-    tags: {
-      days: [2],
-      people: ['지수', '나경', '연수'],
-      locations: ['파리'],
-    },
-  },
-];
+const testImages = mockPhotos;
 
 const SnapFolderPage = () => {
   const router = useRouter();
@@ -44,6 +26,16 @@ const SnapFolderPage = () => {
   });
   const [sortOpen, setSortOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
+  const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const [selectedImageIds, setSelectedImageIds] = useState<string[]>([]);
+
+  const handleToggleSelect = (idx: string) => {
+    if (selectedImageIds.includes(idx)) {
+      setSelectedImageIds(selectedImageIds.filter((id) => id !== idx));
+    } else {
+      setSelectedImageIds([...selectedImageIds, idx]);
+    }
+  };
 
   return (
     <div className="flex flex-col w-full h-full bg-light_grey">
@@ -52,6 +44,8 @@ const SnapFolderPage = () => {
           onClose={() => {
             router.back();
           }}
+          setIsSelectionMode={setIsSelectionMode}
+          isSelectionMode={isSelectionMode}
         />
         <SnapFolderInfo />
       </div>
@@ -62,7 +56,6 @@ const SnapFolderPage = () => {
           selectedSort={selectedSort}
           onSortOpen={() => {
             setSortOpen(true);
-            console.log('sortOpen');
           }}
           onFilterOpen={() => setFilterOpen(true)}
           filters={filters}
@@ -77,11 +70,21 @@ const SnapFolderPage = () => {
           }
         />
 
-        <PhotoGrid images={testImages} />
+        <PhotoGrid
+          images={testImages}
+          isSelectionMode={isSelectionMode}
+          selectedImageIds={selectedImageIds}
+          onToggleSelect={handleToggleSelect}
+        />
 
         {filterOpen && (
           <BottomSheet isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
-            <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} tab="folder" />
+            <FilterBottomSheet
+              filters={filters}
+              setFilters={setFilters}
+              onClose={() => setFilterOpen(false)}
+              tab="folder"
+            />
           </BottomSheet>
         )}
 
@@ -95,6 +98,9 @@ const SnapFolderPage = () => {
           </BottomSheet>
         )}
       </div>
+      {isSelectionMode && (
+        <SelectModeActionBar selectedCount={selectedImageIds.length} />
+      )}
     </div>
   );
 };

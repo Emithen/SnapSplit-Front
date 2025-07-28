@@ -3,34 +3,15 @@
 import { useState, useRef } from 'react';
 import SortFilterBar from '@/features/trip/[tripId]/snap/_components/sortFilterBar/SortFilterBar';
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
-import { UploadedImage } from '@/features/trip/[tripId]/snap/type';
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import { useEffect } from 'react';
 import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
+import { mockPhotos } from '@/shared/mock/Photos';
 
 // 테스트 데이터
-const testImages: UploadedImage[] = [
-  {
-    id: '1-jisu-london',
-    src: '/svg/1-jisu-london.png',
-    tags: {
-      days: [1],
-      people: ['지수'],
-      locations: ['런던'],
-    },
-  },
-  {
-    id: '2-jisu-na-yeon-paris',
-    src: '/svg/2-jisu-na-yeon-paris.png',
-    tags: {
-      days: [2],
-      people: ['지수', '나경', '연수'],
-      locations: ['파리'],
-    },
-  },
-];
+const testImages = mockPhotos;
 
 type BaseTabViewProps = {
   setShowTopButton: (show: boolean) => void;
