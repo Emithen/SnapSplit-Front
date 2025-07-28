@@ -114,7 +114,7 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
 
       {filterOpen && (
         <BottomSheet isOpen={filterOpen} onClose={() => setFilterOpen(false)}>
-          <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} />
+          <FilterBottomSheet filters={filters} setFilters={setFilters} onClose={() => setFilterOpen(false)} tab="base" />
         </BottomSheet>
       )}
     </div>
