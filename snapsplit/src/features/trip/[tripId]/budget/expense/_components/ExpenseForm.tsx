@@ -10,17 +10,18 @@ import CalendarSheet from './CalendarSheet';
 import CategorySection from './CategorySection';
 import { format } from 'date-fns';
 import StatusMessage from './StatusMessage';
+import { useParams } from 'next/navigation';
 
 // TODO: FormData 타입 정의
 type ExpenseFormProps = {
-  mode: 'add' | 'remove'; // '추가하기' | '빼기'
   onSubmit: (data: FormData) => void;
 };
 
 // TODO: result 값 API 호출 후 받아오기
 const result = '$9805596000000';
 
-const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
+const ExpenseForm = ({ onSubmit }: ExpenseFormProps) => {
+  const { mode } = useParams() as { mode: 'add' | 'remove' };
   const isAdd = mode === 'add';
   const [amount, setAmount] = useState('');
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
@@ -67,7 +68,13 @@ const ExpenseForm = ({ mode, onSubmit }: ExpenseFormProps) => {
           isCurrencyOpen={isCurrencyOpen}
           setIsCurrencyOpen={setIsCurrencyOpen}
         />
-        {isCurrencyOpen && <CurrencyList onClose={() => setIsCurrencyOpen(false)} setCurrency={setCurrency} selectedCurrency={currency} />}
+        {isCurrencyOpen && (
+          <CurrencyList
+            onClose={() => setIsCurrencyOpen(false)}
+            setCurrency={setCurrency}
+            selectedCurrency={currency}
+          />
+        )}
 
         {/* date section */}
         <div className="flex flex-col pt-6 gap-3">
