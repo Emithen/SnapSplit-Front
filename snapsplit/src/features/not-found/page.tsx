@@ -2,16 +2,14 @@ import BackButton from './_components/BackButton';
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col justify-between items-center h-screen bg-gradient-to-b from-[#001F3F] to-[#004466] text-white text-center pt-16 pb-12 px-6">
-      <div className="flex flex-col">
-        <h1 className="text-4xl font-bold mb-4">404 - 미지의 여행지에 도착했어요 🗺️</h1>
-        <p className="text-lg text-gray-300 mb-8">
-          SnapSplit 지도에는 아직 없는 장소예요.
-          <br />
-          홈으로 돌아가 새로운 여정을 시작해봐요!
+    <div className="flex flex-col w-full h-full justify-between bg-white p-5">
+      <div className="flex-1 h-full pt-30">
+        <h1 className="flex w-full justify-center text-4xl font-extrabold pb-6 text-primary">길을 잃었어요!</h1>
+        <p className="flex w-full justify-center text-grey-550 text-label-2">SnapSplit 지도에 없는 장소예요.</p>
+        <p className="flex w-full justify-center text-grey-550 text-label-2">
+          홈으로 돌아가 새로운 여정을 시작해보세요!
         </p>
       </div>
-
       <BackButton />
     </div>
   );
