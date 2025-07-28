@@ -12,15 +12,12 @@ import { format } from 'date-fns';
 import StatusMessage from './StatusMessage';
 import { useParams } from 'next/navigation';
 
-// TODO: FormData 타입 정의
-type ExpenseFormProps = {
-  onSubmit: (data: FormData) => void;
+const result = '$9805596000000';
+const onSubmit = (formData: FormData) => {
+  console.log(formData);
 };
 
-// TODO: result 값 API 호출 후 받아오기
-const result = '$9805596000000';
-
-const ExpenseForm = ({ onSubmit }: ExpenseFormProps) => {
+const ExpenseForm = () => {
   const { mode } = useParams() as { mode: 'add' | 'remove' };
   const isAdd = mode === 'add';
   const [amount, setAmount] = useState('');
