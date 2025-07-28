@@ -95,9 +95,9 @@ export default function Calendar({
                 <button
                   key={`${date.toISOString()}-${index}`}
                   onClick={() => onSelectDate(date)}
-                  className="relative flex w-11 h-11 items-center justify-center"
+                  className="relative flex w-full h-11 items-center justify-center"
                 >
-                  <div className={`flex w-10 h-10 items-center justify-center ${
+                  <div className={`flex w-full h-10 items-center justify-center ${
                     isInRange ? 'bg-pale_green w-11' : 'bg-transparent w-10 rounded-full'
                   }`}>
                     <span
