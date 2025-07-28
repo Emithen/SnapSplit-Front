@@ -153,6 +153,24 @@ export const mockPhotos: UploadedImage[] = [
       locations: [],
     },
   },
+  {
+    id: '18-empty',
+    src: '/svg/photo-loading.svg',
+    tags: {
+      days: [],
+      people: [],
+      locations: [],
+    },
+  },
+  {
+    id: '19-empty',
+    src: '/svg/photo-loading.svg',
+    tags: {
+      days: [],
+      people: [],
+      locations: [],
+    },
+  },
 ];
 
 export type UploadedImage = {

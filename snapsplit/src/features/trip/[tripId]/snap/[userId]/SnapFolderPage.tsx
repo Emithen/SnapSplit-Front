@@ -1,8 +1,8 @@
 'use client';
 
 import PhotoGrid from '@/features/trip/[tripId]/snap/_components/PhotoGrid';
-import SnapFolderHeader from '@/features/trip/[tripId]/snap/_components/snapFolderModal/SnapFolderHeader';
-import SnapFolderInfo from '@/features/trip/[tripId]/snap/_components/snapFolderModal/SnapFolderInfo';
+import SnapFolderHeader from '@/features/trip/[tripId]/snap/[userId]/_components/SnapFolderHeader';
+import SnapFolderInfo from '@/features/trip/[tripId]/snap/[userId]/_components/SnapFolderInfo';
 import { useState } from 'react';
 import { FilterState } from '@/features/trip/[tripId]/snap/type';
 import FilterBottomSheet from '@/features/trip/[tripId]/snap/_components/fiterBottomSheet/FilterBottomSheet';
@@ -11,7 +11,7 @@ import SortFilterBar from '@/features/trip/[tripId]/snap/_components/sortFilterB
 import SortBottomSheet from '@/features/trip/[tripId]/snap/_components/SortBottomSheet';
 import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
 import { mockPhotos } from '@/shared/mock/Photos';
-import SelectModeActionBar from './SelectModeActionBar';
+import SelectModeActionBar from './_components/SelectModeActionBar';
 
 // TODO: 사진 데이터 props로 전달
 const testImages = mockPhotos;

@@ -14,11 +14,11 @@ import { mockPhotos } from '@/shared/mock/Photos';
 const testImages = mockPhotos;
 
 type BaseTabViewProps = {
-  setShowTopButton: (show: boolean) => void;
+  setIsScrolled: (show: boolean) => void;
   setScrollToTop: (fn: () => void) => void;
 };
 
-export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTabViewProps) {
+export default function BaseTabView({ setIsScrolled, setScrollToTop }: BaseTabViewProps) {
   const [sortOpen, setSortOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState('최신순');
@@ -53,14 +53,14 @@ export default function BaseTabView({ setShowTopButton, setScrollToTop }: BaseTa
     if (!el) return;
 
     const handleScroll = () => {
-      setShowTopButton(el.scrollTop > 100);
+      setIsScrolled(el.scrollTop > 100);
     };
     el.addEventListener('scroll', handleScroll);
 
     return () => {
       el.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollRef, setShowTopButton]);
+  }, [scrollRef, setIsScrolled]);
 
   return (
     <div
