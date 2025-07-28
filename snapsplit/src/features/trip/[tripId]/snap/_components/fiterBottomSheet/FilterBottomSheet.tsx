@@ -20,7 +20,7 @@ export default function FilterBottomSheet({ filters, setFilters, onClose, tab }:
 
       <LocationSection filters={filters} setFilters={setFilters} />
 
-      <ButtonSection onClose={onClose} />
+      <ButtonSection onClose={onClose} setFilters={setFilters}/>
     </div>
   );
 }

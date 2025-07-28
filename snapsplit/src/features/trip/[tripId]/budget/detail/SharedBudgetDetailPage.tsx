@@ -31,9 +31,9 @@ const SharedBudgetDetailPage = () => {
               <div className="px-2 py-0.5 bg-primary rounded-full text-body-1 text-white">대표통화</div>
               <div className="text-body-2">{selectedCurrency}</div>
             </div>
-            <div onClick={() => setIsOpen(!isOpen)} className="text-body-2 text-grey-450">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-body-2 text-grey-450">
               변경
-            </div>
+            </button>
           </div>
         </div>
       </div>
