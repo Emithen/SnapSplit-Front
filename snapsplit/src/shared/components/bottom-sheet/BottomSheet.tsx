@@ -46,7 +46,7 @@ const BottomSheet = ({ isOpen, onClose, children }: BottomSheetProps) => {
           }
         }}
       >
-        <div className="flex flex-col items-center w-full pt-3 px-5 pb-8 gap-3 bg-white rounded-t-[20px]">
+        <div className="flex flex-col items-center w-full pt-3 px-5 pb-8 gap-3 bg-white rounded-t-2xl">
           <motion.div
             className="cursor-grab active:cursor-grabbing touch-none"
             onPointerDown={(e) => controls.start(e)}

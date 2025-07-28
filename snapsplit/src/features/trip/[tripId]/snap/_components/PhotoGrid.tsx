@@ -3,30 +3,36 @@ import { UploadedImage } from '../type';
 
 type PhotoGridProps = {
   images: UploadedImage[];
-}
+  isSelectionMode?: boolean;
+  selectedImageIds?: string[];
+  onToggleSelect?: (idx: string) => void;
+};
 
-export default function PhotoGrid({ images }: PhotoGridProps) {
+export default function PhotoGrid({ images, isSelectionMode, selectedImageIds, onToggleSelect }: PhotoGridProps) {
   return (
-    <div className="grid grid-cols-3 gap-2 flex-1 overflow-y-auto">
-      {images.length > 0 ? (
-        images.map((img) => (
-          <Image
-            key={img.id}
-            src={img.src}
-            alt="uploaded"
-            width={100}
-            height={100}
-            className="aspect-square rounded-md border border-grey-250"
-            />
-        ))
-      ) : (
-        <>
-          {/* TODO: 빈 이미지 추가 */}
-          {Array.from({ length: 15 }).map((_, idx) => (
-            <div key={idx} className="aspect-square bg-grey-250 rounded-md border border-grey-250" />
-          ))}
-        </>
-      )}
+    <div className="grid grid-cols-3 gap-2 pb-15">
+      {images.map((image) => {
+        const isSelected = selectedImageIds?.includes(image.id);
+        return (
+          <div
+            key={image.id}
+            className="relative aspect-square rounded-xl"
+          >
+            <Image src={image.src} alt="uploaded" width={100} height={100} onClick={() => {
+              if(isSelectionMode && onToggleSelect) {
+                onToggleSelect(image.id);
+              }}} className="object-cover rounded-xl" />
+            {isSelected && (
+              <div className="absolute flex items-center justify-center top-0 left-0 w-full h-full rounded-xl bg-primary/10 border border-primary">
+                <Image src="/svg/check-green.svg" alt="check" width={32} height={32}
+                onClick={() => {
+                  onToggleSelect?.(image.id);
+                }} className="object-contain" />
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

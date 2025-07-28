@@ -7,26 +7,29 @@ interface SortFilterBarProps {
   onSortOpen: () => void;
   onFilterOpen: () => void;
   filters: FilterState;
+  setFilters: (filters: FilterState) => void;
 }
 
-export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters }: SortFilterBarProps) {
+export default function SortFilterBar({ selectedSort, onSortOpen, onFilterOpen, filters, setFilters }: SortFilterBarProps) {
   return (
-    <div className="flex justify-between items-center text-body-2">
-      <div className="flex flex-col">
-        <FilterTagContainer filters={filters} />
-        <button onClick={onSortOpen} className="flex gap-1">{selectedSort} <Image src="/svg/bottomArrow.svg" alt="bottomArrow" width={16} height={16} /></button>
+    <div className="display-fixed display-w-full z-10">
+      <div className="flex items-center justify-between gap-2 w-full mb-auto px-5 py-4">
+        <div className="flex flex-col gap-3">
+          <FilterTagContainer filters={filters} setFilters={setFilters} />
+          <button
+            onClick={onSortOpen}
+            className="self-start flex items-center h-8 text-body-2 pl-3 pr-1 py-1 rounded-full bg-white border-1 border-grey-250"
+          >
+            {selectedSort} <Image src="/svg/arrow_bottom.svg" alt="arrowBottom" width={24} height={24} />
+          </button>
+        </div>
+        <button
+          onClick={onFilterOpen}
+          className="self-start flex-shrink-0 flex items-center w-8 h-8 p-1 bg-white rounded-full border-1 border-grey-250"
+        >
+          <Image src="/svg/filter-grey-650.svg" alt="filter" width={24} height={24} />
+        </button>
       </div>
-      <button 
-        onClick={onFilterOpen}
-        className="self-start"
-      >
-        <Image
-          src="/svg/filter.svg"
-          alt="filter"
-          width={24}
-          height={24}
-        />
-      </button>
     </div>
   );
 }

@@ -2,20 +2,22 @@
 import Image from 'next/image';
 type SnapFolderHeaderProps = {
     onClose: () => void;
+    setIsSelectionMode?: (value: boolean) => void;
+    isSelectionMode?: boolean;
 }
 
-function SnapFolderHeader({ onClose }: SnapFolderHeaderProps) {
+function SnapFolderHeader({ onClose, setIsSelectionMode, isSelectionMode }: SnapFolderHeaderProps) {
   return (
     <div className="flex justify-between items-center w-full h-12 px-5 py-3">
       <Image 
         src="/svg/arrow-left-grey-850.svg"
-        alt="폴더 썸네일"
+        alt="뒤로가기"
         width={24}
         height={24}
         onClick={onClose}
       />
-      <div className="text-body-2">
-        사진 선택
+      <div onClick={() => setIsSelectionMode?.(!isSelectionMode)} className="text-body-3 text-grey-1000">
+        {isSelectionMode ? '취소' : '사진 선택'}
       </div>
     </div>
   );

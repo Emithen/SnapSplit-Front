@@ -8,20 +8,19 @@ interface FilterBottomSheetProps {
   filters: FilterState;
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
   onClose: () => void;
+  tab: string;
 }
 
-export default function FilterBottomSheet({ filters, setFilters, onClose }: FilterBottomSheetProps) {
+export default function FilterBottomSheet({ filters, setFilters, onClose, tab }: FilterBottomSheetProps) {
   return (
-    <div className="w-full bg-white rounded-t-xl pt-5 px-5 pb-9">
-      <div className="flex flex-col gap-6">
-        <DaySection filters={filters} setFilters={setFilters} />
+    <div className="flex flex-col gap-4 w-full">
+      <DaySection filters={filters} setFilters={setFilters} />
 
-        <PeopleSection filters={filters} setFilters={setFilters} />
+      {tab === 'base' && <PeopleSection filters={filters} setFilters={setFilters} />}
 
-        <LocationSection filters={filters} setFilters={setFilters} />
+      <LocationSection filters={filters} setFilters={setFilters} />
 
-        <ButtonSection onClose={onClose} />
-      </div>
+      <ButtonSection onClose={onClose} setFilters={setFilters}/>
     </div>
   );
 }
