@@ -1,24 +1,23 @@
-{
-  /*
-    // common/BaseButton.tsx
-import cn from "classnames";
-
-interface Props {
+export type ButtonProps = {
+  label: string;
+  onClick?: () => void;
+  enabled?: boolean;
   className?: string;
-}
+  bg?: string; // ex: 'bg-red-500'
+};
 
-export default function BaseButton({ className }: Props) {
-  return <button className={cn('base-button-class', className)} />;
-}
+export default function Button({ label, onClick, enabled = true, className = '', bg }: ButtonProps) {
+  const baseStyle = 'rounded-xl w-full py-[14px] text-white';
+  const bgStyle = bg ? bg : enabled ? 'bg-primary' : 'bg-light_green_deep';
+  const cursorStyle = enabled ? 'cursor-pointer' : 'cursor-not-allowed';
 
-// common/MelonButton.tsx
-export default function MelonButton() {
-  return <BaseButton className="melon-button-class" />;
-}
-
-// common/KakaoButton.tsx
-export default function KakaoButton() {
-  return <BaseButton className="kakao-button-class" />;
-}
-    */
+  return (
+    <button
+      onClick={enabled ? onClick : undefined}
+      className={`${baseStyle} ${bgStyle} ${cursorStyle} ${className}`}
+      disabled={!enabled}
+    >
+      {label}
+    </button>
+  );
 }

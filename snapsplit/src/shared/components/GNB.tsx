@@ -9,9 +9,24 @@ export default function GNB() {
   const { tripId } = useParams();
 
   const tabs = [
-    { label: 'BUDGET', iconPath: '/svg/budget-grey.svg', iconPathActive: '/svg/budget-green.svg', path: `/trip/${tripId}/budget` },
-    { label: 'SNAP', iconPath: '/svg/snap-grey.svg', iconPathActive: '/svg/snap-green.svg', path: `/trip/${tripId}/snap` },
-    { label: 'SPLIT', iconPath: '/svg/split-grey.svg', iconPathActive: '/svg/split-green.svg', path: `/trip/${tripId}/split` },
+    {
+      label: 'BUDGET',
+      iconPath: '/svg/budget-grey.svg',
+      iconPathActive: '/svg/budget-green.svg',
+      path: `/trip/${tripId}/budget`,
+    },
+    {
+      label: 'SNAP',
+      iconPath: '/svg/snap-grey.svg',
+      iconPathActive: '/svg/snap-green.svg',
+      path: `/trip/${tripId}/snap`,
+    },
+    {
+      label: 'SPLIT',
+      iconPath: '/svg/split-grey.svg',
+      iconPathActive: '/svg/split-green.svg',
+      path: `/trip/${tripId}/split`,
+    },
   ];
 
   return (
@@ -23,25 +38,13 @@ export default function GNB() {
             <button
               key={tab.label}
               onClick={() => router.push(tab.path)}
-              className="flex flex-col items-center w-full"
+              className="flex flex-col items-center w-full cursor-pointer"
             >
               <div className="w-6 h-6 flex items-center justify-center">
                 {isActive ? (
-                  <Image
-                    src={tab.iconPathActive}
-                    alt={`${tab.label} icon`}
-                    width={24}
-                    height={24}
-                    unoptimized
-                  />
+                  <Image src={tab.iconPathActive} alt={`${tab.label} icon`} width={24} height={24} unoptimized />
                 ) : (
-                  <Image
-                    src={tab.iconPath}
-                    alt={`${tab.label} icon`}
-                    width={24}
-                    height={24}
-                    unoptimized
-                  />
+                  <Image src={tab.iconPath} alt={`${tab.label} icon`} width={24} height={24} unoptimized />
                 )}
               </div>
               <span className={`text-caption-1 ${isActive ? 'text-green' : 'text-grey-550'}`}>{tab.label}</span>
