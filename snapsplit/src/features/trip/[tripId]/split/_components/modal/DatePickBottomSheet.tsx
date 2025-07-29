@@ -11,16 +11,25 @@ export interface DatePickButtonSheetProps {
   tripDate?: string[];
   selectedIndex: number | null;
   setSelectedIndex: (idx: number) => void;
+  onClose?: () => void; // 모달 닫기용 콜백 추가
 }
 
-export default function DatePickButtonSheet({ tripDate, selectedIndex, setSelectedIndex }: DatePickButtonSheetProps) {
+export default function DatePickButtonSheet({
+  tripDate,
+  selectedIndex,
+  setSelectedIndex,
+  onClose,
+}: DatePickButtonSheetProps) {
   return (
     <div className="flex w-full flex-col justify-start">
       {tripDate?.map((date, idx) => (
         <button
           className="flex w-full gap-1 justify-start py-3 cursor-pointer"
           key={idx}
-          onClick={() => setSelectedIndex(idx)}
+          onClick={() => {
+            setSelectedIndex(idx);
+            if (onClose) onClose(); // 클릭 시 모달 닫기
+          }}
         >
           <Image src={selectedIndex === idx ? CheckedIcon : unCheckedIcon} alt="Check Icon" />
           <span className={selectedIndex === idx ? 'text-primary' : 'text-grey-1000'}>{date}</span>

@@ -62,6 +62,7 @@ export default function SplitDatePickSection() {
             tripDate={tripDate}
             selectedIndex={datePickType === 'start' ? startDayIndex : endDayIndex}
             setSelectedIndex={datePickType === 'start' ? setStartDayIndex : setEndDayIndex}
+            onClose={() => setIsDateModalOpen(false)}
           />
         </BottomSheet>
       </div>
