@@ -1,6 +1,6 @@
 'use client';
 
-import Modal from './Modal'; // 너가 만든 기본 모달
+import Modal from './Modal';
 import { usePreventScroll } from '@/shared/components/modal/usePreventScroll';
 import { ReactNode, useRef } from 'react';
 
