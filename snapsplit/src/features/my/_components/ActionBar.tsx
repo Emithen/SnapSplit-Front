@@ -14,7 +14,7 @@ export default function ActionBar() {
         onClick={() => {
           router.back();
         }}
-        className="ml-auto"
+        className="cursor-pointer ml-auto"
       >
         <Image src="/svg/exit-grey-1000.svg" alt="exit" aria-label="홈으로" width={24} height={24} />
       </button>
