@@ -1,0 +1,30 @@
+{
+  "status": 200,
+  "success": true,
+  "message": null,
+  "data": {
+    "id": 1,
+    "startDate": "2025-05-20",
+    "endDate": "2025-05-23",
+    "members": [
+      { "memberId": 1, "name": "문재영" },
+      { "memberId": 2, "name": "박지수" },
+      { "memberId": 3, "name": "권은정" }
+    ],
+    "splits": [
+      { "senderId": 1, "receiverId": 2, "amount": 15800 },
+      { "senderId": 1, "receiverId": 3, "amount": 0 },
+      { "senderId": 2, "receiverId": 1, "amount": 15800 },
+      { "senderId": 2, "receiverId": 3, "amount": 0 },
+      { "senderId": 3, "receiverId": 1, "amount": 0 },
+      { "senderId": 3, "receiverId": 2, "amount": 0 }
+    ],
+     "personalExpenses": [
+			{ "tripMemberId": 1, "name": "문재영", "amount": 98500, "memberType": "user" },
+      { "tripMemberId": 2, "name": "박지수", "amount": 17000, "memberType": "user" },
+      { "tripMemberId": 3, "name": "권은정", "amount": 32800, "memberType": "user" },
+      { "tripMemberId": 4, "name": "공동경비", "amount": 971580, "memberType": "shared_fund" }
+    ],
+    "totalAmount": 1119800
+  }
+}
