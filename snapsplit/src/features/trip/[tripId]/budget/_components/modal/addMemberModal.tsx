@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion, useMotionValue, useDragControls, animate } from 'framer-motion';
+import grabber from '@public/svg/grabber.svg';
 
 const mock = 's4ks0d92';
 
@@ -64,7 +65,7 @@ const AddMemberModal = ({ onClose }: AddMemberModalProps) => {
         className="flex w-full flex-1 justify-center py-3 cursor-grab active:cursor-grabbing"
         onPointerDown={(e) => controls.start(e)}
       >
-        <Image src="/svg/grabber.svg" alt="handle modal" />
+        <Image src={grabber} alt="handle modal" />
       </div>
 
       <div className="flex pb-3 flex-col gap-1 items-center justify-center">
