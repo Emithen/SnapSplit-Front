@@ -10,11 +10,7 @@ export interface SplitReciptCardProps {
 
 export default function SplitReciptCard({ startDate, endDate, splitId }: SplitReciptCardProps) {
   return (
-    <Link
-      className="w-full flex p-4 bg-white rounded-xl gap-2"
-      key={splitId}
-      href={`/trip/${splitId}/split/${splitId}`}
-    >
+    <Link className="w-full flex p-4 bg-white rounded-xl gap-2" href={`split/${splitId}`}>
       <div className="flex-1 inline-flex flex-col justify-start items-start gap-1">
         <div className="text-body-3">여행 준비 ~ Day 3</div>
         <div className="self-stretch inline-flex justify-start items-center">
