@@ -20,8 +20,8 @@ export default function SplitDatePickSection() {
 
   // 선택된 날짜 인덱스 상태 관리
   // Date로 들어온 날짜들을 Day로 관리한다
-  const [startDayIndex, setStartDayIndex] = useState<number | null>(null);
-  const [endDayIndex, setEndDayIndex] = useState<number | null>(null);
+  const [startDayIndex, setStartDayIndex] = useState<number | null>(0);
+  const [endDayIndex, setEndDayIndex] = useState<number | null>(tripDate.length - 1);
   const [datePickType, setDatePickType] = useState<'start' | 'end' | null>(null);
 
   return (
