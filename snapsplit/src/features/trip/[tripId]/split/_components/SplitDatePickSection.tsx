@@ -16,7 +16,7 @@ export default function SplitDatePickSection() {
     <div className="flex w-fulll flex-col">
       <div className="flex w-full gap-2 items-center pb-2">
         <select
-          className="px-4 py-[10px] rounded-xl w-full border-1 border-grey-250 bg-white focus:outline-none cursor-pointer"
+          className="px-4 py-[14px] rounded-xl w-full border-1 border-grey-250 bg-white focus:outline-none cursor-pointer text-body-2"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
         >
@@ -30,7 +30,7 @@ export default function SplitDatePickSection() {
         <span className="text-head-1">~</span>
 
         <select
-          className="px-4 py-[10px] rounded-xl w-full border-1 border-grey-250 bg-white focus:outline-none cursor-pointer"
+          className="px-4 py-[14px] rounded-xl w-full border-1 border-grey-250 bg-white focus:outline-none cursor-pointer text-body-2"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         >
