@@ -18,11 +18,23 @@ export default function SplitDatePickSection() {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
 
+  // 예시용 지출 여부 상태 (추후 API 연동 시 수정)
+  const hasExpense = true;
+
   // 선택된 날짜 인덱스 상태 관리
-  // Date로 들어온 날짜들을 Day로 관리한다
-  const [startDayIndex, setStartDayIndex] = useState<number | null>(0);
-  const [endDayIndex, setEndDayIndex] = useState<number | null>(tripDate.length - 1);
+  const [startDayIndex, setStartDayIndex] = useState<number | null>(tripDate.length > 0 ? 0 : null);
+  const [endDayIndex, setEndDayIndex] = useState<number | null>(tripDate.length > 0 ? tripDate.length - 1 : null);
   const [datePickType, setDatePickType] = useState<'start' | 'end' | null>(null);
+
+  // 날짜 유효성 검증
+  const isValidDateRange = startDayIndex !== null && endDayIndex !== null && startDayIndex <= endDayIndex;
+
+  // 조건부 에러 메시지
+  const errorMessage = !hasExpense
+    ? '등록된 지출 내역이 없어요'
+    : !isValidDateRange
+      ? '날짜 범위가 잘못 선택됐어요'
+      : null;
 
   return (
     <div className="flex w-fulll flex-col">
@@ -67,13 +79,20 @@ export default function SplitDatePickSection() {
         </BottomSheet>
       </div>
 
-      {/* 지출 내역이 없다면 랜더링 */}
-      <div className="flex gap-1 items-center justify-start pb-4">
-        <Image src={alertCircleRed} alt="Alert Icon" width={24} height={24} className="" />
-        <p className="text-status_error text-body-2">등록된 지출 내역이 없어요</p>
-      </div>
+      {/* 에러 메시지 표시 */}
+      {errorMessage && (
+        <div className="flex gap-1 items-center justify-start">
+          <Image src={alertCircleRed} alt="Alert Icon" width={24} height={24} className="" />
+          <p className="text-status_error text-body-2">{errorMessage}</p>
+        </div>
+      )}
 
-      <Button label="정산하기" enabled={true} onClick={() => setIsConfirmModalOpen(true)} />
+      <Button
+        label="정산하기"
+        enabled={hasExpense && isValidDateRange}
+        onClick={() => setIsConfirmModalOpen(true)}
+        className="mt-4"
+      />
 
       {/* 정산 확인 모달 */}
       <OverlayModal

@@ -26,6 +26,7 @@ export default function DatePickButtonSheet({
         <button
           className="flex w-full gap-1 justify-start py-3 cursor-pointer"
           key={idx}
+          aria-label="날짜 선택"
           onClick={() => {
             setSelectedIndex(idx);
             if (onClose) onClose(); // 클릭 시 모달 닫기

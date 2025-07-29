@@ -17,7 +17,7 @@ export default function ConfirmSplitModal({ onClose }: ConfirmSplitModalProps) {
       <label className="text-body-2 text-grey-550">정산 영수증을 뽑고나면 해당 기간의 지출은</label>
       <label className="text-body-2 text-grey-550 pb-6">더 이상 정산할 수 없습니다</label>
       <div className="flex w-full gap-3">
-        <Button label="아니요" bg="grey" onClick={onClose} />
+        <Button label="아니요" bg="bg-grey-650" onClick={onClose} enabled={false} />
         <Button label="네" onClick={onClose /* 정산 영수증 생성 api post, 로딩 후 바로 리다이렉트 */} />
       </div>
     </div>
