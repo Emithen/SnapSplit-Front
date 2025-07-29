@@ -48,7 +48,7 @@ export default function SplitDatePickSection() {
         <p className="text-status_error text-body-2">등록된 지출 내역이 없어요</p>
       </div>
 
-      <Button label="정산하기" disabled={true} onClick={() => console.log('정산하기 clicked')} />
+      <Button label="정산하기" enabled={true} onClick={() => console.log('정산하기 clicked')} />
     </div>
   );
 }
