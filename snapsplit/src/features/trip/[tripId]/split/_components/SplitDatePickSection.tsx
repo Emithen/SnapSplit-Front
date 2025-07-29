@@ -4,11 +4,15 @@ import { useState } from 'react';
 import alertCircleRed from '@public/svg/alert-circle-red.svg';
 import Image from 'next/image';
 import Button from '@/shared/components/Button';
+import OverlayModal from '@/shared/components/modal/OverlayModal';
+import ConfirmSplitModal from './modal/ConfirmSplitModal';
 
 const leftOptions = ['여행 준비', 'Day 0', 'Day 1', 'Day 2'];
 const rightOptions = ['Day 1', 'Day 2', 'Day 3', 'Day 4'];
 
 export default function SplitDatePickSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [startDate, setStartDate] = useState('여행 준비');
   const [endDate, setEndDate] = useState('Day 1');
 
@@ -48,7 +52,11 @@ export default function SplitDatePickSection() {
         <p className="text-status_error text-body-2">등록된 지출 내역이 없어요</p>
       </div>
 
-      <Button label="정산하기" enabled={true} onClick={() => console.log('정산하기 clicked')} />
+      <Button label="정산하기" enabled={true} onClick={() => setIsModalOpen(true)} />
+
+      <OverlayModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} position="center" className="px-5">
+        <ConfirmSplitModal onClose={() => setIsModalOpen(false)} />
+      </OverlayModal>
     </div>
   );
 }
