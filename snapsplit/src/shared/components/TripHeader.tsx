@@ -7,7 +7,7 @@ import myPage from '@public/svg/my-page.svg';
 import plus3Black from '@public/svg/plus-3-black.svg';
 import { useState } from 'react';
 import OverlayModal from '@/shared/components/modal/OverlayModal';
-import AddMemberModal from './modal/addMemberModal';
+import AddMemberModal from '../../features/trip/[tripId]/budget/_components/modal/addMemberModal';
 
 const TripHeader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

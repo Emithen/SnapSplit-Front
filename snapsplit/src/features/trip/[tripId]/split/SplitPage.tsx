@@ -1,5 +1,5 @@
 import Divider from '@/shared/components/Divider';
-import TripHeader from '../budget/_components/TripHeader';
+import TripHeader from '../../../../shared/components/TripHeader';
 import SplitDatePickSection from './_components/SplitDatePickSection';
 import SplitReciptCard from './_components/SplitReciptCard';
 import { SplitPageProps } from './type';

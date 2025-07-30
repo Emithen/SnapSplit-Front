@@ -2,7 +2,7 @@ import TripInfo from './_components/TripInfo';
 import DailyExpenseList from './_components/DailyExpenseList';
 import SharedBudgetBar from './_components/SharedBudgetBar';
 import TripDateBar from './_components/TripDateBar';
-import TripHeader from './_components/TripHeader';
+import TripHeader from '../../../../shared/components/TripHeader';
 import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
 import { BudgetPageProps } from './type';
 
