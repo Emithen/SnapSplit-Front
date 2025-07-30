@@ -7,6 +7,7 @@ export interface MemberPickBottomSheetProps {
   members?: Member[];
   setSelectedMemberId: (id: number) => void;
   selectedMemberId: number | null;
+  onClose: () => void;
 }
 
 export interface MemberItemProps {
@@ -29,6 +30,7 @@ export default function MemberPickBottomSheet({
   members = [],
   setSelectedMemberId,
   selectedMemberId,
+  onClose,
 }: MemberPickBottomSheetProps) {
   return (
     <div className="flex flex-col w-full">
@@ -38,7 +40,10 @@ export default function MemberPickBottomSheet({
           id={member.memberId}
           name={member.name}
           isSelected={member.memberId === selectedMemberId}
-          onClick={() => setSelectedMemberId(member.memberId)}
+          onClick={() => {
+            setSelectedMemberId(member.memberId);
+            onClose();
+          }}
         />
       ))}
     </div>

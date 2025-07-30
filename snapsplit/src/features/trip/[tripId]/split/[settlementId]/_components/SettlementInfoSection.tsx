@@ -36,6 +36,7 @@ export default function SettlementInfoSection({ members, startDate, endDate }: S
           members={members}
           setSelectedMemberId={setSelectedMemberId}
           selectedMemberId={selectedMemberId}
+          onClose={() => setIsMemberModalOpen(false)}
         />
       </BottomSheet>
     </div>
