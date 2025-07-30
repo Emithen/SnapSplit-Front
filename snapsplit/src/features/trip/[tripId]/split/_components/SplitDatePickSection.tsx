@@ -10,10 +10,7 @@ import arrowButtom from '@public/svg/arrow-bottom-grey-450.svg';
 import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
 import DatePickButtonSheet from './modal/DatePickBottomSheet';
 import { SplitDatePickSectionProps } from '../type';
-
-// API 에서 받아온 date string 날짜들을 day로 관리하기 위한 배열
-// 정산 가능 날짜도 따로 받아와야 한다
-const tripDate = ['여행 준비', 'Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
+import { convertSelectableDateToDay } from '@/shared/utils/DatetoDay/convertSelectableDateToDay';
 
 export default function SplitDatePickSection({ selectableDates, tripStartDate }: SplitDatePickSectionProps) {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -22,9 +19,15 @@ export default function SplitDatePickSection({ selectableDates, tripStartDate }:
   // 예시용 지출 여부 상태 (추후 API 연동 시 수정)
   const hasExpense = true;
 
+  // 정산 영수증 날짜 선택 가능 범위 Date -> Day 리스트
+  const tripDay = convertSelectableDateToDay(tripStartDate, selectableDates);
+
   // 선택된 날짜 인덱스 상태 관리
-  const [startDayIndex, setStartDayIndex] = useState<number | null>(tripDate.length > 0 ? 0 : null);
-  const [endDayIndex, setEndDayIndex] = useState<number | null>(tripDate.length > 0 ? tripDate.length - 1 : null);
+  const firstSelectableIndex = tripDay.findIndex((d) => d.selectable);
+  const [startDayIndex, setStartDayIndex] = useState<number | null>(
+    firstSelectableIndex !== -1 ? firstSelectableIndex : null
+  );
+  const [endDayIndex, setEndDayIndex] = useState<number | null>(tripDay.length > 0 ? tripDay.length - 1 : null);
   const [datePickType, setDatePickType] = useState<'start' | 'end' | null>(null);
 
   // 날짜 유효성 검증
@@ -48,7 +51,11 @@ export default function SplitDatePickSection({ selectableDates, tripStartDate }:
             setIsDateModalOpen(true);
           }}
         >
-          {startDayIndex !== null ? tripDate[startDayIndex] : '시작일 선택'}
+          {startDayIndex !== null
+            ? tripDay[startDayIndex].day === 0
+              ? '여행 준비'
+              : `Day ${tripDay[startDayIndex].day}`
+            : '시작일 선택'}
           <Image src={arrowButtom} alt="Arrow Button" className="" />
         </button>
         <span className="text-head-1">~</span>
@@ -60,7 +67,11 @@ export default function SplitDatePickSection({ selectableDates, tripStartDate }:
             setIsDateModalOpen(true);
           }}
         >
-          {endDayIndex !== null ? tripDate[endDayIndex] : '종료일 선택'}
+          {endDayIndex !== null
+            ? tripDay[endDayIndex].day === 0
+              ? '여행 준비'
+              : `Day ${tripDay[endDayIndex].day}`
+            : '종료일 선택'}
           <Image src={arrowButtom} alt="Arrow Button" className="" />
         </button>
 
@@ -72,7 +83,7 @@ export default function SplitDatePickSection({ selectableDates, tripStartDate }:
           }}
         >
           <DatePickButtonSheet
-            tripDate={tripDate}
+            tripDay={tripDay}
             selectedIndex={datePickType === 'start' ? startDayIndex : endDayIndex}
             setSelectedIndex={datePickType === 'start' ? setStartDayIndex : setEndDayIndex}
             onClose={() => setIsDateModalOpen(false)}
