@@ -5,15 +5,24 @@ import Link from 'next/link';
 export interface SplitReciptCardProps {
   startDate?: string;
   endDate?: string;
-  splitId?: number;
+  settlementId?: number;
   startDay: number;
   endDay: number;
 }
-export default function SplitReciptCard({ startDate, endDate, splitId, startDay, endDay }: SplitReciptCardProps) {
+export default function SplitReciptCard({ startDate, endDate, settlementId, startDay, endDay }: SplitReciptCardProps) {
   const formatDay = (day: number) => (day === 0 ? '여행 준비' : `Day ${day}`);
 
   return (
-    <Link className="w-full flex p-4 bg-white rounded-xl gap-2" href={`split/${splitId}`}>
+    <Link
+      className="w-full flex p-4 bg-white rounded-xl gap-2"
+      href={{
+        pathname: `split/${settlementId}`,
+        query: {
+          startDay,
+          endDay,
+        },
+      }}
+    >
       <div className="flex-1 inline-flex flex-col justify-start items-start gap-1">
         <div className="text-body-3">
           {formatDay(startDay)} ~ {formatDay(endDay)}

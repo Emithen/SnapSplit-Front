@@ -3,6 +3,8 @@ import { Member } from "@/shared/types/member";
 export interface SettlementPageProps{
     tripId: string;
     settlementId: string;
+    startDay?: number | null;
+    endDay?: number | null;
 }
 
 export interface SettlementHeaderProps {
@@ -11,8 +13,8 @@ export interface SettlementHeaderProps {
 
 export interface SettlementInfoSectionProps {
     members?: Member[];
-    startDate?: string;
-    endDate?: string;
+    startDay?: number | null;
+    endDay?: number | null;
     settlementDetails?: settlementDetail[];
 }
 

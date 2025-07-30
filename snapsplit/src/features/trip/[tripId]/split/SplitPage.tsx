@@ -37,7 +37,7 @@ const SplitPage = ({ tripId }: SplitPageProps) => {
         {convertedSettlements.map((settlement) => (
           <SplitReciptCard
             key={settlement.id}
-            splitId={settlement.id}
+            settlementId={settlement.id}
             startDate={settlement.startDate}
             endDate={settlement.endDate}
             startDay={settlement.startDay}

@@ -10,8 +10,8 @@ import MemberPickBottomSheet from './MemberPickBottomSheet';
 import SettlementFlowCard from './SettlementFlowCard';
 
 export default function SettlementInfoSection({
-  startDate,
-  endDate,
+  startDay,
+  endDay,
   members,
   settlementDetails,
 }: SettlementInfoSectionProps) {
@@ -31,7 +31,10 @@ export default function SettlementInfoSection({
     <>
       <div className="flex w-full justify-between items-end pb-6">
         <h1 className="text-head-1">
-          <span className="text-primary">Day 7 ~ Day 8</span> 까지의
+          <span className="text-primary">
+            Day {startDay} ~ Day {endDay}
+          </span>
+          까지의
           <br />
           정산 내역이에요
         </h1>

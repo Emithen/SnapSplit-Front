@@ -8,7 +8,7 @@ import PersonalExpensesList from './_components/PersonalExpensesList';
 
 // GNB 사이즈 재조정 이후, margin 조정 필요
 
-const SettlementPage = ({ tripId, settlementId }: SettlementPageProps) => {
+const SettlementPage = ({ tripId, settlementId, startDay, endDay }: SettlementPageProps) => {
   console.log('- tripId: ' + tripId);
   console.log('- settlementId: ' + settlementId);
 
@@ -18,8 +18,8 @@ const SettlementPage = ({ tripId, settlementId }: SettlementPageProps) => {
         <SettlementHeader tripId={tripId} />
         <SettlementInfoSection
           members={mock.data.members}
-          endDate={mock.data.endDate}
-          startDate={mock.data.startDate}
+          endDay={endDay}
+          startDay={startDay}
           settlementDetails={mock.data.settlementDetails}
         />
         <Button label="카카오톡으로 공유하기" />
