@@ -32,7 +32,7 @@ const KebabMenuBottomSheet = ({ onCloseMenu, onDeleteTrip }: KebabMenuBottomShee
         여행명 및 대표 사진 수정
       </Link>
       <button
-        className="py-3 text-left"
+        className="py-3 text-left cursor-pointer"
         onClick={() => {
           onCloseMenu();
           onDeleteTrip();
@@ -53,7 +53,7 @@ interface DeleteTripModalProps {
 const DeleteTripModal = ({ onClose, onDelete }: DeleteTripModalProps) => (
   <div className="flex flex-col w-full bg-white m-5 p-5 rounded-xl items-center">
     <div className="flex items-end justify-end pb-2 w-full">
-      <button onClick={onClose}>
+      <button onClick={onClose} className="cursor-pointer">
         <Image src={close} alt="close" />
       </button>
     </div>
