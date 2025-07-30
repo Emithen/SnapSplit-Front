@@ -1,3 +1,5 @@
+'use client';
+
 import { EditNamePageProps } from './type';
 
 const EditNamePage = ({ tripId }: EditNamePageProps) => {

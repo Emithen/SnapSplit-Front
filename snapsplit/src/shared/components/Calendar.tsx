@@ -15,16 +15,11 @@ export type CalendarProps = {
   onSelectDate: (date: Date) => void;
 };
 
-export default function Calendar({
-  mode,
-  selectedDate,
-  selectedRange,
-  onSelectDate,
-}: CalendarProps) {
+export default function Calendar({ mode, selectedDate, selectedRange, onSelectDate }: CalendarProps) {
   const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(selectedDate || new Date()));
   const dates = useMemo(() => generateDates(currentMonth), [currentMonth]); // generateDates(currentMonth: Date) -> 이번 달 페이지의 모든 날짜를 반환
   const isCurrentMonthPage = useMemo(() => isSameMonth(currentMonth, new Date()), [currentMonth]);
-  
+
   const handlePrevMonth = () => {
     if (isCurrentMonthPage) {
       return;
@@ -36,12 +31,14 @@ export default function Calendar({
 
   return (
     <div className="flex flex-col items-center w-full px-1.5 py-4 gap-2">
-      <div className="flex items-center justify-between w-70">
+      <div className="flex items-center justify-between w-full px-5">
         <h2 className="text-label-1">{format(currentMonth, 'yyyy년 M월')}</h2>
         <div className="flex items-center gap-3">
           <button onClick={handlePrevMonth}>
             {isCurrentMonthPage && <Image alt="arrow" src="/svg/arrow-left-grey-350.svg" width={24} height={24} />}
-            {!isCurrentMonthPage && <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} className="scale-x-[-1]" />}
+            {!isCurrentMonthPage && (
+              <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} className="scale-x-[-1]" />
+            )}
           </button>
           <button onClick={handleNextMonth}>
             <Image alt="arrow" src="/svg/arrow-right-black.svg" width={24} height={24} />
@@ -97,9 +94,11 @@ export default function Calendar({
                   onClick={() => onSelectDate(date)}
                   className="relative flex w-full h-11 items-center justify-center"
                 >
-                  <div className={`flex w-full h-10 items-center justify-center ${
-                    isInRange ? 'bg-pale_green w-11' : 'bg-transparent w-10 rounded-full'
-                  }`}>
+                  <div
+                    className={`flex w-full h-10 items-center justify-center ${
+                      isInRange ? 'bg-pale_green w-11' : 'bg-transparent w-10 rounded-full'
+                    }`}
+                  >
                     <span
                       className={`relative z-10 text-body-3 ${
                         !isCurrentMonth

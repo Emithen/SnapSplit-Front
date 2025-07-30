@@ -1,3 +1,4 @@
+'use client';
 import { EditMemberPageProps } from './type';
 
 const EditMemberPage = ({ tripId }: EditMemberPageProps) => {
