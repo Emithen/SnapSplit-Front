@@ -25,7 +25,7 @@ const CountrySearchSection = ({
   return (
     <div className="flex flex-col justify-between px-5 pb-3 h-full">
       <div className="pb-6">
-        <p className="text-head-1">여행지를 수정하시나요?</p>
+        <p className="text-head-1">어디로 떠나시나요?</p>
         <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
       </div>
       <SearchBar
