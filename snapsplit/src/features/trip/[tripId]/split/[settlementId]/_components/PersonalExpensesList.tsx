@@ -24,7 +24,7 @@ export interface PersonalExpensesItemProps {
 const PersonalExpensesItem = ({ expense, settlementId }: PersonalExpensesItemProps) => {
   return (
     <div className="flex justify-between items-center">
-      <label>{expense.name}</label>
+      <span>{expense.name}</span>
       <div className="flex items-center">
         <p>{expense.amount?.toLocaleString()}원</p>
         <Link href={`${settlementId}/${expense.memberId}`} className="cursor-pointer">

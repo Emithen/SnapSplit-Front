@@ -25,7 +25,7 @@ export type settlementDetail = {
 }
 
 export interface SettlementFlowCardProps {
-    label?: string;
     className?: string;
     settlementDetails?: settlementDetail[];
+    type?: 'send' | 'receive';
 }

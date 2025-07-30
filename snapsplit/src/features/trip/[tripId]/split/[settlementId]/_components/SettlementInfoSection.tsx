@@ -55,8 +55,8 @@ export default function SettlementInfoSection({
           />
         </BottomSheet>
       </div>
-      <SettlementFlowCard label="보낼 돈" className="mb-3" settlementDetails={sendList} />
-      <SettlementFlowCard label="받을 돈" className="mb-4" settlementDetails={receiveList} />
+      <SettlementFlowCard className="mb-3" settlementDetails={sendList} type="send" />
+      <SettlementFlowCard className="mb-4" settlementDetails={receiveList} type="receive" />
     </>
   );
 }
