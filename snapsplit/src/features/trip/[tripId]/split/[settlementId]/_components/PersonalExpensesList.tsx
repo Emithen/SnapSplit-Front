@@ -4,9 +4,9 @@ import arrow from '@public/svg/arrow-right-grey-550.svg';
 import Link from 'next/link';
 
 export type Expense = {
-  memberId?: number;
-  name?: string;
-  amount?: number;
+  memberId: number;
+  name: string;
+  amount: number;
   memberType?: string;
 };
 
