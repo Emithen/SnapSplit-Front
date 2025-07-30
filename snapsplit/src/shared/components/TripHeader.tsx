@@ -17,18 +17,19 @@ import Button from '@/shared/components/Button';
 interface KebabMenuBottomSheetProps {
   onCloseMenu: () => void;
   onDeleteTrip: () => void;
+  tripId: string;
 }
 
-const KebabMenuBottomSheet = ({ onCloseMenu, onDeleteTrip }: KebabMenuBottomSheetProps) => {
+const KebabMenuBottomSheet = ({ onCloseMenu, onDeleteTrip, tripId }: KebabMenuBottomSheetProps) => {
   return (
     <div className="flex flex-col w-full justify-start text-body-3">
-      <Link href="#" className="py-3" onClick={onCloseMenu}>
+      <Link href={`/trip/${tripId}/edit/country`} className="py-3" onClick={onCloseMenu}>
         여행지 수정
       </Link>
-      <Link href="#" className="py-3" onClick={onCloseMenu}>
+      <Link href={`/trip/${tripId}/edit/date`} className="py-3" onClick={onCloseMenu}>
         여행 일정 수정
       </Link>
-      <Link href="#" className="py-3" onClick={onCloseMenu}>
+      <Link href={`/trip/${tripId}/edit/name`} className="py-3" onClick={onCloseMenu}>
         여행명 및 대표 사진 수정
       </Link>
       <button
@@ -72,8 +73,12 @@ const DeleteTripModal = ({ onClose, onDelete }: DeleteTripModalProps) => (
   </div>
 );
 
+type TripHeaderProps = {
+  tripId: string;
+};
+
 // 여행 공통 헤더
-const TripHeader = () => {
+const TripHeader = ({ tripId }: TripHeaderProps) => {
   const [isAddMemberModalOpen, setIsAddMemberModalOpen] = useState(false);
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
   const [isDeleteTripModalOpen, setIsDeleteTripModalOpen] = useState(false);
@@ -109,6 +114,7 @@ const TripHeader = () => {
         <KebabMenuBottomSheet
           onCloseMenu={() => setIsMenuModalOpen(false)}
           onDeleteTrip={() => setIsDeleteTripModalOpen(true)}
+          tripId={tripId}
         />
       </BottomSheet>
 

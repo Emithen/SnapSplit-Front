@@ -16,7 +16,7 @@ const BudgetPage = ({ tripId }: BudgetPageProps) => {
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-white">
-        <TripHeader />
+        <TripHeader tripId={tripId} />
         <TripInfo
           tripName={trip.tripName}
           countries={trip.countries}
