@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { TripInfoProps } from '../type';
 import UserIconList from './UserIconList/UserIconList';
 import user_mock from '@public/mocks/trip-budget-mock.json';
+import { useISOtoFormattedDate } from '@/shared/utils/useISOtoFormattedDate';
 
 const TripInfo = ({ tripName, countries, startDate, endDate }: TripInfoProps) => {
   return (
@@ -12,11 +13,13 @@ const TripInfo = ({ tripName, countries, startDate, endDate }: TripInfoProps) =>
         <p className="text-grey-850 text-head-0">{tripName}</p>
       </div>
       <div className="flex flex-row gap-2 items-center text-grey-650">
-        <p className="text-body-2">
-          {startDate} - {endDate}
+        <p className="text-body-2 whitespace-nowrap">
+          {useISOtoFormattedDate(startDate)} - {useISOtoFormattedDate(endDate)}
         </p>
         <Image alt="|" src={devider} />
-        <p className="text-body-2">{countries?.map((c) => c.countryName).join(', ') || '국가 정보 없음'}</p>
+        <p className="text-body-2 truncate">
+          sddddddddddddddddddddddddddddddd{countries?.map((c) => c.countryName).join(', ') || '국가 정보 없음'}
+        </p>
       </div>
     </div>
   );
