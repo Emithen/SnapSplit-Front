@@ -1,4 +1,4 @@
-import Devider from '@/shared/components/Devider';
+import Divider from '@/shared/components/Divider';
 import Image from 'next/image';
 import arrow from '@public/svg/arrow-right-grey-550.svg';
 import Link from 'next/link';
@@ -48,7 +48,7 @@ export default function PersonalExpensesList({
           <PersonalExpensesItem key={idx} expense={expense} settlementId={settlementId} />
         ))}
 
-        <Devider p="py-[0.5px]" className="my-1" />
+        <Divider p="py-[0.5px]" className="my-1" />
 
         <div className="flex justify-between items-center">
           <label>총 지출 합계</label>
