@@ -3,9 +3,18 @@ import TripHeader from '../budget/_components/TripHeader';
 import SplitDatePickSection from './_components/SplitDatePickSection';
 import SplitReciptCard from './_components/SplitReciptCard';
 import { SplitPageProps } from './type';
+import { getSelectableDateList } from '@/shared/utils/getSplittableDateList';
+import mock from '@public/mocks/split-mock.json';
 
 const SplitPage = ({ tripId }: SplitPageProps) => {
   console.log('SplitPage tripId:', tripId);
+
+  // 정산 영수증 선택 가능 날짜 필터링 리스트
+  const selectableDates = getSelectableDateList(
+    mock.data.trip.startDate,
+    mock.data.trip.endDate,
+    mock.data.completeSettlement
+  );
 
   return (
     <div className="h-screen w-full flex flex-col bg-light_grey">
@@ -16,7 +25,7 @@ const SplitPage = ({ tripId }: SplitPageProps) => {
           <br /> 정산 영수증을 뽑아드릴게요!
         </h1>
         <label className="pb-6 text-grey-550 text-body-2">영수증은 선택한 기간에 대해 1번만 생성 가능합니다</label>
-        <SplitDatePickSection />
+        <SplitDatePickSection selectableDates={selectableDates} />
       </section>
       <Devider />
       <section className="flex flex-col gap-3 p-5">

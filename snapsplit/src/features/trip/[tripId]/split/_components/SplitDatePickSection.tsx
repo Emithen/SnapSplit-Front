@@ -14,7 +14,10 @@ import DatePickButtonSheet from './modal/DatePickBottomSheet';
 // 정산 가능 날짜도 따로 받아와야 한다
 const tripDate = ['여행 준비', 'Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
 
-export default function SplitDatePickSection() {
+export interface SplitDatePickSectionProps {
+  selectableDates: { date: string; selectable: boolean };
+}
+export default function SplitDatePickSection({ selectableDates }: SplitDatePickSectionProps) {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
 
