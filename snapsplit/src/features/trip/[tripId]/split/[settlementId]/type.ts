@@ -13,18 +13,17 @@ export interface SettlementInfoSectionProps {
     members?: Member[];
     startDate?: string;
     endDate?: string;
-}
-export interface SettlementFlowCardProps {
-    label?: string;
-    className?: string;
+    settlementDetails?: settlementDetail[];
 }
 
-export interface settlementDetails {
-    settlementDTO: settlement[];
-}
-
-export interface settlement {
+export type settlementDetail = {
     sender: Member;
     receiver: Member;
     amount: number;
+}
+
+export interface SettlementFlowCardProps {
+    label?: string;
+    className?: string;
+    settlementDetails?: settlementDetail[];
 }

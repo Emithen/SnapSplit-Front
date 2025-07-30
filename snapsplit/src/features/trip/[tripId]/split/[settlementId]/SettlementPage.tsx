@@ -1,5 +1,4 @@
 import Button from '@/shared/components/Button';
-import SettlementFlowCard from './_components/SettlementFlowCard';
 import SettlementHeader from './_components/SettlementHeader';
 import SettlementInfoSection from './_components/SettlementInfoSection';
 import { SettlementPageProps } from './type';
@@ -21,9 +20,8 @@ const SettlementPage = ({ tripId, settlementId }: SettlementPageProps) => {
           members={mock.data.members}
           endDate={mock.data.endDate}
           startDate={mock.data.startDate}
+          settlementDetails={mock.data.settlementDetails}
         />
-        <SettlementFlowCard label="보낼 돈" className="mb-3" />
-        <SettlementFlowCard label="받을 돈" className="mb-4" />
         <Button label="카카오톡으로 공유하기" />
       </section>
       <Devider />
