@@ -5,7 +5,7 @@ type DateSelectable = {
   selectable: boolean;
 };
 
-function getSplittableDateList(tripStart: string, tripEnd: string, completeSettlements: { startDate: string, endDate: string }[]): DateSelectable[] {
+export function getSplittableDateList(tripStart: string, tripEnd: string, completeSettlements: { startDate: string, endDate: string }[]): DateSelectable[] {
   const start = addDays(parseISO(tripStart), -1); // 여행 시작 하루 전
   const end = parseISO(tripEnd);
 

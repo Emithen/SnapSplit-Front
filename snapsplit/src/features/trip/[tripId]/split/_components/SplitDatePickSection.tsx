@@ -9,15 +9,13 @@ import ConfirmSplitModal from './modal/ConfirmSplitModal';
 import arrowButtom from '@public/svg/arrow-bottom-grey-450.svg';
 import BottomSheet from '@/shared/components/bottom-sheet/BottomSheet';
 import DatePickButtonSheet from './modal/DatePickBottomSheet';
+import { SplitDatePickSectionProps } from '../type';
 
 // API 에서 받아온 date string 날짜들을 day로 관리하기 위한 배열
 // 정산 가능 날짜도 따로 받아와야 한다
 const tripDate = ['여행 준비', 'Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
 
-export interface SplitDatePickSectionProps {
-  selectableDates: { date: string; selectable: boolean };
-}
-export default function SplitDatePickSection({ selectableDates }: SplitDatePickSectionProps) {
+export default function SplitDatePickSection({ selectableDates, tripStartDate }: SplitDatePickSectionProps) {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
 
