@@ -15,7 +15,7 @@ const CountryComponent = ({ countryName, isSelected, onClick }: CountryComponent
 
 const CountryList = ({ variant, countries, selected, onToggle }: CountryListProps) => {
   const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y');
-  const offset = variant === 'edit' ? 303 : 348;
+  const offset = variant === 'edit' ? 288 : 348;
 
   return (
     <div
