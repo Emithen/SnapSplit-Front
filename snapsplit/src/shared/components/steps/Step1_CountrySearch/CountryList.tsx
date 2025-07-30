@@ -1,6 +1,6 @@
 'use client';
 
-import { CountryComponentProps, CountryListProps } from '@trip/createTrip/steps/Step1_CountrySearch/type';
+import { CountryComponentProps, CountryListProps } from './type';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
 import SelectButton from '@/shared/components/SelectButton';
 

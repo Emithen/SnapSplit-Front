@@ -1,0 +1,23 @@
+{
+  "status": 200,
+  "success": true,
+  "message": "여행지 선택 초기 데이터",
+  "data": {
+    "countries": [
+      { "countryId": 1, "countryName": "일본" },
+      { "countryId": 2, "countryName": "이탈리아" },
+      { "countryId": 3, "countryName": "프랑스" },
+      { "countryId": 4, "countryName": "독일" },
+      { "countryId": 5, "countryName": "호주" },
+      { "countryId": 6, "countryName": "스위스" },
+      { "countryId": 7, "countryName": "영국" }
+    ],
+    "selectedCountries": [
+      { "countryId": 3, "countryName": "프랑스" },
+      { "countryId": 2, "countryName": "이탈리아" },
+      { "countryId": 6, "countryName": "스위스" },
+      { "countryId": 4, "countryName": "독일" },
+      { "countryId": 7, "countryName": "영국" }
+    ]
+  }
+}

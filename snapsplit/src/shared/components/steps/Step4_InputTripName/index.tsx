@@ -1,5 +1,7 @@
+'use client';
+
 import SearchBar from '@/shared/components/SearchBar';
-import TripImageUploader from '@trip/createTrip/steps/Step4_InputTripName/TripImageUploader';
+import TripImageUploader from './TripImageUploader';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { InputTripNameSectionProps } from './type';
 

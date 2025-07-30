@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import CountryList from '@trip/createTrip/steps/Step1_CountrySearch/CountryList';
+import CountryList from './CountryList';
 import SearchBar from '@/shared/components/SearchBar';
-import SelectedCountry from '@/features/trip/createTrip/steps/Step1_CountrySearch/SelectedCountryList';
+import SelectedCountryList from './SelectedCountryList';
 import BottomCTAButton from '@/shared/components/BottomCTAButton';
 import { CountrySearchSectionProps } from './type';
 
@@ -21,7 +21,7 @@ const CountrySearchSection = ({
   );
 
   return (
-    <div className="flex flex-col justify-between px-5">
+    <div className="flex flex-col justify-between px-5 h-full pb-3">
       <div className="pb-6">
         <p className="text-head-1">어디로 떠나시나요?</p>
         <p className="text-body-2 text-grey-850">여행지가 여러 곳이라면 모두 입력해주세요</p>
@@ -31,7 +31,7 @@ const CountrySearchSection = ({
         value={searchKeyword}
         onChange={(e) => setSearchKeyword(e.target.value)}
       />
-      <SelectedCountry selected={selected} onRemove={onToggle} />
+      <SelectedCountryList selected={selected} onRemove={onToggle} />
       <CountryList countries={filteredCountries} selected={selected} onToggle={onToggle} />
       {selected.length > 0 && (
         <BottomCTAButton
