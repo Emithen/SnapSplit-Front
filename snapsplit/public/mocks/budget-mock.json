@@ -8,7 +8,7 @@
       "tripName": "부산 여행",
       "memberCount": 3,
       "startDate": "2025-06-01",
-      "endDate": "2025-06-04",
+      "endDate": "2025-06-12",
       "tripImage": "https://example.com/trip1.jpg",
       "tripTotalExpense": 450000,
       "countries": [
@@ -58,6 +58,26 @@
           }
         ],
         "expenseCategory": "숙박"
+      },{
+        "expenseId": 103,
+        "expenseDate": "2025-05-29",
+        "expenseAmount": 1110000,
+        "expenseCurrency": "KRW",
+        "expenseUsers": [
+          {
+            "userId": 11,
+            "userName": "문재영"
+          },
+          {
+            "userId": 12,
+            "userName": "권은정"
+          },
+          {
+            "userId": 13,
+            "userName": "박지수"
+          }
+        ],
+        "expenseCategory": "항공"
       }
     ]
   }
