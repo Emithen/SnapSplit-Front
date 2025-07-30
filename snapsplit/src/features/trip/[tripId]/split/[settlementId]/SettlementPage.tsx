@@ -28,7 +28,11 @@ const SettlementPage = ({ tripId, settlementId }: SettlementPageProps) => {
       </section>
       <Devider />
       <section className="flex flex-col px-5 pt-6 pb-8 gap-3 w-full text-body-1 mb-[60px]">
-        <PersonalExpensesList expenses={mock.data.personalExpenses} totalAmount={mock.data.totalAmount} />
+        <PersonalExpensesList
+          settlementId={settlementId}
+          expenses={mock.data.personalExpenses}
+          totalAmount={mock.data.totalAmount}
+        />
       </section>
     </div>
   );

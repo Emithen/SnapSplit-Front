@@ -1,4 +1,4 @@
-import arrowRightRrey550 from '@public/svg/arrow-right-grey-550.svg';
+import arrow from '@public/svg/arrow-right-grey-550.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,7 +19,7 @@ export default function SplitReciptCard({ startDate, endDate, splitId }: SplitRe
           </div>
         </div>
       </div>
-      <Image src={arrowRightRrey550} alt="go detail page" />
+      <Image src={arrow} alt="go detail page" />
     </Link>
   );
 }
