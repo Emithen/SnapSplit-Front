@@ -1,26 +1,46 @@
 import Image from 'next/image';
 import unchecked from '@public/svg/check_grey.svg';
 import checked from '@public/svg/check-green.svg';
+import { Member } from '@/shared/types/member';
 
-export interface MemberItemProps {
-  name: string;
-  isSelected?: boolean;
+export interface MemberPickBottomSheetProps {
+  members?: Member[];
+  setSelectedMemberId: (id: number) => void;
+  selectedMemberId: number | null;
 }
 
-const MemberItem = ({ name, isSelected }: MemberItemProps) => {
+export interface MemberItemProps {
+  id: number;
+  name: string;
+  isSelected?: boolean;
+  onClick: () => void;
+}
+
+const MemberItem = ({ name, isSelected, onClick }: MemberItemProps) => {
   return (
-    <div className="py-4 flex gap-1 justify-start cursor-pointer items-center">
+    <div onClick={onClick} className="py-4 flex gap-1 justify-start cursor-pointer items-center">
       <Image src={isSelected ? checked : unchecked} alt="check Icon" />
       <label className={`text-body-1 cursor-pointer ${isSelected ? 'text-primary' : ''}`}>{name}</label>
     </div>
   );
 };
 
-export default function MemberPickBottomSheet({ label, ssName }: MemberPickBottomSheetProps) {
+export default function MemberPickBottomSheet({
+  members = [],
+  setSelectedMemberId,
+  selectedMemberId,
+}: MemberPickBottomSheetProps) {
   return (
     <div className="flex flex-col w-full">
-      <MemberItem name={'윤유빈'} isSelected={true} />
-      <MemberItem name={'권은정'} isSelected={false} />
+      {members.map((member) => (
+        <MemberItem
+          key={member.memberId}
+          id={member.memberId}
+          name={member.name}
+          isSelected={member.memberId === selectedMemberId}
+          onClick={() => setSelectedMemberId(member.memberId)}
+        />
+      ))}
     </div>
   );
 }

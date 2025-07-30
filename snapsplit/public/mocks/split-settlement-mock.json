@@ -20,10 +20,10 @@
       { "senderId": 3, "receiverId": 2, "amount": 0 }
     ],
      "personalExpenses": [
-			{ "tripMemberId": 1, "name": "문재영", "amount": 98500, "memberType": "user" },
-      { "tripMemberId": 2, "name": "박지수", "amount": 17000, "memberType": "user" },
-      { "tripMemberId": 3, "name": "권은정", "amount": 32800, "memberType": "user" },
-      { "tripMemberId": 4, "name": "공동경비", "amount": 971580, "memberType": "shared_fund" }
+			{ "memberId": 1, "name": "문재영", "amount": 98500, "memberType": "user" },
+      { "memberId": 2, "name": "박지수", "amount": 17000, "memberType": "user" },
+      { "memberId": 3, "name": "권은정", "amount": 32800, "memberType": "user" },
+      { "memberId": 4, "name": "공동경비", "amount": 971580, "memberType": "shared_fund" }
     ],
     "totalAmount": 1119800
   }

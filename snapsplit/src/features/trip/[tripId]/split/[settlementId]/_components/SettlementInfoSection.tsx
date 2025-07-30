@@ -8,8 +8,13 @@ import MemberPickBottomSheet from './MemberPickBottomSheet';
 import { useState } from 'react';
 
 export default function SettlementInfoSection({ members, startDate, endDate }: SettlementInfoSectionProps) {
-  const [selectedMemberId, setSelectedMemberId] = useState<null | number>(null);
+  // members가 있을 때만 0번째 멤버의 id로 초기화
+  const [selectedMemberId, setSelectedMemberId] = useState<null | number>(
+    members && members.length > 0 ? members[0].memberId : null
+  );
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
+
+  const selectedMember = members?.find((m) => m.memberId === selectedMemberId);
 
   return (
     <div className="flex w-full justify-between items-end pb-6">
@@ -22,12 +27,16 @@ export default function SettlementInfoSection({ members, startDate, endDate }: S
         onClick={() => setIsMemberModalOpen(true)}
         className="flex items-center whitespace-nowrap cursor-pointer pl-3 pr-[6px] py-1 rounded-[20px] bg-white border-1 border-grey-250 text-body-2"
       >
-        윤유빈
+        {selectedMember ? selectedMember.name : '멤버 선택'}
         <Image src={arrow} alt="member Pick" width={24} height={24} />
       </button>
 
       <BottomSheet isOpen={isMemberModalOpen} onClose={() => setIsMemberModalOpen(false)}>
-        <MemberPickBottomSheet />
+        <MemberPickBottomSheet
+          members={members}
+          setSelectedMemberId={setSelectedMemberId}
+          selectedMemberId={selectedMemberId}
+        />
       </BottomSheet>
     </div>
   );

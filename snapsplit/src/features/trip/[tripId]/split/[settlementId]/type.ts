@@ -1,4 +1,4 @@
-import { member } from "@/shared/types/member";
+import { Member } from "@/shared/types/member";
 
 export interface SettlementPageProps{
     tripId: string;
@@ -10,7 +10,7 @@ export interface SettlementHeaderProps {
 }
 
 export interface SettlementInfoSectionProps {
-    members?: member[];
+    members?: Member[];
     startDate?: string;
     endDate?: string;
 }
@@ -24,7 +24,7 @@ export interface settlementDetails {
 }
 
 export interface settlement {
-    sender: member;
-    receiver: member;
+    sender: Member;
+    receiver: Member;
     amount: number;
 }

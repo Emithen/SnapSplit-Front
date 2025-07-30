@@ -6,19 +6,23 @@ import { SettlementPageProps } from './type';
 import Devider from '@/shared/components/Devider';
 import arrow from '@public/svg/arrow-right-grey-550.svg';
 import Image from 'next/image';
-// import mock from '@public/mocks/split-settlement-mock.json';
+import mock from '@public/mocks/split-settlement-mock.json';
 
 // GNB 사이즈 재조정 이후, margin 조정 필요
 
 const SettlementPage = ({ tripId, settlementId }: SettlementPageProps) => {
-  console.log('tripId: ' + tripId);
-  console.log('settlementId: ' + settlementId);
+  console.log('- tripId: ' + tripId);
+  console.log('- settlementId: ' + settlementId);
 
   return (
     <div className="h-screen w-full flex flex-col bg-light_grey overflow-y-auto scrollbar-hide">
       <section className="flex flex-col pt-2 pb-6 px-5">
         <SettlementHeader tripId={tripId} />
-        <SettlementInfoSection />
+        <SettlementInfoSection
+          members={mock.data.members}
+          endDate={mock.data.endDate}
+          startDate={mock.data.startDate}
+        />
         <SettlementFlowCard label="보낼 돈" className="mb-3" />
         <SettlementFlowCard label="받을 돈" className="mb-4" />
         <Button label="카카오톡으로 공유하기" />
