@@ -9,7 +9,7 @@ const TotalExpenseBottomSheet = ({ tripTotalExpense = 0 }: TotalExpenseBottomShe
   // 지출 금 "원" 으로 표기할지 상의
 
   return (
-    <div className="relative flex flex-col items-center bg-neutral-500 pt-[22px] pb-[18px]">
+    <div className="relative flex flex-col items-center pt-[22px] pb-[18px]">
       {/* 위쪽 화살표 */}
       <Image
         alt="총 지출 모달 열기"
