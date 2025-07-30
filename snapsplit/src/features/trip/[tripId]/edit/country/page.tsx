@@ -1,13 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import CountrySearchSection from '@/shared/components/steps/Step1_CountrySearch';
 import { EditCountryPageProps } from './type';
 import { Country } from '@/shared/types/country';
-import close from '@public/svg/close-grey-1000.svg';
 import mock from '@public/mocks/edit-country-mock.json';
 
 const EditCountryPage = ({ tripId }: EditCountryPageProps) => {
@@ -37,12 +35,13 @@ const EditCountryPage = ({ tripId }: EditCountryPageProps) => {
   };
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className="flex px-5 py-3 justify-end cursor-pointer">
-        <Image src={close} alt="close" onClick={() => router.back()} />
-      </div>
-      <CountrySearchSection countries={countries} selected={selected} onToggle={toggleCountry} onClick={handleSave} />
-    </div>
+    <CountrySearchSection
+      variant="edit"
+      countries={countries}
+      selected={selected}
+      onToggle={toggleCountry}
+      onClick={handleSave}
+    />
   );
 };
 

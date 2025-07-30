@@ -6,6 +6,7 @@ export type CountrySearchSectionProps = {
     selected: Country[];
     onToggle: (country: Country) => void;
     onClick: () => void;
+    variant?: 'create' | 'edit';
 };
 
 // Country List Props
@@ -13,6 +14,7 @@ export type CountryListProps = {
     countries: { countryId: number; countryName: string }[];
     selected: Country[];
     onToggle: (country: Country) => void;
+    variant?: 'create' | 'edit';
 };
 
 // Country Component Props
