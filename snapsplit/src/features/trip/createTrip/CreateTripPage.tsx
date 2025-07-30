@@ -81,7 +81,7 @@ export default function CreateTripPage() {
     <div className="flex flex-col h-screen">
       <CreateTripHeader step={step} onPrev={handlePrevStep} />
       <StepProgressBar step={step} />
-      <div className="flex flex-col w-full">{steps[step - 1]}</div>
+      <div className="flex flex-col w-full h-full">{steps[step - 1]}</div>
     </div>
   );
 }

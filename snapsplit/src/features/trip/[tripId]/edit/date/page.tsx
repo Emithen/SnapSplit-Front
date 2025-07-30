@@ -27,6 +27,7 @@ export default function EditDatePage({ tripId }: EditDatePageProps) {
 
   return (
     <SelectDateSection
+      variant="edit"
       startDate={startDate}
       endDate={endDate}
       setStartDate={setStartDate}

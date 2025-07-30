@@ -7,7 +7,7 @@ import { InputTripNameSectionProps } from './type';
 
 const InputTripNameSection = ({ onClick: handleNextStep }: InputTripNameSectionProps) => {
   return (
-    <div className="px-5 flex flex-col justify-between" style={{ height: 'calc(100vh - 95px - 16px)' }}>
+    <div className="px-5 flex flex-1 flex-col justify-between pb-3" style={{ height: 'calc(100vh - 95px - 16px)' }}>
       <div className="flex flex-col">
         <div className="pb-6">
           <p className="text-head-1">
