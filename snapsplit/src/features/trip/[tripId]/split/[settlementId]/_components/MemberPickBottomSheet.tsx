@@ -19,7 +19,7 @@ export interface MemberItemProps {
 
 const MemberItem = ({ name, isSelected, onClick }: MemberItemProps) => {
   return (
-    <div onClick={onClick} className="py-4 flex gap-1 justify-start cursor-pointer items-center">
+    <div onClick={onClick} className="py-3 flex gap-1 justify-start cursor-pointer items-center">
       <Image src={isSelected ? checked : unchecked} alt="check Icon" />
       <label className={`text-body-1 cursor-pointer ${isSelected ? 'text-primary' : ''}`}>{name}</label>
     </div>
