@@ -15,6 +15,7 @@ const EditNamePage = ({ tripId }: EditNamePageProps) => {
       onClick={() => {
         /* api 호출 */
       }}
+      variant="edit"
     />
   );
 };
