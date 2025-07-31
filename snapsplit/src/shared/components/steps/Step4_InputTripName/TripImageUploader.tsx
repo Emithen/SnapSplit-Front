@@ -1,27 +1,24 @@
 import plus from '@public/svg/plus.svg';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { TripImageUploaderProps } from './type';
 
-const TripImageUploader = () => {
-  // 업로드한 사진 미리보기용 URL 담기
-  const [uploadedImage, setuploadedImage] = useState<string | null>(null);
+const TripImageUploader = ({ initialImage }: TripImageUploaderProps) => {
+  // 초기값으로 mock 이미지를 사용
+  const [uploadedImage, setUploadedImage] = useState<string | null>(initialImage ?? null);
 
-  // 사진 업로드 input 제어용 ref
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // 클릭 시 사진 업로드 input 열기
   const openFileInputRef = () => {
     fileInputRef.current?.click();
   };
 
-  // 파일 업로드 핸들러
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     // 브라우저가 미리보기를 위한 URL을 생성하고, 이를 프리뷰로 사용
     if (file) {
       const uploadedImageUrl = URL.createObjectURL(file);
-      setuploadedImage(uploadedImageUrl);
+      setUploadedImage(uploadedImageUrl);
     }
   };
 
