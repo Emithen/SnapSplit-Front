@@ -20,7 +20,11 @@ const tripInfo = {
   endDate: '4.12',
 };
 
-export default function SnapPage() {
+type SnapPageProps = {
+  tripId: string;
+};
+
+export default function SnapPage({ tripId }: SnapPageProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>('전체');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +33,7 @@ export default function SnapPage() {
   return (
     <div className="flex flex-col h-screen bg-light_grey">
       <div className="bg-white">
-        <TripHeader />
+        <TripHeader tripId={tripId} />
         {isScrolled && (
           <div className="px-5">
             <span className="text-label-1">{tripInfo.tripName}</span>
