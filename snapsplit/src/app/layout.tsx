@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { calSans } from '@/shared/fonts/cal-sans';
+import QueryProvider from '@/lib/providers/QueryProvider';
 
 export const metadata: Metadata = {
   title: 'SnapScpit',
@@ -27,8 +28,10 @@ export default function RootLayout({
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"
       />
       <body className="h-[100dvh] min-w-[360px] max-w-[415px] lg:max-w-[360px] mx-auto bg-white text-grey-1000 scroll-smooth">
-        <div id="modal-root" />
-        {children}
+        <QueryProvider showDevtools={process.env.NODE_ENV === 'development'}>
+          <div id="modal-root" />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

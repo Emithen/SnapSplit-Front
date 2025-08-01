@@ -27,7 +27,13 @@ const PersonalExpensesItem = ({ expense, settlementId }: PersonalExpensesItemPro
       <span>{expense.name}</span>
       <div className="flex items-center">
         <p>{expense.amount?.toLocaleString()}원</p>
-        <Link href={`${settlementId}/${expense.memberId}`} className="cursor-pointer">
+        <Link
+          href={{
+            pathname: `${settlementId}/${expense.memberId}`,
+            query: { name: expense.name },
+          }}
+          className="cursor-pointer"
+        >
           <Image src={arrow} alt="arrow" />
         </Link>
       </div>
