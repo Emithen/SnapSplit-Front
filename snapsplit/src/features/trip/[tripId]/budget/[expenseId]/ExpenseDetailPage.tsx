@@ -12,8 +12,11 @@
 
 import ExpenseAmount from './_components/ExpenseAmount';
 import ExpenseDetailHeader from './_components/ExpenseDetailHeader';
+import { ExpenseDetailPageProps } from './type';
 
-export default function ExpenseDetailPage() {
+export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
+  console.log('- tripId: ' + tripId);
+
   return (
     <div className="h-screen w-full flex flex-col">
       <ExpenseDetailHeader />
