@@ -11,7 +11,7 @@ export default function Auth() {
   const kakaoLogin = () => {
     // 환경 변수가 제대로 설정되어 있는지 확인
     if (!REST_API_KEY || !REDIRECT_URI) {
-      console.error("환경 변수에 문제가 있습니다.", "REST_API_KEY : ", REST_API_KEY, "REDIRECT_URI : ", REDIRECT_URI);
+      console.error("환경 변수에 문제가 있습니다.", "REST_API_KEY : ", REST_API_KEY ? "제공됨" : "제공되지 않음", "REDIRECT_URI : ", REDIRECT_URI ? "제공됨" : "제공되지 않음");
       alert("로그인에 실패했습니다.");
       router.push('/');
       return;
