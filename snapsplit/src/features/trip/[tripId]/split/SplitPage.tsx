@@ -1,5 +1,5 @@
 import Divider from '@/shared/components/Divider';
-import TripHeader from '../budget/_components/TripHeader';
+import TripHeader from '../../../../shared/components/TripHeader';
 import SplitDatePickSection from './_components/SplitDatePickSection';
 import SplitReciptCard from './_components/SplitReciptCard';
 import { SplitPageProps } from './type';
@@ -22,7 +22,7 @@ const SplitPage = ({ tripId }: SplitPageProps) => {
 
   return (
     <div className="h-screen w-full flex flex-col bg-light_grey">
-      <TripHeader />
+      <TripHeader tripId={tripId} />
       <section className="flex flex-col px-5 py-6">
         <h1 className="text-head-1 pb-1">
           정산할 기간을 선택하면

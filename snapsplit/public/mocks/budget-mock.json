@@ -1,65 +1,84 @@
 {
-  "countries": [
-    { "countryId": 1, "countryName": "런던" },
-    { "countryId": 2, "countryName": "파리" },
-    { "countryId": 3, "countryName": "취리히" }
-  ],
-  "totalShared": [
-    {
-      "totalSharedCurrency": "KRW",
-      "totalSharedAmount": 300000
+  "status": 200,
+  "success": true,
+  "message": "여행 상세 조회 성공",
+  "data": {
+    "trip": {
+      "tripId": 1,
+      "tripName": "부산 여행",
+      "memberCount": 3,
+      "startDate": "2025-06-01",
+      "endDate": "2025-06-12",
+      "tripImage": "https://example.com/trip1.jpg",
+      "tripTotalExpense": 450000,
+      "countries": [
+        {
+          "countryId": 1,
+          "countryName": "대한민국"
+        }
+      ]
     },
-    {
-      "totalSharedCurrency": "USD",
-      "totalSharedAmount": 120.5
-    }
-  ],
-  "expenses": [
-    {
-      "expenseId": 1,
-      "expenseDate": "2025-04-01",
-      "expenseAmount": 215000,
-      "expenseCurrency": "KRW",
-      "expenseUsers": [
-        { "userId": 11, "userName": "유빈" },
-        { "userId": 12, "userName": "나경" }
-      ],
-      "expenseCategory": "항공권"
-    },
-    {
-      "expenseId": 5,
-      "expenseDate": "2025-04-01",
-      "expenseAmount": 1000,
-      "expenseCurrency": "EUR",
-      "expenseUsers": [
-        { "userId": 11, "userName": "유빈" },
-        { "userId": 12, "userName": "나경" },
-        { "userId": 13, "userName": "지수" },
-        { "userId": 14, "userName": "연수" }
-      ],
-      "expenseCategory": "런던 숙소"
-    },
-    {
-      "expenseId": 2,
-      "expenseDate": "2025-04-07",
-      "expenseAmount": 36,
-      "expenseCurrency": "EUR",
-      "expenseUsers": [
-        { "userId": 11, "userName": "유빈" },
-        { "userId": 12, "userName": "나경" },
-        { "userId": 13, "userName": "지수" }
-      ],
-      "expenseCategory": "점심"
-    },
-    {
-      "expenseId": 3,
-      "expenseDate": "2025-04-08",
-      "expenseAmount": 10000,
-      "expenseCurrency": "USD",
-      "expenseUsers": [
-        { "userId": 13, "userName": "지수" }
-      ],
-      "expenseCategory": "백화점"
-    }
-  ]
+    "totalShared": [
+      {
+        "totalSharedCurrency": "KRW",
+        "totalSharedAmount": 300000
+      },
+      {
+        "totalSharedCurrency": "USD",
+        "totalSharedAmount": 120.50
+      }
+    ],
+    "expenses": [
+      {
+        "expenseId": 101,
+        "expenseDate": "2025-06-01",
+        "expenseAmount": 150000,
+        "expenseCurrency": "KRW",
+        "expenseUsers": [
+          {
+            "userId": 11,
+            "userName": "문재영"
+          },
+          {
+            "userId": 12,
+            "userName": "권은정"
+          }
+        ],
+        "expenseCategory": "식비"
+      },
+      {
+        "expenseId": 102,
+        "expenseDate": "2025-06-02",
+        "expenseAmount": 100.00,
+        "expenseCurrency": "USD",
+        "expenseUsers": [
+          {
+            "userId": 13,
+            "userName": "박지수"
+          }
+        ],
+        "expenseCategory": "숙박"
+      },{
+        "expenseId": 103,
+        "expenseDate": "2025-05-29",
+        "expenseAmount": 1110000,
+        "expenseCurrency": "KRW",
+        "expenseUsers": [
+          {
+            "userId": 11,
+            "userName": "문재영"
+          },
+          {
+            "userId": 12,
+            "userName": "권은정"
+          },
+          {
+            "userId": 13,
+            "userName": "박지수"
+          }
+        ],
+        "expenseCategory": "항공"
+      }
+    ]
+  }
 }

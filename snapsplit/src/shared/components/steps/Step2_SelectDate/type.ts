@@ -4,4 +4,5 @@ export type SelectDateSectionProps = {
     endDate: Date | null;
     setStartDate: (date: Date | null) => void;
     setEndDate: (date: Date | null) => void;
+    variant?: 'create' | 'edit';
 };

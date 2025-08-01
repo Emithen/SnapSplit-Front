@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation';
 
 import StepProgressBar from '@trip/createTrip/_components/StepProgressBar';
 import CreateTripHeader from '@trip/createTrip/_components/CreateTripHeader';
-import CountrySearchSection from '@trip/createTrip/steps/Step1_CountrySearch';
-import SelectDateSection from './steps/Step2_SelectDate';
-import AddMemberSection from '@trip/createTrip/steps/Step3_AddMember';
-import InputTripNameSection from './steps/Step4_InputTripName';
+import CountrySearchSection from '@/shared/components/steps/Step1_CountrySearch';
+import SelectDateSection from '@/shared/components/steps/Step2_SelectDate';
+import AddMemberSection from '@/shared/components/steps/Step3_AddMember';
+import InputTripNameSection from '@/shared/components/steps/Step4_InputTripName';
 import { routerPath } from '@/shared/constants/routePath';
 import { Country } from '@/shared/types/country';
 
@@ -78,10 +78,10 @@ export default function CreateTripPage() {
   ];
 
   return (
-    <div className="min-h-[100dvh]">
+    <div className="flex flex-col h-screen">
       <CreateTripHeader step={step} onPrev={handlePrevStep} />
       <StepProgressBar step={step} />
-      {steps[step - 1]}
+      <div className="flex flex-col w-full h-full">{steps[step - 1]}</div>
     </div>
   );
 }

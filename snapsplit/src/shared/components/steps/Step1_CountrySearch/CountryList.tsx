@@ -1,6 +1,6 @@
 'use client';
 
-import { CountryComponentProps, CountryListProps } from '@trip/createTrip/steps/Step1_CountrySearch/type';
+import { CountryComponentProps, CountryListProps } from './type';
 import { useDragScroll } from '@/shared/utils/useDragScroll';
 import SelectButton from '@/shared/components/SelectButton';
 
@@ -13,8 +13,9 @@ const CountryComponent = ({ countryName, isSelected, onClick }: CountryComponent
   );
 };
 
-const CountryList = ({ countries, selected, onToggle }: CountryListProps) => {
+const CountryList = ({ variant, countries, selected, onToggle }: CountryListProps) => {
   const { scrollRef, onMouseDown, onMouseMove, onMouseUp } = useDragScroll('y');
+  const offset = variant === 'edit' ? 288 : 348;
 
   return (
     <div
@@ -24,7 +25,7 @@ const CountryList = ({ countries, selected, onToggle }: CountryListProps) => {
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
       className="space-y-5 overflow-y-auto pb-5 scrollbar-hide scrollbar-hide::-webkit-scrollbar"
-      style={{ height: 'calc(100vh - 348px - 16px)' }}
+      style={{ height: `calc(100vh - ${offset}px - 16px)` }}
     >
       {countries.map((country) => (
         <CountryComponent

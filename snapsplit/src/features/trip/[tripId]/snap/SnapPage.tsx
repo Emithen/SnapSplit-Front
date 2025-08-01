@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react';
 import TabSelector from '@/features/trip/[tripId]/snap/_components/TabSelector';
 import UploadButton from '@/features/trip/[tripId]/snap/_components/UploadButton';
-import TripHeader from '../budget/_components/TripHeader';
+import TripHeader from '../../../../shared/components/TripHeader';
 import TripInfo from '../budget/_components/TripInfo';
 import BaseTabView from '@/features/trip/[tripId]/snap/_components/tabView/BaseTabView';
 import FolderTabView from '@/features/trip/[tripId]/snap/_components/tabView/FolderTabView';
@@ -30,7 +30,11 @@ export default function SnapPage() {
     <div className="flex flex-col h-screen bg-light_grey">
       <div className="bg-white">
         <TripHeader />
-        {isScrolled && <div className="px-5"><span className="text-label-1">{tripInfo.tripName}</span></div>}
+        {isScrolled && (
+          <div className="px-5">
+            <span className="text-label-1">{tripInfo.tripName}</span>
+          </div>
+        )}
         {!isScrolled && (
           <TripInfo
             tripName={tripInfo.tripName}

@@ -2,28 +2,32 @@ import TripInfo from './_components/TripInfo';
 import DailyExpenseList from './_components/DailyExpenseList';
 import SharedBudgetBar from './_components/SharedBudgetBar';
 import TripDateBar from './_components/TripDateBar';
-import TripHeader from './_components/TripHeader';
 import BottomSheetTrigger from './_components/modal/BottomSheetTrigger';
+import TripHeader from '@/shared/components/TripHeader';
 import { BudgetPageProps } from './type';
 
 // 목데이터
-import tripBudgetData from '@public/mocks/budget-mock.json';
-const countries = tripBudgetData.countries;
-const totalShared = tripBudgetData.totalShared;
-const expenses = tripBudgetData.expenses;
+import tripDetailMock from '@public/mocks/budget-mock.json';
 
 const BudgetPage = ({ tripId }: BudgetPageProps) => {
-  console.log(tripId);
+  console.log('- tripId: ' + tripId);
+  const { trip, totalShared, expenses } = tripDetailMock.data;
+
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-white">
-        <TripHeader />
-        <TripInfo tripName={'유luv여행'} countries={countries} startDate={'2025. 12. 22'} endDate={'2025 .12. 28'} />
-        <SharedBudgetBar totalShared={totalShared} tripId={tripId} />
-        <TripDateBar startDate="2025-04-07" endDate="2025-04-16" />
+        <TripHeader tripId={tripId} />
+        <TripInfo
+          tripName={trip.tripName}
+          countries={trip.countries}
+          startDate={trip.startDate}
+          endDate={trip.endDate}
+        />
+        <SharedBudgetBar totalShared={totalShared} tripId={trip.tripId} />
+        <TripDateBar startDate={trip.startDate} endDate={trip.endDate} />
       </div>
-      <DailyExpenseList expenses={expenses} tripStartDate="2025-04-07" tripEndDate="2025-04-16" />
-      <BottomSheetTrigger total={1355200} />
+      <DailyExpenseList expenses={expenses} tripStartDate={trip.startDate} tripEndDate={trip.endDate} />
+      <BottomSheetTrigger total={trip.tripTotalExpense} />
     </div>
   );
 };

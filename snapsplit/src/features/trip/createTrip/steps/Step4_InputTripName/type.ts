@@ -1,1 +1,0 @@
-export type InputTripNameSectionProps = { onClick: () => void };
