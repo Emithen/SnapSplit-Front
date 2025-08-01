@@ -1,10 +1,6 @@
 'use client';
 
-export interface AuthProps {
-  name: string;
-}
-
-export default function Auth({}: AuthProps) {
+export default function Auth() {
   const REST_API_KEY = '5099e273f6583110b2cd3053783eddb4';
   const REDIRECT_URI = 'http://localhost:3000/oauth/callback/kakao';
 

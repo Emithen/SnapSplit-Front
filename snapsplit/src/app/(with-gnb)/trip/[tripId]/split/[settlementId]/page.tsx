@@ -5,15 +5,15 @@ export default async function Settlement({
   searchParams,
 }: {
   params: Promise<{ tripId: string; settlementId: string }>;
-  searchParams: { startDay?: string; endDay?: string };
+  searchParams: Promise<{ startDay?: string; endDay?: string }>;
 }) {
   const { tripId, settlementId } = await params;
-  const startDay = searchParams.startDay
-    ? isNaN(Number(searchParams.startDay))
+  const startDay = (await searchParams).startDay
+    ? isNaN(Number((await searchParams).startDay))
       ? null
-      : Number(searchParams.startDay)
+      : Number((await searchParams).startDay)
     : null;
-  const endDay = searchParams.endDay ? (isNaN(Number(searchParams.endDay)) ? null : Number(searchParams.endDay)) : null;
+  const endDay = (await searchParams).endDay ? (isNaN(Number((await searchParams).endDay)) ? null : Number((await searchParams).endDay)) : null;
 
   return <SettlementPage settlementId={settlementId} tripId={tripId} startDay={startDay} endDay={endDay} />;
 }
