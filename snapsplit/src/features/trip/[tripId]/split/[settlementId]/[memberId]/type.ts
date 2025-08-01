@@ -1,4 +1,15 @@
 export interface SettlementDetailPageProps {
   tripId: string;
-  memberId: string;
+  settlementId: string;
+  name: string;
+}
+
+export interface SettlementDetailHeaderProps {
+  tripId: string;
+  settlementId: string;
+}
+
+export interface TotalAmountInfoProps {
+  name: string;
+  totalAmount: number;
 }
