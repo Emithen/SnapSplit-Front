@@ -19,7 +19,7 @@ export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
 
   return (
     <div className="h-screen w-full flex flex-col">
-      <ExpenseDetailHeader />
+      <ExpenseDetailHeader tripId={tripId} />
       <div className="flex h-full flex-col w-full overflow-y-auto scrollbar-hide p-5">
         <ExpenseAmount amount={500} currency={'USD'} krwAmount={42052000} />
         <div className="pt-6 space-y-6">
