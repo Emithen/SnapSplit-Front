@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import publicInstance from '@/api/instance/publicInstance';
 import { useRouter } from 'next/navigation';
+import { kakaoLogin } from '@/api/auth';
+import { setAccessToken, setRefreshToken } from '@/shared/utils/tokenUtil';
 
 export default function KaKaoRedirect() {
   const router = useRouter();
@@ -15,10 +16,12 @@ export default function KaKaoRedirect() {
       return;
     }
 
-    const kakaoLogin = async () => {
+    const login = async () => {
       try {
-        const res = await publicInstance.post(`/auth/kakao/login?code=${code}`);
+        const res = await kakaoLogin(code);
         if (res.status === 200) {
+          setAccessToken(res.data.accessToken);
+          setRefreshToken(res.data.refreshToken);
           router.push('/home');
         }
       } catch (error) {
@@ -26,7 +29,7 @@ export default function KaKaoRedirect() {
         router.push('/');
       }
     };
-    kakaoLogin();
+    login();
   }, [router]);
 
   return <div>Redirecting...</div>;
