@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { kakaoLogin } from '@/api/auth';
+import { kakaoLogin } from '@/lib/api/auth';
 import { setAccessToken, setRefreshToken } from '@/shared/utils/tokenUtil';
 
 export default function KaKaoRedirect() {
