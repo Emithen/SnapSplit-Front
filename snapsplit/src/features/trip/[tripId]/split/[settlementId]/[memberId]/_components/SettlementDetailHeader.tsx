@@ -5,7 +5,7 @@ import { SettlementDetailHeaderProps } from '../type';
 
 export default function SettlementDetailHeader({ tripId, settlementId }: SettlementDetailHeaderProps) {
   return (
-    <header className="flex px-5 py-3 bg-amber-50 justify-between">
+    <header className="flex px-5 py-3 justify-between text-label-1 items-center">
       <Link href={`/trip/${tripId}/split/${settlementId}`}>
         <Image src={arrow} alt="back button" />
       </Link>
