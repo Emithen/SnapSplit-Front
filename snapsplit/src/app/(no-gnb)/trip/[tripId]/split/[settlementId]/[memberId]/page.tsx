@@ -5,10 +5,11 @@ export default async function Settlement({
   searchParams,
 }: {
   params: Promise<{ tripId: string; settlementId: string }>;
-  searchParams: { name?: string };
+  searchParams: Promise<{ name?: string }>;
 }) {
   const { tripId, settlementId } = await params;
-  const name = searchParams.name ?? '';
+  const { name } = await searchParams;
+  const safeName = name ?? '';
 
-  return <SettlementDetailPage settlementId={settlementId} tripId={tripId} name={name} />;
+  return <SettlementDetailPage settlementId={settlementId} tripId={tripId} name={safeName} />;
 }
