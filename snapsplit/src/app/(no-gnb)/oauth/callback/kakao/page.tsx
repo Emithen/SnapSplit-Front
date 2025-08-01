@@ -8,7 +8,12 @@ export default function KaKaoRedirect() {
   const router = useRouter();
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get('code');
-    console.log(code);
+
+    if (!code) {
+      alert("인증 코드가 없습니다.");
+      router.push('/');
+      return;
+    }
 
     const kakaoLogin = async () => {
       try {
@@ -17,12 +22,12 @@ export default function KaKaoRedirect() {
           router.push('/home');
         }
       } catch (error) {
-        console.log(error);
-        alert("로그인에 실패했습니다.");
+        console.error("카카오 로그인 실패 : ", error);
         router.push('/');
       }
     };
     kakaoLogin();
-  }, []);
+  }, [router]);
+
   return <div>Redirecting...</div>;
 }
