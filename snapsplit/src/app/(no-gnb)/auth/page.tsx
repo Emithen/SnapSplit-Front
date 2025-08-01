@@ -1,8 +1,8 @@
 'use client';
 
 export default function Auth() {
-  const REST_API_KEY = '5099e273f6583110b2cd3053783eddb4';
-  const REDIRECT_URI = 'http://localhost:3000/oauth/callback/kakao';
+  const REST_API_KEY = process.env.NEXT_PUBLIC_REST_API_KEY;
+  const REDIRECT_URI = process.env.NEXT_PUBLIC_REDIRECT_URI;
 
   const kakaoLogin = () => {
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
