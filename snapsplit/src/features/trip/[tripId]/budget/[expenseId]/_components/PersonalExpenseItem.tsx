@@ -1,12 +1,7 @@
-import { expenseMember } from '../type';
+import { PersonalExpenseItemProps } from '../type';
 
-interface PersonalExpenseItemProps {
-  type: 'payer' | 'settlement';
-  member: expenseMember[];
-}
-
-export default function PersonalExpenseItem({ type, member }: PersonalExpenseItemProps) {
-  const isPayer = type === 'payer';
+export default function PersonalExpenseItem({ variant, member, symbol }: PersonalExpenseItemProps) {
+  const isPayer = variant === 'payers';
 
   return (
     <div className="space-y-3">
@@ -18,7 +13,10 @@ export default function PersonalExpenseItem({ type, member }: PersonalExpenseIte
       {member.map((member) => (
         <div key={member.memberId} className="flex justify-between items-center text-body-1">
           <span>{member.name}</span>
-          <span>{member.amount}</span>
+          <span>
+            {member.amount}
+            {symbol}
+          </span>
         </div>
       ))}
     </div>

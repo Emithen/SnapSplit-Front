@@ -22,9 +22,14 @@ export interface ExpenseDetailPageProps {
   tripId: string;
 }
 
-
 export interface ExpenseAmountProps {
   amount: number;
-  currency: string;
+  symbol: string;
   amountKRW: number;
+}
+
+export interface PersonalExpenseItemProps {
+  variant: 'payers' | 'splitters';
+  member: expenseMember[];
+  symbol: string;
 }
