@@ -1,7 +1,7 @@
-import ExpenseAmountProps from '../type';
 import { useCurrencySymbol } from '@/shared/utils/useCurrencySymbol';
+import { ExpenseAmountProps } from '../type';
 
-export default function ExpenseAmount({ amount, currency, exchangeRate, krwAmount }: ExpenseAmountProps) {
+export default function ExpenseAmount({ amount, currency, amountKRW }: ExpenseAmountProps) {
   const symbol = useCurrencySymbol(currency); // 'USD' -> '$'
 
   return (
@@ -10,7 +10,7 @@ export default function ExpenseAmount({ amount, currency, exchangeRate, krwAmoun
         {amount}
         {symbol}
       </p>
-      <p className="text-body-2 text-grey-550">= {krwAmount}원</p>
+      <p className="text-body-2 text-grey-550">= {amountKRW}원</p>
     </div>
   );
 }
