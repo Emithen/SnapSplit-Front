@@ -9,11 +9,11 @@ export interface ExpenseDetailData {
   amount: number;
   amountKRW: number;
   currency: string;         // ex: "EUR"
-  paymentMethod: string;    // ex: "cash" | "card"
+  paymentMethod: "cash" | "card";
   date: string;
   expenseName: string;
   expenseMemo: string;
-  category: string;         // ex: "FOOD"
+  category: string;         // ex: "FOOD" 구체적인 union 타입 정하기
   payers: expenseMember[];
   splitters: expenseMember[];
 }
