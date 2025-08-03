@@ -7,12 +7,13 @@ import ExpenseDetailInfoItem from './_components/ExpenseDetailInfoItem';
 import PersonalExpenseItem from './_components/PersonalExpenseItem';
 import { ExpenseDetailPageProps, ExpenseDetailData } from './type';
 import mock from '@public/mocks/expense-detail.json';
+import { mapCategoryToKor } from '@/shared/utils/useCategoryMapper';
 
 export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
   const expenseDetail = (mock as { data: ExpenseDetailData }).data;
   const { amount, amountKRW, currency, paymentMethod, date, expenseName, expenseMemo, category, payers, splitters } =
     expenseDetail;
-
+  const korCategory = category ? mapCategoryToKor(category) : '기타';
   // 통화 기호 ($, €, etc.)
   const symbol = useCurrencySymbol(currency);
 
@@ -27,9 +28,8 @@ export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
           <ExpenseDetailInfoItem label="여행 일자" value={date} />
           <ExpenseDetailInfoItem label="지출 형태" value={paymentMethod === 'card' ? '카드' : '현금'} />
           <ExpenseDetailInfoItem label="지출명" value={expenseName} />
-          {/* 백엔드에서 데이터가 ''로 올지 안올지 보고 렌더링 여부 판단 해야함 */}
-          <ExpenseDetailInfoItem label="지출 내용 (선택)" value={expenseMemo || ''} />
-          <ExpenseDetailInfoItem label="카테고리 (선택)" value={category || ''} />
+          <ExpenseDetailInfoItem label="지출 내용 (선택)" value={expenseMemo} />
+          <ExpenseDetailInfoItem label="카테고리 (선택)" value={korCategory} />
 
           {/* 결제자 리스트 */}
           <PersonalExpenseItem
