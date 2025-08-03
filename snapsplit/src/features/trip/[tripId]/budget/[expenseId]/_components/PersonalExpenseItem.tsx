@@ -1,15 +1,11 @@
-interface Person {
-  name: string;
-  amount: string;
-}
+import { expenseMember } from '../type';
 
 interface PersonalExpenseItemProps {
   type: 'payer' | 'settlement';
-  people: Person[];
-  sharedAmount?: string; // type이 'payer'일 때만 사용
+  member: expenseMember[];
 }
 
-export default function PersonalExpenseItem({ type, people, sharedAmount }: PersonalExpenseItemProps) {
+export default function PersonalExpenseItem({ type, member }: PersonalExpenseItemProps) {
   const isPayer = type === 'payer';
 
   return (
@@ -19,17 +15,10 @@ export default function PersonalExpenseItem({ type, people, sharedAmount }: Pers
         <span>{isPayer ? '결제금액' : '부담금액'}</span>
       </div>
 
-      {isPayer && sharedAmount && (
-        <div className="flex justify-between items-center text-body-1">
-          <span>공동경비</span>
-          <span>{sharedAmount}</span>
-        </div>
-      )}
-
-      {people.map((person) => (
-        <div key={person.name} className="flex justify-between items-center text-body-1">
-          <span>{person.name}</span>
-          <span>{person.amount}</span>
+      {member.map((member) => (
+        <div key={member.memberId} className="flex justify-between items-center text-body-1">
+          <span>{member.name}</span>
+          <span>{member.amount}</span>
         </div>
       ))}
     </div>

@@ -1,4 +1,4 @@
-export interface PersonItem {
+export interface expenseMember {
   memberId: number;
   name: string;
   amount: number;
@@ -14,8 +14,8 @@ export interface ExpenseDetailData {
   expenseName: string;
   expenseMemo: string;
   category: string;         // ex: "FOOD"
-  payers: PersonItem[];
-  splitters: PersonItem[];
+  payers: expenseMember[];
+  splitters: expenseMember[];
 }
 
 export interface ExpenseDetailPageProps {

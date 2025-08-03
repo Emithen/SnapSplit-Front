@@ -46,7 +46,7 @@ export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
           {/* 결제자 리스트 */}
           <PersonalExpenseItem
             type="payer"
-            people={payers.map((p) => ({
+            member={payers.map((p) => ({
               name: p.name,
               amount: `${p.amount}${symbol}`,
             }))}
@@ -55,7 +55,7 @@ export default function ExpenseDetailPage({ tripId }: ExpenseDetailPageProps) {
           {/* 분담자 리스트 */}
           <PersonalExpenseItem
             type="settlement"
-            people={splitters.map((s) => ({
+            member={splitters.map((s) => ({
               name: s.name,
               amount: `${s.amount}${symbol}`,
             }))}
